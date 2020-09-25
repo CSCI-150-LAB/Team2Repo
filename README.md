@@ -8,11 +8,9 @@
 3. Install Cocoa Pods (*Dependency manager*)
 
     `sudo gem install cocoapods`
-
 4. Now install the dependencies for the project
 
     `pod install`
-
 5. Open **"Food Truck Hunter.xcworkspace"** instead of "Food Truck Hunter.xcodeproj"
 
 ## Project Details
