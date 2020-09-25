@@ -13,6 +13,7 @@
 
     `pod install`
 
+5. Open **"Food Truck Hunter.xcworkspace"** instead of "Food Truck Hunter.xcodeproj"
 
 ## Project Details
 
