@@ -7,7 +7,7 @@
 2. Install Cocoa Pods (*Dependency manager*)
     `sudo gem install cocoapods`
 3. Navigate to repository directory
-4. Now install all the dependencies for the project.
+4. Now install all the dependencies for the project
     `pod install`
 
 ## Project Details
