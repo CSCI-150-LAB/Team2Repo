@@ -1,5 +1,8 @@
-# FoodTruck
-**Project Name:** IOS APP “Food Truck”
+# Food Truck Hunter
+###### *V1.0.0*
+---
+
+**Project Name:** Food Truck Hunter
 
 **Project Start Date:** 09/03/2020
 
@@ -41,7 +44,12 @@ from users to vendors to get updates on where your favorite food trucks will be.
 * Button to share with Friends (optional)
 
 ## Technologies Used
-CoreData, Swift, XCode, Adobe XD
+CoreData, Firebase, Firestore, Swift, XCode, Adobe XD
 
-## Revisions: 
-1.0.0 - 
+## Installation
+1. Pull repository
+2. Install Cocoa Pods (*Dependency manager*)
+    `$ sudo gem install cocoapods`
+3. Navigate to repository directory
+4. Now run the following:
+    `pod install`
