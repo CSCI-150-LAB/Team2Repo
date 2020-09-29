@@ -28,22 +28,9 @@ struct User: Identifiable, Codable {
         self.password = password
         self.type = type
     }
-//    init?(map: Map) {
-//
-//    }
-//
-//    mutating func mapping(map: Map) {
-//        default_location    <- map["default_location"]
-//        email               <- map["email"]
-//        first_name          <- map["first_name"]
-//        id                  <- map["id"]
-//        last_name           <- map["last_name"]
-//        password            <- map["password"]
-//        type                <- map["type"]
-//    }
 }
 
-class LoginView: ObservableObject {
+class Login: ObservableObject {
     
     @Published var msg = "Initialized"
     
@@ -73,23 +60,89 @@ class LoginView: ObservableObject {
 }
 
 struct ContentView: View {
-    @ObservedObject var loginData = LoginView()
+    @ObservedObject var loginData = Login()
+    
+    @State private var email = ""
+    @State private var password = ""
     
     var body: some View {
         NavigationView {
+//            ScrollView {
+//                Text(loginData.msg)
+//
+//                ForEach(loginData.users) { user in
+//                    Text( "Name: \(user.first_name!) \(user.last_name!)" )
+//                    Text( "Email: \(user.email!)" )
+//                    Text( "Type: \(user.type!)" )
+//                }
+//            }.navigationTitle("Firestore Data")
+//            .navigationBarItems(trailing: Button(action: {
+//                print("Fetching data...")
+//                self.loginData.getData()
+//            }, label: {
+//                Text("Get Data")
+//            }))
             ScrollView {
-                Text(loginData.msg)
-                
-                ForEach(loginData.users) { user in
-                    Text(user.first_name ?? "Uh oh")
+                Section() {
+                    VStack {
+                        Text("Food Truck Hunter").font(.title)
+                    }
                 }
-            }.navigationTitle("Firestore Data")
-            .navigationBarItems(trailing: Button(action: {
-                print("Fetching data...")
-                self.loginData.getData()
-            }, label: {
-                Text("Get Data")
-            }))
+                Section() {
+                    VStack(alignment: .leading) {
+                        Text("Email").font(.headline)
+                        HStack {
+                            TextField("example@mail.fresnostate.edu", text: self.$email)
+                                .padding(.all)
+                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                .cornerRadius(5)
+                        }
+                        
+                        Text("Password").font(.headline)
+                        HStack {
+                            SecureField("●●●●●●●●●●●●", text: self.$password)
+                                .padding(.all)
+                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                .cornerRadius(5)
+                        }
+                    }.padding(.all)
+                }
+                
+                Section() {
+                    Button(action: {
+                    }) {
+                        HStack {
+                            Spacer()
+                                Text("Sign in")
+                                    .font(.headline)
+                                    .foregroundColor(Color.white)
+                            Spacer()
+                        }
+                    }
+                    .padding(.vertical, 15.0)
+                    .background(Color.blue)
+                    .padding(.horizontal, 50.0)
+                    .cornerRadius(4.0)
+                    
+                    HStack {
+                        Text("Need an account?")
+                        Button(action: {}) {
+                            Text("Sign up").font(.headline)
+                        }
+                    }
+                    
+                    Text("Login with:")
+                        .padding(.vertical, 8.0)
+                    
+                    Button(action: {}) {
+                        Text("Google").font(.headline)
+                    }.padding(.vertical, 3.0)
+                    
+                    Button(action: {}) {
+                        Text("Facebook").font(.headline)
+                    }.padding(.vertical, 3.0)
+                }
+            }
         }
     }
 }

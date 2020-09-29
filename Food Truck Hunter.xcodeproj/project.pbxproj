@@ -118,6 +118,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		917678162522CA1E0016D723 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		917678172522CA2B0016D723 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		91B77A3425219D2800713501 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +157,8 @@
 		91B77A3F25219D2800713501 /* Food Truck Hunter */ = {
 			isa = PBXGroup;
 			children = (
+				917678172522CA2B0016D723 /* ViewModel */,
+				917678162522CA1E0016D723 /* View */,
 				91B77A8825219D6D00713501 /* GoogleService-Info.plist */,
 				91B77A4025219D2800713501 /* AppDelegate.swift */,
 				91B77A4225219D2800713501 /* SceneDelegate.swift */,
@@ -624,6 +640,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Food-Truck-Hunter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
