@@ -2,7 +2,7 @@
 //  Food_Truck_HunterUITests.swift
 //  Food Truck HunterUITests
 //
-//  Created by Preston McCullough on 9/24/20.
+//  Created by Sue Vang on 9/27/20.
 //
 
 import XCTest

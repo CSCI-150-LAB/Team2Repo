@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:403758604326:ios:d2d7bc661eb91a547f46e7</string>
+	<string>1:403758604326:ios:36ece2d676dba2c37f46e7</string>
 	<key>DATABASE_URL</key>
 	<string>https://food-truck-hunter-38360.firebaseio.com</string>
 </dict>
