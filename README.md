@@ -3,31 +3,25 @@
 
 
 ## Installation
-1. Clone repository
-2. Navigate to repository directory on your terminal
-3. Install Cocoa Pods (*Dependency manager*)
+1. Install **Cocoa Pods** on your computer
 
     `sudo gem install cocoapods`
-4. Now install the dependencies for the project
+2. Clone the repository
+3. Navigate to the repository directory on your computer's terminal
+4. Now install the required dependencies for the project
 
     `pod install`
-5. Open **"Food Truck Hunter.xcworkspace"** instead of "Food Truck Hunter.xcodeproj"
+5. Open **Food Truck Hunter.xcworkspace**
 
-## Project Details
-
-**Project Name:** Food Truck Hunter
-
-**Project Start Date:** 09/03/2020
-
-**Project Tentative Completion Date:** 11/30/2020
-
-## Team
+## Team Members
 1. Oleksandr Babich - *Project Lead*
 2. Sue Vang
 3. Preston Mccullough
 4. Martin Pantoja-Saldana
 
 ## Description
+**Project Life:** 09/03/2020 - 11/30/2020
+
 Food trucks are some of the best ways to try new and good food, and to support small
 businesses. However, finding local food trucks can be difficult wherever you are. Also to
 mention, food truck locations and schedules are always subject to change . So to help
