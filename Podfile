@@ -21,7 +21,8 @@ target 'Food Truck Hunter' do
   pod 'Firebase/Firestore'
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'
-  pod 'ObjectMapper', '~> 3.5'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
   target 'Food Truck HunterTests' do
     inherit! :search_paths

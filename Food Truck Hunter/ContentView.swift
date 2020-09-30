@@ -1,119 +1,105 @@
-//
-//  ContentView.swift
-//  Food Truck Hunter
-//
-//  Created by Sue Vang on 9/27/20.
-//
-
 import SwiftUI
 import Firebase
 import FirebaseFirestore
-import ObjectMapper
-
-struct User: Identifiable, Codable {
-    var default_location: String?
-    var email: String?
-    var first_name: String?
-    var id: Int?
-    var last_name: String?
-    var password: String?
-    var type: String?
-    
-    init(default_location: String?, email: String?, first_name: String?, id: Int?, last_name: String?, password: String?, type: String?) {
-        self.default_location = default_location
-        self.email = email
-        self.first_name = first_name
-        self.id = id
-        self.last_name = last_name
-        self.password = password
-        self.type = type
-    }
-}
-
-class Login: ObservableObject {
-    
-    @Published var msg = "Initialized"
-    
-    @Published var users = [ User ]()
-    
-    func getData() {
-        let db = Firestore.firestore()
-        let dispatch = DispatchGroup()
-        
-        dispatch.enter()
-        db.collection("Users").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    self.users.append(User(default_location: (document.data()["default_location"] as! String), email: (document.data()["email"] as! String), first_name: (document.data()["first_name"] as! String), id: (document.data()["id"] as? Int), last_name: (document.data()["last_name"] as! String), password: (document.data()["password"] as! String), type: (document.data()["type"] as! String)))
-                    print("user: \(self.users.count)")
-                }
-            }
-            dispatch.leave()
-            self.msg = ""
-        }
-        dispatch.notify(queue: .main, execute: {
-            print("number of users: \(self.users.count)")
-        })
-    }
-}
+import GoogleSignIn
 
 struct ContentView: View {
-    @ObservedObject var loginData = Login()
+    @ObservedObject var loginData = UsersViewModel()
     
     @State private var email = ""
     @State private var password = ""
+    @State var invalidEmailHintLabel : Bool = false
+    @State var invalidCredentialHintLabel : Bool = false
     
+    // MARK: View Start
     var body: some View {
         NavigationView {
-//            ScrollView {
-//                Text(loginData.msg)
-//
-//                ForEach(loginData.users) { user in
-//                    Text( "Name: \(user.first_name!) \(user.last_name!)" )
-//                    Text( "Email: \(user.email!)" )
-//                    Text( "Type: \(user.type!)" )
-//                }
-//            }.navigationTitle("Firestore Data")
-//            .navigationBarItems(trailing: Button(action: {
-//                print("Fetching data...")
-//                self.loginData.getData()
-//            }, label: {
-//                Text("Get Data")
-//            }))
-            ScrollView {
+            VStack {
+                // MARK: Logo Section
                 Section() {
-                    VStack {
-                        Text("Food Truck Hunter").font(.title)
-                    }
+                    // Possibly add an icon or image
+                    Text("Food Truck Hunter")
+                        .font(.system(.largeTitle, design: .rounded))
+                        .fontWeight(.bold)
                 }
+                // MARK: Input Fields Section
                 Section() {
                     VStack(alignment: .leading) {
-                        Text("Email").font(.headline)
-                        HStack {
-                            TextField("example@mail.fresnostate.edu", text: self.$email)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
+                        Section() {
+                            HStack {
+                                TextField("Email Address", text: self.$email, onEditingChanged: {_ in
+                                    if !self.email.isEmpty {
+                                        self.invalidEmailHintLabel = !FormUtilities.validateEmail(self.email)
+                                    }
+                                    else {
+                                        self.invalidEmailHintLabel = false
+                                    }
+                                })
+                                    .autocapitalization(.none)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                            }
+                            
+                            Text("Invalid email address")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color.red)
+                                .padding(.bottom, 2.0)
+                                .opacity(FormUtilities.showHintLabel(self.invalidEmailHintLabel))
                         }
                         
-                        Text("Password").font(.headline)
-                        HStack {
-                            SecureField("●●●●●●●●●●●●", text: self.$password)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
+                        Section() {
+                            HStack {
+                                SecureField("Password", text: self.$password)
+                                    .autocapitalization(.none)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                            }
+                            
+                            Text("Incorrect email or password")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color.red)
+                                .padding(.bottom, 2.0)
+                                .opacity(FormUtilities.showHintLabel(self.invalidCredentialHintLabel))
                         }
                     }.padding(.all)
                 }
-                
+                // MARK: Log In Section
                 Section() {
                     Button(action: {
+                        // Check input fields to see if empty
+                        if (!self.email.isEmpty && !self.password.isEmpty) {
+                            if FormUtilities.validateEmail(self.email) {
+                                
+                                self.invalidEmailHintLabel = false
+                                
+                                // MARK: Firebase Auth
+                                Auth.auth().signIn(withEmail: self.email, password: self.password, completion: {result, error in
+                                    // Unsuccessful
+                                    guard error == nil else {
+                                        print("Cannot sign in")
+                                        self.invalidCredentialHintLabel = true
+                                        return
+                                    }
+                                    
+                                    // Successfully logged in
+                                    // Reset all fields
+                                    self.email = ""
+                                    self.password = ""
+                                    self.invalidCredentialHintLabel = false
+                                    print("Successfully signed in")
+                                })
+                            }
+                            else {
+                                self.invalidCredentialHintLabel = false
+                                self.invalidEmailHintLabel = true
+                            }
+                        }
                     }) {
                         HStack {
                             Spacer()
-                                Text("Sign in")
+                                Text("Log In")
                                     .font(.headline)
                                     .foregroundColor(Color.white)
                             Spacer()
@@ -121,31 +107,36 @@ struct ContentView: View {
                     }
                     .padding(.vertical, 15.0)
                     .background(Color.blue)
-                    .padding(.horizontal, 50.0)
+                    .padding(.horizontal, 130.0)
                     .cornerRadius(4.0)
+                    .accessibility(label: Text("Log in"))
                     
-                    HStack {
-                        Text("Need an account?")
-                        Button(action: {}) {
-                            Text("Sign up").font(.headline)
-                        }
+                    NavigationLink(destination: ForgotPasswordView()) {
+                        Text("Forgot password?").font(.headline)
                     }
+                    .padding(.vertical, 5.0)
                     
-                    Text("Login with:")
-                        .padding(.vertical, 8.0)
+                    Text("or")
+                        .padding(.vertical, 10.0)
+                        .foregroundColor(Color.gray)
+                    
+                    NavigationLink(destination: CreateUserAccountView()) {
+                        Text("Create an account").font(.headline)
+                    }
                     
                     Button(action: {}) {
                         Text("Google").font(.headline)
                     }.padding(.vertical, 3.0)
                     
                     Button(action: {}) {
-                        Text("Facebook").font(.headline)
+                        Text("Apple").font(.headline)
                     }.padding(.vertical, 3.0)
                 }
             }
         }
     }
 }
+// MARK: View End
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
