@@ -1,10 +1,3 @@
-//
-//  FormUtilities.swift
-//  Food Truck Hunter
-//
-//  Created by Sue Vang on 9/29/20.
-//
-
 import Foundation
 
 class FormUtilities {
@@ -21,12 +14,32 @@ class FormUtilities {
         return emailTest.evaluate(with: email)
     }
     
+    static func validateEmailErrorMsg(_ email : String) -> String {
+        return validateEmail(email) ? "" : "Email address is invalid."
+    }
+    
     static func validatePassword(_ password : String) -> Bool {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "((?=.*\\d)(?=.*[A-Z])(?=.*\\W).{8,})")
         return passwordTest.evaluate(with: password)
     }
     
-    static func showHintLabel(_ value : Bool) -> Double {
-        return value ? 1 : 0
+    static func validatePasswordsEquivalentErrorMsg(_ password : String, _ reenteredPassword : String) -> String {
+        return ((password == reenteredPassword) ? "" : "Password does not match")
+    }
+    
+    static func isEmptyErrorMsg(_ fieldValue : String, _ fieldType : String) -> String {
+        if (fieldType == "email" && fieldValue.isEmpty) {
+            return "Please enter an email address."
+        }
+        
+        if (fieldType == "password" && fieldValue.isEmpty) {
+            return "Please enter a password."
+        }
+        
+        if (fieldType == "reenterpassword" && fieldValue.isEmpty) {
+            return "Please re-enter the password."
+        }
+        
+        return ""
     }
 }

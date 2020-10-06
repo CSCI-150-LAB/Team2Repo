@@ -1,10 +1,3 @@
-//
-//  CreateUserAccountView.swift
-//  Food Truck Hunter
-//
-//  Created by Sue Vang on 9/29/20.
-//
-
 import SwiftUI
 import Firebase
 import FirebaseAuth
@@ -12,7 +5,19 @@ import FirebaseAuth
 struct CreateUserAccountView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var email : String = ""
+    @State private var buttonLabel : String = "Create an account"
+    @State private var buttonColor : Color = Color.blue
+    @State private var buttonDisable : Bool = false;
+    
+    // used for animating loading circle
+    @State private var isLoading : Bool = false
+    @State private var isRotating : Bool = false
+    @State private var animateStrokeStart : Bool = false
+    @State private var animateStrokeEnd : Bool = true
+    
+    @State private var firstName : String = ""
+    @State private var lastName : String = ""
+    @State var email : String = ""
     @State private var password : String = ""
     @State private var reenterPassword : String = ""
     @State var invalidEmailHintLabel : String = ""
@@ -24,13 +29,59 @@ struct CreateUserAccountView: View {
             Section() {
                 VStack(alignment: .leading) {
                     Section() {
-                        Text("Email Address")
                         ZStack(alignment: .trailing) {
-                            TextField("user@foodtruckhunter.com", text: self.$email, onEditingChanged: {_ in
+                            TextField("Email Address", text: self.$email, onEditingChanged: {_ in
                                 if !self.email.isEmpty {
-                                    self.invalidEmailHintLabel = FormUtilities.validateEmail(self.email) ? "" : "Invalid email address"
+                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
                                 }
                             })
+                                .keyboardType(.emailAddress)
+                                .autocapitalization(.none)
+                                .padding(.all)
+                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                .cornerRadius(5)
+                            
+                            if !self.firstName.isEmpty {
+                                Button(action: {
+                                    self.firstName = ""
+                                }) {
+                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                }.padding(.trailing, 20)
+                            }
+                        }
+                    }
+                    
+                    Section() {
+                        ZStack(alignment: .trailing) {
+                            TextField("Email Address", text: self.$email, onEditingChanged: {_ in
+                                if !self.email.isEmpty {
+                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
+                                }
+                            })
+                                .keyboardType(.emailAddress)
+                                .autocapitalization(.none)
+                                .padding(.all)
+                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                .cornerRadius(5)
+                            
+                            if !self.email.isEmpty {
+                                Button(action: {
+                                    self.email = ""
+                                }) {
+                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                }.padding(.trailing, 20)
+                            }
+                        }
+                    }
+                    
+                    Section() {
+                        ZStack(alignment: .trailing) {
+                            TextField("Email Address", text: self.$email, onEditingChanged: {_ in
+                                if !self.email.isEmpty {
+                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
+                                }
+                            })
+                                .keyboardType(.emailAddress)
                                 .autocapitalization(.none)
                                 .padding(.all)
                                 .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
@@ -53,9 +104,8 @@ struct CreateUserAccountView: View {
                     }
 
                     Section() {
-                        Text("Password")
                         ZStack(alignment: .trailing) {
-                            SecureField("1SuperUncrackablePassword!", text: self.$password)
+                            SecureField("Password", text: self.$password)
                                 .onChange(of: self.password) { newPassword in
                                     self.password = newPassword
                                     
@@ -93,9 +143,8 @@ struct CreateUserAccountView: View {
                     }
                     
                     Section() {
-                        Text("Re-enter Password")
                         ZStack(alignment: .trailing) {
-                            SecureField("1SuperUncrackablePassword!", text: self.$reenterPassword)
+                            SecureField("Re-enter Password", text: self.$reenterPassword)
                                 .onChange(of: self.reenterPassword) { newRetypedPassword in
                                     self.reenterPassword = newRetypedPassword
                                     
@@ -103,7 +152,7 @@ struct CreateUserAccountView: View {
                                         self.invalidPasswordMatchHintLabel = ""
                                     }
                                     else {
-                                        self.invalidPasswordMatchHintLabel = (self.password == self.reenterPassword) ? "" : "Password does not match"
+                                        self.invalidPasswordMatchHintLabel = FormUtilities.validatePasswordsEquivalentErrorMsg(self.password, self.reenterPassword)
                                     }
                                 }
                                 .autocapitalization(.none)
@@ -122,7 +171,7 @@ struct CreateUserAccountView: View {
                         Text(self.invalidPasswordMatchHintLabel)
                             .font(.system(size: 14))
                             .foregroundColor(Color.red)
-                            .padding(.bottom, 2.0)
+                            .padding(.bottom, 2)
                             .animation(.easeInOut)
                     }
                 }
@@ -132,40 +181,88 @@ struct CreateUserAccountView: View {
                 Button(action: {
                     if ((!self.email.isEmpty && !self.password.isEmpty) && !self.reenterPassword.isEmpty) {
                         if FormUtilities.validateEmail(self.email) && FormUtilities.validatePassword(self.password) && (self.password == self.reenterPassword) {
+                            buttonDisable.toggle()
+                            isLoading.toggle()
+                            buttonLabel = ""
+                            self.invalidEmailHintLabel = ""
                             Auth.auth().createUser(withEmail: self.email, password: self.password) { authResult, error in
                                 // An error occurred
                                 guard error == nil else {
-                                    print("Unsuccessfully created an account")
+                                    buttonDisable.toggle()
+                                    isLoading.toggle()
+                                    buttonLabel = "Create an account"
+                                    
+                                    self.invalidEmailHintLabel = String(describing: error!.localizedDescription)
+                                    print("Unsuccessfully created an account:\n\(String(describing: error?.localizedDescription))")
                                     return;
                                 }
                                 
                                 // Account creation was successful
+                                isLoading.toggle()
+                                buttonLabel = "Account created!"
+                                buttonColor = Color.green
                                 self.email = ""
                                 self.password = ""
                                 self.reenterPassword = ""
-                                print("Successfully created an account")
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    buttonLabel = "Create an account"
+                                    buttonColor = Color.blue
+                                    buttonDisable.toggle()
+                                }
+                                print("Successfully created an account.")
                             }
+                        }
+                        else {
+                            self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
+                            self.invalidPasswordMatchHintLabel = FormUtilities.validatePasswordsEquivalentErrorMsg(self.password, self.reenterPassword)
                         }
                     }
                     else {
-                        self.invalidEmailHintLabel = self.email.isEmpty ? "Please enter an email address" : ""
-                        self.invalidPasswordHintLabel = self.password.isEmpty ? "Please enter a password" : ""
-                        self.invalidPasswordMatchHintLabel = self.reenterPassword.isEmpty ? "Please re-enter the password" : ""
+                        self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
+                        self.invalidPasswordHintLabel = FormUtilities.isEmptyErrorMsg(self.password, "password")
+                        self.invalidPasswordMatchHintLabel = FormUtilities.isEmptyErrorMsg(self.reenterPassword, "reenterpassword")
                     }
                 }) {
                     HStack {
                         Spacer()
-                            Text("Create an account")
+                        ZStack {
+                            if isLoading {
+                                Circle()
+                                    .trim(from: animateStrokeStart ? 1/3 : 1/9, to: animateStrokeEnd ? 2/5 : 1)
+                                    .stroke(Color.blue, style: StrokeStyle(lineWidth: 3.0, lineCap: .round))
+                                    .frame(width: 30, height: 30, alignment: .center)
+                                    .rotationEffect(Angle(degrees: isRotating ? 360 : 0))
+                                    .opacity(isLoading ? 1 : 0)
+                                    .onAppear() {
+                                        withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
+                                            isRotating.toggle()
+                                        }
+                                        
+                                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true)) {
+                                            animateStrokeStart.toggle()
+                                        }
+                                        
+                                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true)) {
+                                            animateStrokeEnd.toggle()
+                                        }
+                                    }
+                            }
+                        
+                            Text(buttonLabel)
                                 .font(.headline)
-                                .foregroundColor(Color.white)
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .foregroundColor(buttonColor)
+                                .padding()
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 6.0)
+                                            .stroke(buttonColor, lineWidth: 1)
+                                    )
+                        }
                         Spacer()
                     }
                 }
-                .padding(.vertical, 15.0)
-                .background(Color.blue)
-                .padding(.horizontal, 100.0)
-                .cornerRadius(4.0)
                 .accessibility(label: Text("Create account button"))
+                .disabled(buttonDisable)
             }
         }
         .padding(.all)
