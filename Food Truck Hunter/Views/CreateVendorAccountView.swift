@@ -1,10 +1,3 @@
-//
-//  CreateVendorAccountView.swift
-//  Food Truck Hunter
-//
-//  Created by Sue Vang on 9/29/20.
-//
-
 import SwiftUI
 
 struct CreateVendorAccountView: View {

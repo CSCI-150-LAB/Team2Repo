@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Food Truck Hunter
-//
-//  Created by Sue Vang on 9/27/20.
-//
-
 import UIKit
 import CoreData
 import Firebase
