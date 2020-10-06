@@ -10,7 +10,7 @@ struct ContentView: View {
     @State private var password = ""
     @State var invalidEmailHintLabel : Bool = false
     @State var invalidCredentialHintLabel : Bool = false
-    
+    @State var successful_login: Int? = nil
     // MARK: View Start
     var body: some View {
         NavigationView {
@@ -67,50 +67,52 @@ struct ContentView: View {
                 }
                 // MARK: Log In Section
                 Section() {
-                    Button(action: {
-                        // Check input fields to see if empty
-                        if (!self.email.isEmpty && !self.password.isEmpty) {
-                            if FormUtilities.validateEmail(self.email) {
-                                
-                                self.invalidEmailHintLabel = false
-                                
-                                // MARK: Firebase Auth
-                                Auth.auth().signIn(withEmail: self.email, password: self.password, completion: {result, error in
-                                    // Unsuccessful
-                                    guard error == nil else {
-                                        print("Cannot sign in")
-                                        self.invalidCredentialHintLabel = true
-                                        return
-                                    }
+                    NavigationLink(destination: LandingView(),tag: 1, selection: $successful_login) {
+                        Button(action: {
+                            // Check input fields to see if empty
+                            if (!self.email.isEmpty && !self.password.isEmpty) {
+                                if FormUtilities.validateEmail(self.email) {
                                     
-                                    // Successfully logged in
-                                    // Reset all fields
-                                    self.email = ""
-                                    self.password = ""
+                                    self.invalidEmailHintLabel = false
+                                    
+                                    // MARK: Firebase Auth
+                                    Auth.auth().signIn(withEmail: self.email, password: self.password, completion: {result, error in
+                                        // Unsuccessful
+                                        guard error == nil else {
+                                            print("Cannot sign in")
+                                            self.invalidCredentialHintLabel = true
+                                            return
+                                        }
+                                        
+                                        // Successfully logged in
+                                        // Reset all fields
+                                        self.email = ""
+                                        self.password = ""
+                                        self.invalidCredentialHintLabel = false
+                                        print("Successfully signed in")
+                                        self.successful_login = 1
+                                    })
+                                }
+                                else {
                                     self.invalidCredentialHintLabel = false
-                                    print("Successfully signed in")
-                                })
+                                    self.invalidEmailHintLabel = true
+                                }
                             }
-                            else {
-                                self.invalidCredentialHintLabel = false
-                                self.invalidEmailHintLabel = true
+                        }) {
+                            HStack {
+                                Spacer()
+                                    Text("Log In")
+                                        .font(.headline)
+                                        .foregroundColor(Color.white)
+                                Spacer()
                             }
                         }
-                    }) {
-                        HStack {
-                            Spacer()
-                                Text("Log In")
-                                    .font(.headline)
-                                    .foregroundColor(Color.white)
-                            Spacer()
-                        }
+                        .padding(.vertical, 15.0)
+                        .background(Color.blue)
+                        .padding(.horizontal, 130.0)
+                        .cornerRadius(4.0)
+                        .accessibility(label: Text("Log in"))
                     }
-                    .padding(.vertical, 15.0)
-                    .background(Color.blue)
-                    .padding(.horizontal, 130.0)
-                    .cornerRadius(4.0)
-                    .accessibility(label: Text("Log in"))
-                    
                     NavigationLink(destination: ForgotPasswordView()) {
                         Text("Forgot password?").font(.headline)
                     }

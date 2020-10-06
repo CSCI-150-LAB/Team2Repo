@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0314C793EF6D62C35ACAF794 /* Pods_Food_Truck_Hunter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15E1A7F57BAE73A3F13656A /* Pods_Food_Truck_Hunter.framework */; };
+		33B750AB252843FB005C3ADA /* TempLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B750AA252843FB005C3ADA /* TempLandingView.swift */; };
 		55C283A44C99C4173CCA208D /* Pods_Food_Truck_HunterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243E413B34C25D545E53070D /* Pods_Food_Truck_HunterTests.framework */; };
 		91557F422523E77300427422 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F412523E77300427422 /* ForgotPasswordView.swift */; };
 		91557F4A2523E7BF00427422 /* CreateVendorAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F492523E7BF00427422 /* CreateVendorAccountView.swift */; };
@@ -51,6 +52,7 @@
 		1D5C851450DFF31BB398D946 /* Pods-Food Truck Hunter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.debug.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.debug.xcconfig"; sourceTree = "<group>"; };
 		20ACA374320BA51F4EF8E331 /* Pods-Food Truck HunterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck HunterTests.release.xcconfig"; path = "Target Support Files/Pods-Food Truck HunterTests/Pods-Food Truck HunterTests.release.xcconfig"; sourceTree = "<group>"; };
 		243E413B34C25D545E53070D /* Pods_Food_Truck_HunterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_HunterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33B750AA252843FB005C3ADA /* TempLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempLandingView.swift; sourceTree = "<group>"; };
 		7745A67C172EECC6623853F1 /* Pods-Food Truck Hunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.release.xcconfig"; sourceTree = "<group>"; };
 		91557F412523E77300427422 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		91557F492523E7BF00427422 /* CreateVendorAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVendorAccountView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				91557F412523E77300427422 /* ForgotPasswordView.swift */,
 				91557F492523E7BF00427422 /* CreateVendorAccountView.swift */,
 				91557F4E2523E7E000427422 /* CreateUserAccountView.swift */,
+				33B750AA252843FB005C3ADA /* TempLandingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,
 				91B77A4525219D2800713501 /* ContentView.swift in Sources */,
+				33B750AB252843FB005C3ADA /* TempLandingView.swift in Sources */,
 				91557F422523E77300427422 /* ForgotPasswordView.swift in Sources */,
 				91557F4A2523E7BF00427422 /* CreateVendorAccountView.swift in Sources */,
 				91557F552523E99A00427422 /* FormUtilities.swift in Sources */,
