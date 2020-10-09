@@ -30,6 +30,12 @@ target 'Food Truck Hunter' do
   end
 
   target 'Food Truck HunterUITests' do
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Firestore'
+    pod 'FirebaseFirestoreSwift'
+    pod 'Firebase/Auth'
+    pod 'GoogleSignIn'
     # Pods for testing
   end
 

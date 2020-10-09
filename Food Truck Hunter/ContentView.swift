@@ -4,7 +4,7 @@ import FirebaseFirestore
 import GoogleSignIn
 
 struct ContentView: View {
-    @ObservedObject var loginData = UsersViewModel()
+//    @ObservedObject var loginData = UsersViewModel(usr: <#User#>)
     
     @State private var email = ""
     @State private var password = ""

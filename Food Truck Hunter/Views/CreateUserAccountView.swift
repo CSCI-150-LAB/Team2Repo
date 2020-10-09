@@ -2,8 +2,13 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 
+public func returnThis() {
+    print("You pressed the button.")
+}
+
 struct CreateUserAccountView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var user = UsersViewModel(usr: User(default_location: "", email: "", first_name: "", id: 0, last_name: "", phone_number: "", type: ""))
     
     @State private var buttonLabel : String = "Create an account"
     @State private var buttonColor : Color = Color.blue
@@ -18,6 +23,8 @@ struct CreateUserAccountView: View {
     @State private var firstName : String = ""
     @State private var lastName : String = ""
     @State var email : String = ""
+    @State private var showPassword : Bool = false
+    @State private var showReenterPassword : Bool = false
     @State private var password : String = ""
     @State private var reenterPassword : String = ""
     @State var invalidEmailHintLabel : String = ""
@@ -27,16 +34,17 @@ struct CreateUserAccountView: View {
     var body: some View {
         ScrollView() {
             Section() {
+                Text("Be the first to find the food truck.\nBe the first to share it.")
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding(.bottom, 10)
+            
+            Section() {
                 VStack(alignment: .leading) {
                     Section() {
+                        Text("First Name").padding(.bottom, 0)
                         ZStack(alignment: .trailing) {
-                            TextField("Email Address", text: self.$email, onEditingChanged: {_ in
-                                if !self.email.isEmpty {
-                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
-                                }
-                            })
-                                .keyboardType(.emailAddress)
-                                .autocapitalization(.none)
+                            TextField("", text: self.$firstName)
                                 .padding(.all)
                                 .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                                 .cornerRadius(5)
@@ -48,12 +56,31 @@ struct CreateUserAccountView: View {
                                     Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
                                 }.padding(.trailing, 20)
                             }
-                        }
+                        }.padding(.bottom, 14)
                     }
                     
                     Section() {
+                        Text("Last Name").padding(.bottom, 0)
                         ZStack(alignment: .trailing) {
-                            TextField("Email Address", text: self.$email, onEditingChanged: {_ in
+                            TextField("", text: self.$lastName)
+                                .padding(.all)
+                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                .cornerRadius(5)
+                            
+                            if !self.lastName.isEmpty {
+                                Button(action: {
+                                    self.lastName = ""
+                                }) {
+                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                }.padding(.trailing, 20)
+                            }
+                        }.padding(.bottom, 14)
+                    }
+                    
+                    Section() {
+                        Text("Email Address")
+                        ZStack(alignment: .trailing) {
+                            TextField("", text: self.$email, onEditingChanged: {_ in
                                 if !self.email.isEmpty {
                                     self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
                                 }
@@ -71,30 +98,7 @@ struct CreateUserAccountView: View {
                                     Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
                                 }.padding(.trailing, 20)
                             }
-                        }
-                    }
-                    
-                    Section() {
-                        ZStack(alignment: .trailing) {
-                            TextField("Email Address", text: self.$email, onEditingChanged: {_ in
-                                if !self.email.isEmpty {
-                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
-                                }
-                            })
-                                .keyboardType(.emailAddress)
-                                .autocapitalization(.none)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
-                            
-                            if !self.email.isEmpty {
-                                Button(action: {
-                                    self.email = ""
-                                }) {
-                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
-                                }.padding(.trailing, 20)
-                            }
-                        }
+                        }.padding(.vertical, 0)
                         
                         Text(self.invalidEmailHintLabel)
                             .font(.system(size: 14))
@@ -104,11 +108,10 @@ struct CreateUserAccountView: View {
                     }
 
                     Section() {
+                        Text("Password")
                         ZStack(alignment: .trailing) {
-                            SecureField("Password", text: self.$password)
-                                .onChange(of: self.password) { newPassword in
-                                    self.password = newPassword
-                                    
+                            if showPassword {
+                                TextField("", text: self.$password, onEditingChanged: {_ in
                                     if self.password.isEmpty {
                                         self.invalidPasswordHintLabel = ""
                                     }
@@ -120,19 +123,41 @@ struct CreateUserAccountView: View {
                                             self.invalidPasswordHintLabel = FormUtilities.validatePassword(self.password) ? "" : "Must at least 8 characters long. \nContain at least an upper case, a lower case, a digit, and a special character."
                                         }
                                     }
-                                }
-                                .autocapitalization(.none)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
-                            if !self.password.isEmpty {
-                                Button(action: {
-                                    self.password = ""
-                                }) {
-                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
-                                }.padding(.trailing, 20)
+                                })
+                                    .autocapitalization(.none)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
                             }
-                        }
+                            else {
+                                SecureField("", text: self.$password)
+                                    .onChange(of: self.password) { newPassword in
+                                        self.password = newPassword
+                                        
+                                        if self.password.isEmpty {
+                                            self.invalidPasswordHintLabel = ""
+                                        }
+                                        else {
+                                            if(self.password.count >= 1 && self.password.count <= 8) {
+                                                self.invalidPasswordHintLabel = FormUtilities.validatePassword(self.password) ? "" : "Must at least 8 characters long."
+                                            }
+                                            else {
+                                                self.invalidPasswordHintLabel = FormUtilities.validatePassword(self.password) ? "" : "Must at least 8 characters long. \nContain at least an upper case, a lower case, a digit, and a special character."
+                                            }
+                                        }
+                                    }
+                                    .autocapitalization(.none)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                            }
+
+                            Button(action: {
+                                showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill").foregroundColor(Color(UIColor.opaqueSeparator))
+                            }.padding(.trailing, 20)
+                        }.padding(.vertical, 0)
                         
                         Text(self.invalidPasswordHintLabel)
                             .font(.system(size: 14))
@@ -143,30 +168,46 @@ struct CreateUserAccountView: View {
                     }
                     
                     Section() {
+                        Text("Re-enter Password")
                         ZStack(alignment: .trailing) {
-                            SecureField("Re-enter Password", text: self.$reenterPassword)
-                                .onChange(of: self.reenterPassword) { newRetypedPassword in
-                                    self.reenterPassword = newRetypedPassword
-                                    
+                            if showReenterPassword {
+                                TextField("", text: self.$reenterPassword, onEditingChanged: {_ in
                                     if self.reenterPassword.isEmpty {
                                         self.invalidPasswordMatchHintLabel = ""
                                     }
                                     else {
                                         self.invalidPasswordMatchHintLabel = FormUtilities.validatePasswordsEquivalentErrorMsg(self.password, self.reenterPassword)
                                     }
-                                }
-                                .autocapitalization(.none)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
-                            if !self.reenterPassword.isEmpty {
-                                Button(action: {
-                                    self.reenterPassword = ""
-                                }) {
-                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
-                                }.padding(.trailing, 20)
+                                })
+                                    .autocapitalization(.none)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
                             }
-                        }
+                            else {
+                                SecureField("", text: self.$reenterPassword)
+                                    .onChange(of: self.reenterPassword) { newRetypedPassword in
+                                        self.reenterPassword = newRetypedPassword
+                                        
+                                        if self.reenterPassword.isEmpty {
+                                            self.invalidPasswordMatchHintLabel = ""
+                                        }
+                                        else {
+                                            self.invalidPasswordMatchHintLabel = FormUtilities.validatePasswordsEquivalentErrorMsg(self.password, self.reenterPassword)
+                                        }
+                                    }
+                                    .autocapitalization(.none)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                            }
+                            
+                            Button(action: {
+                                showReenterPassword.toggle()
+                            }) {
+                                Image(systemName: showReenterPassword ? "eye.slash.fill" : "eye.fill").foregroundColor(Color(UIColor.opaqueSeparator))
+                            }.padding(.trailing, 20)
+                        }.padding(.vertical, 0)
                         
                         Text(self.invalidPasswordMatchHintLabel)
                             .font(.system(size: 14))
@@ -175,7 +216,7 @@ struct CreateUserAccountView: View {
                             .animation(.easeInOut)
                     }
                 }
-            }
+            }.padding(.horizontal)
             
             Section() {
                 Button(action: {
@@ -197,10 +238,33 @@ struct CreateUserAccountView: View {
                                     return;
                                 }
                                 
+                                // To be moved to UsersViewModel
+                                let db = Firestore.firestore()
+                                let dispatch = DispatchGroup()
+                                
+                                dispatch.enter()
+                                print(Auth.auth().currentUser!)
+                                var ref: DocumentReference? = nil
+                                ref = db.collection("Users").addDocument(data: [
+                                    "first_name" : self.firstName,
+                                    "last_name" : self.lastName,
+                                    "email" : self.email
+                                ]) {
+                                    error in
+                                    if let error = error {
+                                        print("Something happened: \(error)")
+                                    }
+                                    else {
+                                        print("Added document \(ref!.documentID)")
+                                    }
+                                }
+                                
                                 // Account creation was successful
                                 isLoading.toggle()
                                 buttonLabel = "Account created!"
                                 buttonColor = Color.green
+                                self.firstName = ""
+                                self.lastName = ""
                                 self.email = ""
                                 self.password = ""
                                 self.reenterPassword = ""
@@ -210,6 +274,7 @@ struct CreateUserAccountView: View {
                                     buttonDisable.toggle()
                                 }
                                 print("Successfully created an account.")
+                                dispatch.leave()
                             }
                         }
                         else {
@@ -253,19 +318,26 @@ struct CreateUserAccountView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .foregroundColor(buttonColor)
                                 .padding()
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 6.0)
-                                            .stroke(buttonColor, lineWidth: 1)
-                                    )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6.0)
+                                        .stroke(buttonColor, lineWidth: 1)
+                                )
                         }
                         Spacer()
                     }
                 }
+                .padding(.bottom, 5)
+                .padding(.horizontal)
                 .accessibility(label: Text("Create account button"))
                 .disabled(buttonDisable)
+                
+                // This is how we'll be add button from now on. To keep view clean
+                // Go to Components > Buttons > DefaultButtonView to change the style.
+                // Takes 3 arguemnts: Title, Function, Return Bool
+                // vvv (Uncomment to see an example) vvv
+                // DefaultButton(label: "Test Button", function: returnThis, returnValue: true)
             }
         }
-        .padding(.all)
         .navigationTitle("Create an Account")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
@@ -276,6 +348,16 @@ struct CreateUserAccountView: View {
                 Text("Login")
             }
         })
+    }
+}
+
+extension UITextField {
+    func disableAutoFill() {
+        if #available(iOS 12, *) {
+            textContentType = .oneTimeCode
+        } else {
+            textContentType = .init(rawValue: "")
+        }
     }
 }
 
