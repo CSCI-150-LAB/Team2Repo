@@ -22,16 +22,7 @@ struct ForgotPasswordView: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.bottom, 15)
                 ZStack(alignment: .trailing) {
-                    TextField("Email Address", text: self.$email, onEditingChanged: {_ in
-                        if (self.email.isEmpty) {
-                            self.invalidEmailHintLabel = ""
-                        }
-                        else {
-                            if FormUtilities.validateEmail(self.email) {
-                                self.invalidEmailHintLabel = ""
-                            }
-                        }
-                    })
+                    TextField("Email Address", text: self.$email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                         .padding(.all)
@@ -59,11 +50,11 @@ struct ForgotPasswordView: View {
             Section() {
                 Button(action: {
                     if self.email.isEmpty {
-                        self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
+//                        self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
                     }
                     else {
                         self.invalidEmailHintLabel = ""
-                        if FormUtilities.validateEmail(self.email) {
+                        if true {//FormUtilities.validateEmail(self.email) {
                             self.hideKeyboard()
                             buttonLabel = ""
                             buttonDisable.toggle()
@@ -91,7 +82,7 @@ struct ForgotPasswordView: View {
                             }
                         }
                         else {
-                            self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
+//                            self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
                         }
                     }
                 }) {

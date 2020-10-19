@@ -1,10 +1,10 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '12.0'
 
 post_install do |pi|
   pi.pods_project.targets.each do |t|
     t.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
     end
   end
 end
@@ -23,6 +23,7 @@ target 'Food Truck Hunter' do
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'NanoID', '~> 1.0'
 
   target 'Food Truck HunterTests' do
     inherit! :search_paths
@@ -36,6 +37,7 @@ target 'Food Truck Hunter' do
     pod 'FirebaseFirestoreSwift'
     pod 'Firebase/Auth'
     pod 'GoogleSignIn'
+    pod 'NanoID', '~> 1.0'
     # Pods for testing
   end
 
