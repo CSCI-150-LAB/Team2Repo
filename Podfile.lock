@@ -348,6 +348,7 @@ PODS:
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
   - leveldb-library (1.22)
+  - NanoID (1.0.3)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -363,6 +364,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseFirestoreSwift
   - GoogleSignIn
+  - NanoID (~> 1.0)
 
 SPEC REPOS:
   trunk:
@@ -387,6 +389,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - leveldb-library
+    - NanoID
     - nanopb
     - PromisesObjC
 
@@ -412,9 +415,10 @@ SPEC CHECKSUMS:
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  NanoID: 060d290630f851ddd8fb0169ebfd7d44bd8670bd
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: aed96c2ce1c3c2a528933b1afa99f4775c455e98
+PODFILE CHECKSUM: b6eed3d7ed6bb9e1b43acf64beef50b18743a4a2
 
 COCOAPODS: 1.10.0.rc.1

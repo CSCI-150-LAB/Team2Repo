@@ -4,14 +4,15 @@ import FirebaseFirestore
 import GoogleSignIn
 
 struct ContentView: View {
-//    @ObservedObject var loginData = UsersViewModel(usr: <#User#>)
     
-    @State private var email = ""
-    @State private var password = ""
-    @State var successful_login: Int? = nil
+    @State private var emailEnter = ""
+    @State private var passwordEnter = ""
+    @State var successfulLogin: Int? = nil
     @State var invalidEmailHintLabel : String = ""
     @State var invalidCredentialHintLabel : String = ""
-
+    
+    @ObservedObject var userLoginModel = LoginViewModel(loginModel: FormModel(email: "", password: ""))
+    
     // MARK: View Start
     var body: some View {
         NavigationView {
@@ -29,11 +30,7 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Section() {
                                 HStack {
-                                    TextField("Email Address", text: self.$email, onEditingChanged: {_ in
-                                        if self.email.isEmpty {
-                                            self.invalidEmailHintLabel = ""
-                                        }
-                                    })
+                                    TextField("Email Address", text: self.$emailEnter)
                                         .keyboardType(.emailAddress)
                                         .autocapitalization(.none)
                                         .padding(.all)
@@ -41,7 +38,7 @@ struct ContentView: View {
                                         .cornerRadius(6)
                                 }
                                 
-                                Text(self.invalidEmailHintLabel)
+                                Text(self.userLoginModel.getEmailHintLabel())
                                     .font(.system(size: 14))
                                     .foregroundColor(Color.red)
                                     .padding(.bottom, 2.0)
@@ -50,14 +47,14 @@ struct ContentView: View {
                             
                             Section() {
                                 HStack {
-                                    SecureField("Password", text: self.$password)
+                                    SecureField("Password", text: self.$passwordEnter)
                                         .autocapitalization(.none)
                                         .padding(.all)
                                         .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                                         .cornerRadius(6)
                                 }
                                 
-                                Text(self.invalidCredentialHintLabel)
+                                Text(self.userLoginModel.getPasswordHintLabel())
                                     .font(.system(size: 14))
                                     .foregroundColor(Color.red)
                                     .padding(.bottom, 1)
@@ -66,7 +63,7 @@ struct ContentView: View {
 
                             HStack() {
                                 Spacer()
-                                NavigationLink(destination: ForgotPasswordView(email: self.email)) {
+                                NavigationLink(destination: ForgotPasswordView(email: self.emailEnter)) {
                                     Text("Forgot password?").font(.headline)
                                 }
                             }
@@ -75,40 +72,42 @@ struct ContentView: View {
                 }
                 // MARK: Log In Section
                 Section() {
-                    NavigationLink(destination: LandingView(),tag: 1, selection: $successful_login) {
+                    NavigationLink(destination: LandingView(),tag: 1, selection: self.$successfulLogin) {
+//                        DefaultButton(label: "Log In", function: userLoginModel.logIn(emailEnter, passwordEnter, self.&successfulLogin), returnValue: true)
+//                    }
                         Button(action: {
-                            // Check input fields to see if empty
-                            if (!self.email.isEmpty && !self.password.isEmpty) {
-                                if FormUtilities.validateEmail(self.email) {
+//                             Check input fields to see if empty
+                            if (!self.emailEnter.isEmpty && !self.passwordEnter.isEmpty) {
+                                if true {//FormUtilities.validateEmail(self.emailEnter) {
 
                                     self.invalidEmailHintLabel = ""
-                                    
+
                                     // MARK: Firebase Auth
-                                    Auth.auth().signIn(withEmail: self.email, password: self.password, completion: {result, error in
+                                    Auth.auth().signIn(withEmail: self.emailEnter, password: self.passwordEnter, completion: {result, error in
                                         // Unsuccessful
                                         guard error == nil else {
                                             print("Cannot sign in")
                                             self.invalidCredentialHintLabel = "Email or password is incorrect."
                                             return
                                         }
-                                        
+
                                         // Successfully logged in
                                         // Reset all fields
-                                        self.email = ""
-                                        self.password = ""
-                                        self.successful_login = 1
+                                        self.emailEnter = ""
+                                        self.passwordEnter = ""
+                                        self.successfulLogin = 1
                                         self.invalidCredentialHintLabel = ""
                                         print("Successfully signed in")
                                     })
                                 }
                                 else {
                                     self.invalidCredentialHintLabel = ""
-                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
+//                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
                                 }
                             }
                             else {
-                                self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
-                                self.invalidCredentialHintLabel = FormUtilities.isEmptyErrorMsg(self.password, "password")
+//                                self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
+//                                self.invalidCredentialHintLabel = FormUtilities.isEmptyErrorMsg(self.password, "password")
                             }
                         }) {
                             HStack {
@@ -160,7 +159,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal, 40)
                     
-                    NavigationLink(destination: CreateUserAccountView(email: self.email)) {
+                    NavigationLink(destination: CreateUserAccountView()) {
                         Text("Create an account")
                             .font(.headline)
                     }
@@ -171,8 +170,8 @@ struct ContentView: View {
 }
 // MARK: View End
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

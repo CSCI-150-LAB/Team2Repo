@@ -1,10 +1,3 @@
-//
-//  TempLandingView.swift
-//  Food Truck Hunter
-//
-//  Created by Preston McCullough on 10/2/20.
-//
-
 import SwiftUI
 import MapKit
 
@@ -33,13 +26,14 @@ struct LandingView: View {
                     Image(systemName: "mappin.circle.fill")
                     Text("Nearby")
             }
-            Text("Account Settings Screen")
+            AccountSettingView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Account")
             }
             
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
