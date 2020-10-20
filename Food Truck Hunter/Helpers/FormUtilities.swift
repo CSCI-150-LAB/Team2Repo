@@ -1,4 +1,7 @@
 import Foundation
+import Firebase
+import FirebaseFirestore
+import GoogleSignIn
 
 class FormUtilities {
     
@@ -31,4 +34,5 @@ class FormUtilities {
         hintMessage = isRetypedPasswordEmpty ? "Please retype the password." : (evaluteResult ? "" : "Password does not match.")
         return !isRetypedPasswordEmpty && evaluteResult
     }
+
 }

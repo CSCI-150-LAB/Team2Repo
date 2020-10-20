@@ -36,6 +36,7 @@ class LoginViewModel : ObservableObject {
         self.loginModel.passwordHintLabel = message
     }
     
+    
     func logIn(_ email : String, _ password : String, _ callback : inout Int?) {
         var signedIn : Int? = nil
         self.setEmail(email)

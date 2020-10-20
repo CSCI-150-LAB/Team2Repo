@@ -6,79 +6,93 @@ import NanoID
 
 class UsersViewModel: ObservableObject {
     
-    @Published private(set) var usr : UserModel
-//    @Published private(set) var callBackModel : CallBackModel
-    
-    init(usr : UserModel) {
-        self.usr = usr
-    }
-    
-    func buttonisPressed() {
-
-    }
-
-    func createAccount(email: String, firstName: String, lastName: String, password: String, type: String) -> Bool {
-        let db = Firestore.firestore()
-        let dispatch = DispatchGroup()
-        var successfulAccountCreate : Bool = false
-        
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            // An error occurred
-            guard error == nil else {
-    //            buttonDisable.toggle()
-    //            isLoading.toggle()
-    //            buttonLabel = "Create an account"
-    //
-    //            self.invalidEmailHintLabel = String(describing: error!.localizedDescription)
-    //            print("Unsuccessfully created an account:\n\(String(describing: error?.localizedDescription))")
-                return
-            }
-            
-            // Successfully created account
-            dispatch.enter()
-            var ref: DocumentReference? = nil
-            ref = db.collection("Users").addDocument(data: [
-                "email" : email,
-                "first_name" : firstName,
-                "last_name" : lastName,
-                "phone": "",
-                "type" : type
-            ]) {
-                error in
-                if let error = error {
-                    print("Something happened: \(error)")
-                }
-                else {
-                    successfulAccountCreate = true
-                    print("Added document \(ref!.documentID)")
-                }
-            }
-            
-            dispatch.leave()
+    func logoutUser() {
+        let firebaseAuth = Auth.auth()
+        do {
+            print("here")
+            //try firebaseAuth.signOut()
+            true
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
         }
-        return successfulAccountCreate
-    }
 
-    func getUser(email: String) {
-        let db = Firestore.firestore()
-        let dispatch = DispatchGroup()
-        
-        dispatch.enter()
-        db.collection("Users").whereField("email", isEqualTo: email)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(String(describing: err))")
-                }
-                else {
-                    for document in querySnapshot!.documents {
-//                        self.usr.default_location = document.data()["default_location"] as! String
-                        print("\(document.documentID) => \(String(describing: document.data()["first_name"]))")
-                    }
-                }
-                    
-            }
-        dispatch.leave()
+        //do { try Auth.auth().signOut() }
+        //catch { print("already logged out") }
     }
+    
+//    @Published private(set) var usr : UserModel
+////    @Published private(set) var callBackModel : CallBackModel
+//
+//    init(usr : UserModel) {
+//        self.usr = usr
+//    }
+//
+//    func buttonisPressed() {
+//
+//    }
+//
+//    func createAccount(email: String, firstName: String, lastName: String, password: String, type: String) -> Bool {
+//        let db = Firestore.firestore()
+//        let dispatch = DispatchGroup()
+//        var successfulAccountCreate : Bool = false
+//
+//        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+//            // An error occurred
+//            guard error == nil else {
+//    //            buttonDisable.toggle()
+//    //            isLoading.toggle()
+//    //            buttonLabel = "Create an account"
+//    //
+//    //            self.invalidEmailHintLabel = String(describing: error!.localizedDescription)
+//    //            print("Unsuccessfully created an account:\n\(String(describing: error?.localizedDescription))")
+//                return
+//            }
+//
+//            // Successfully created account
+//            dispatch.enter()
+//            var ref: DocumentReference? = nil
+//            ref = db.collection("Users").addDocument(data: [
+//                "email" : email,
+//                "first_name" : firstName,
+//                "last_name" : lastName,
+//                "phone": "",
+//                "type" : type
+//            ]) {
+//                error in
+//                if let error = error {
+//                    print("Something happened: \(error)")
+//                }
+//                else {
+//                    successfulAccountCreate = true
+//                    print("Added document \(ref!.documentID)")
+//                }
+//            }
+//
+//            dispatch.leave()
+//        }
+//        return successfulAccountCreate
+//    }
+//
+//    func getUser(email: String) {
+//        let db = Firestore.firestore()
+//        let dispatch = DispatchGroup()
+//
+//        dispatch.enter()
+//        db.collection("Users").whereField("email", isEqualTo: email)
+//            .getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("Error getting documents: \(String(describing: err))")
+//                }
+//                else {
+//                    for document in querySnapshot!.documents {
+////                        self.usr.default_location = document.data()["default_location"] as! String
+//                        print("\(document.documentID) => \(String(describing: document.data()["first_name"]))")
+//                    }
+//                }
+//
+//            }
+//        dispatch.leave()
+//    }
 
 //    func signIn(email: String, password: String) -> CallBackModel {
 //        let id = ID()

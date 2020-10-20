@@ -1,15 +1,14 @@
 import SwiftUI
 
 struct AccountSettingView: View {
+    @ObservedObject var user = UsersViewModel()
+    
     var body: some View {
         VStack() {
-            Text("Whatever")
+            NavigationLink(destination: ContentView()) {
+                DefaultButton(label: "Log out", function: user.logoutUser)
+            }
         }
     }
 }
 
-struct AccountSettingView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountSettingView()
-    }
-}
