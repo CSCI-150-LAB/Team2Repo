@@ -5,7 +5,8 @@ struct DefaultButton: View {
     // Public variables
     let label : String
     let function : () -> Void
-    
+    var buttonColor : Color = Color.red
+
     // Used for animating loading circle
 //    @State private var isCompleted : Bool = false
 //    @State private var isLoading : Bool = false
@@ -13,7 +14,7 @@ struct DefaultButton: View {
 //    @State private var animateStrokeStart : Bool = false
 //    @State private var animateStrokeEnd : Bool = true
     
-    @State private var buttonColor : Color = Color.blue
+  //  @State private var buttonColor : Color = Color.blue
 //    @State private var isButtonDisabled : Bool = false
     
     var body: some View {
