@@ -7,9 +7,28 @@ import NanoID
 class LoginViewModel : ObservableObject {
     
     @Published private var loginModel : FormModel
+//    private var didSignIn : Bool
     
-    init(loginModel : FormModel) {
+    public var email : String
+    public var password : String
+    
+    init(loginModel : FormModel, email : String = "", password : String = "") {
         self.loginModel = loginModel
+        self.email = email
+        self.password = password
+//        self.didSignIn = didSignIn
+    }
+    
+//    func getDidSignIn() -> Int{
+//        return self.didSignIn ? 1 : 0
+//    }
+    
+    func getEmail() -> String {
+        return self.email
+    }
+    
+    func getPassword() -> String {
+        return self.password
     }
     
     func getEmailHintLabel() -> String {
@@ -24,6 +43,10 @@ class LoginViewModel : ObservableObject {
         self.loginModel.email = email
     }
     
+//    func setDidSignIn() {
+//        self.didSignIn.toggle()
+//    }
+    
     func setPassword(_ password : String) {
         self.loginModel.password = password
     }
@@ -36,12 +59,10 @@ class LoginViewModel : ObservableObject {
         self.loginModel.passwordHintLabel = message
     }
     
-    func logIn(_ email : String, _ password : String, _ callback : inout Int?) {
-        var signedIn : Int? = nil
-        self.setEmail(email)
-        self.setPassword(password)
+    func logIn() {
+
         if validateInputFields() {
-            Auth.auth().signIn(withEmail: email, password: password, completion: {result, error in
+            Auth.auth().signIn(withEmail: self.getEmail(), password: self.getPassword(), completion: {result, error in
                 // Unsuccessful
                 guard error == nil else {
                     print("Cannot sign in")
@@ -50,12 +71,11 @@ class LoginViewModel : ObservableObject {
                 }
 
                 // Successfully logged in
-                signedIn = 1
+//                self.setDidSignIn()
                 self.setPasswordHintLabel("")
                 self.resetForm()
                 print("Successfully signed in")
             })
-            callback = signedIn
         }
     }
     
@@ -65,6 +85,6 @@ class LoginViewModel : ObservableObject {
     }
     
     func validateInputFields() -> Bool {
-        return FormUtilities.validateEmail(self.loginModel.email, &self.loginModel.emailHintLabel) && FormUtilities.validatePassword(self.loginModel.password, &self.loginModel.passwordHintLabel)
+        return FormUtilities.validateEmail(self.loginModel.email!, &self.loginModel.emailHintLabel) && FormUtilities.validatePassword(self.loginModel.password!, &self.loginModel.passwordHintLabel)
     }
 }

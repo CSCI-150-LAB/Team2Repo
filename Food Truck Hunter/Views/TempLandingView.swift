@@ -3,6 +3,8 @@ import MapKit
 
 
 struct LandingView: View {
+//    @ObservableObject var user = UsersViewModel(userModel: UserModel(email: "", favorites: [], first_name: "", id: <#T##Int#>, last_name: <#T##String#>, phone_number: <#T##String#>, profile_img: <#T##String#>, review_count: <#T##Int#>, status: <#T##String#>, type: <#T##String#>))
+    
     @State private var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(
                 latitude: 36.8134,

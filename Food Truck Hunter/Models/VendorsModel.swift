@@ -13,4 +13,5 @@ struct VendorModel : Identifiable, Decodable {
     let owner : String
     let owner_id : Int
     let phone : String
+    let total_reviews : String
 }

@@ -1,4 +1,6 @@
 import Foundation
+
+import Foundation
 import Firebase
 import FirebaseFirestore
 import GoogleSignIn
@@ -10,7 +12,7 @@ class CreateAccountViewModel : ObservableObject {
         return uID.generate(alphabet: .numeric, size: 8)
     }
     
-    @Published private var createUserAccountModel : FormModel
+    @Published private var formModel : FormModel
     @Published private var isCompleted : Bool = false
     private let db = Firestore.firestore()
     private let dispatch = DispatchGroup()
@@ -18,16 +20,20 @@ class CreateAccountViewModel : ObservableObject {
     private let userID : String
     public var firstName : String = ""
     public var lastName : String = ""
+    public var vendorName : String = ""
+    public var phoneNumber : String = ""
     public var email : String = ""
     public var password : String = ""
     public var retypedPassword : String = ""
     public var type : String = "User"
     
-    init(createUserAccountModel : FormModel, firstName : String = "", lastName : String = "", email : String = "", password : String = "", retypedPassword : String = "", type : String = "User") {
-        self.createUserAccountModel = createUserAccountModel
+    init(formModel : FormModel, firstName : String = "", lastName : String = "", vendorName : String = "", phoneNumber : String = "", email : String = "", password : String = "", retypedPassword : String = "", type : String = "User") {
+        self.formModel = formModel
         self.userID = CreateAccountViewModel.generateID()
         self.firstName = firstName
         self.lastName = lastName
+        self.vendorName = vendorName
+        self.phoneNumber = phoneNumber
         self.email = email
         self.password = password
         self.retypedPassword = retypedPassword
@@ -44,6 +50,14 @@ class CreateAccountViewModel : ObservableObject {
     
     func getLastName() -> String {
         return self.lastName
+    }
+    
+    func getVendorName() -> String {
+        return self.vendorName
+    }
+    
+    func getPhoneNumber() -> String {
+        return self.phoneNumber
     }
     
     func getEmail() -> String {
@@ -63,118 +77,123 @@ class CreateAccountViewModel : ObservableObject {
     }
     
     func getEmailHintLabel() -> String {
-        return self.createUserAccountModel.emailHintLabel
+        return self.formModel.emailHintLabel
     }
     
     func getPasswordHintLabel() -> String {
-        return self.createUserAccountModel.passwordHintLabel
+        return self.formModel.passwordHintLabel
     }
     
     func getPasswordRetypedHintLabel() -> String {
-        return self.createUserAccountModel.passwordRetypedHintLabel
+        return self.formModel.passwordRetypedHintLabel
     }
     
     func setFirstName(_ firstName : String) {
         self.firstName = firstName
-        self.createUserAccountModel.firstName = firstName
+        self.formModel.firstName = firstName
     }
     
     func setLastName(_ lastName : String) {
         self.lastName = lastName
-        self.createUserAccountModel.lastName = lastName
+        self.formModel.lastName = lastName
+    }
+    
+    func setVendorName(_ vendorName : String) {
+        self.vendorName = vendorName
+        self.formModel.vendorName = vendorName
+    }
+    
+    func setPhoneNumber(_ phoneNumber : String) {
+        self.phoneNumber = phoneNumber
+        self.formModel.phoneNumber = phoneNumber
     }
     
     func setEmail(_ email : String) {
         self.email = email
-        self.createUserAccountModel.email = email
+        self.formModel.email = email
     }
     
     func setPassword(_ password : String) {
         self.password = password
-        self.createUserAccountModel.password = password
+        self.formModel.password = password
     }
     
     func setRetypedPassword(_ retypedPassword : String) {
         self.retypedPassword = retypedPassword
-        self.createUserAccountModel.retypedPassword = retypedPassword
+        self.formModel.retypedPassword = retypedPassword
     }
     
     func setType(_ accountType : String) {
         self.type = accountType
-        self.createUserAccountModel.type = accountType
+        self.formModel.type = accountType
     }
     
     func setEmailHintLabel(_ message : String) {
-        self.createUserAccountModel.emailHintLabel = message
+        self.formModel.emailHintLabel = message
     }
     
     func setPasswordHintLabel(_ message : String) {
-        self.createUserAccountModel.passwordHintLabel = message
+        self.formModel.passwordHintLabel = message
     }
     
     func setPasswordRetypedHintLabel(_ message : String) {
-        self.createUserAccountModel.passwordRetypedHintLabel = message
+        self.formModel.passwordRetypedHintLabel = message
     }
     
     func createVendorAccount() {
-        if (self.validateInputFields()) {
+        if (self.validateVendorInputFields()) {
 
+            self.dispatch.enter()
             Auth.auth().createUser(withEmail: self.getEmail(), password: self.getPassword()) { authResult, error in
                 // An error occurred
                 guard error == nil else {
                     self.setEmailHintLabel(String(describing: error!.localizedDescription))
-                    print("Unsuccessfully created an account:\n\(String(describing: error?.localizedDescription))")
                     return
                 }
 
                 // Successfully created account
-                self.dispatch.enter()
                 var ref: DocumentReference? = nil
                 ref = self.db.collection("Trucks").addDocument(data: [
                     "id" : Int(self.getID())!,
+                    "business_license" : "",
+                    "cuisine" : [],
                     "email" : self.getEmail().lowercased(),
-                    "favorites": [],
-                    "first_name" : self.getFirstName().lowercased(),
-                    "last_name" : self.getLastName().lowercased(),
-                    "phone": "",
-                    "profile_img": "",
-                    "review_count": 0,
-                    "status": "basic",
-                    "type" : self.type
+                    "hours" : ["", "", "", "", "", "", ""],
+                    "locations" : [],
+                    "name" : self.getVendorName().lowercased(),
+                    "owner_id" : 0,
+                    "owner_name" : "",
+                    "phone" : self.getPhoneNumber(),
+                    "rating" : 0,
+                    "total_reviews" : 0
                 ]) {
                     error in
                     if let error = error {
-                        print("Something happened: \(error)")
+                        print("Error:\n\(error)")
                     }
                     else {
                         self.isCompleted = true
-                        print("Added document \(ref!.documentID)")
+                        print("\(self.vendorName) added. Document reference is \(ref!.documentID).")
                     }
                 }
                 self.resetForm()
-                self.dispatch.leave()
                 self.isCompleted.toggle()
             }
-//            successfulAccountCreate
+            self.dispatch.leave()
         }
     }
     
     func createUserAccount() {
-//        let db = Firestore.firestore()
-//        let dispatch = DispatchGroup()
-        
-        if (self.validateInputFields()) {
-
+        if (self.validateUserInputFields()) {
+            self.dispatch.enter()
             Auth.auth().createUser(withEmail: self.getEmail(), password: self.getPassword()) { authResult, error in
                 // An error occurred
                 guard error == nil else {
                     self.setEmailHintLabel(String(describing: error!.localizedDescription))
-                    print("Unsuccessfully created an account:\n\(String(describing: error?.localizedDescription))")
                     return
                 }
 
                 // Successfully created account
-                self.dispatch.enter()
                 var ref: DocumentReference? = nil
                 ref = self.db.collection("Users").addDocument(data: [
                     "id" : Int(self.getID())!,
@@ -184,44 +203,55 @@ class CreateAccountViewModel : ObservableObject {
                     "last_name" : self.getLastName().lowercased(),
                     "phone": "",
                     "profile_img": "",
-                    "review_count": 0,
+                    "total_reviews": 0,
                     "status": "basic",
                     "type" : self.type
                 ]) {
                     error in
                     if let error = error {
-                        print("Something happened: \(error)")
+                        print("Error:\n\(error)")
                     }
                     else {
                         self.isCompleted = true
-                        print("Added document \(ref!.documentID)")
+                        print("\(self.firstName) \(self.lastName) added. Document reference is \(ref!.documentID).")
                     }
                 }
                 self.resetForm()
-                self.dispatch.leave()
                 self.isCompleted.toggle()
             }
-//            successfulAccountCreate
+            self.dispatch.leave()
         }
     }
     
     func resetForm() {
         self.setFirstName("")
         self.setLastName("")
+        self.setVendorName("")
+        self.setPhoneNumber("")
         self.setEmail("")
         self.setPassword("")
         self.setRetypedPassword("")
-        self.createUserAccountModel.type = ""
+        self.formModel.type = ""
         self.setEmailHintLabel("")
         self.setPasswordHintLabel("")
         self.setPasswordRetypedHintLabel("")
     }
     
-    func validateInputFields() -> Bool {
-        let check1 = FormUtilities.validateEmail(self.getEmail(), &(self.createUserAccountModel.emailHintLabel))
-        let check2 = FormUtilities.validatePassword(self.getPassword(), &(self.createUserAccountModel.passwordHintLabel))
-        let check3 = FormUtilities.validatePasswords(self.getPassword(), self.getRetypedPassword(), &(self.createUserAccountModel.passwordRetypedHintLabel))
-        print("\(check1) && \(check2) && \(check3)")
-        return (check1 && check2 && check3)
+    func validateUserInputFields() -> Bool {
+        let isEmailValid = FormUtilities.validateEmail(self.getEmail(), &(self.formModel.emailHintLabel))
+        let isPasswordValid = FormUtilities.validatePassword(self.getPassword(), &(self.formModel.passwordHintLabel))
+        let doesPasswordsMatch = FormUtilities.validatePasswords(self.getPassword(), self.getRetypedPassword(), &(self.formModel.passwordRetypedHintLabel))
+        print("\(isEmailValid) && \(isPasswordValid) && \(doesPasswordsMatch)")
+        return (isEmailValid && isPasswordValid && doesPasswordsMatch)
+    }
+    
+    func validateVendorInputFields() -> Bool {
+        let isVendorNameEmpty = self.getVendorName().isEmpty
+        let isPhoneNumberValid = self.getPhoneNumber().isEmpty
+        let isEmailValid = FormUtilities.validateEmail(self.getEmail(), &(self.formModel.emailHintLabel))
+        let isPasswordValid = FormUtilities.validatePassword(self.getPassword(), &(self.formModel.passwordHintLabel))
+        let doesPasswordsMatch = FormUtilities.validatePasswords(self.getPassword(), self.getRetypedPassword(), &(self.formModel.passwordRetypedHintLabel))
+        print("\(!isVendorNameEmpty) && \(!isPhoneNumberValid) && \(isEmailValid) && \(isPasswordValid) && \(doesPasswordsMatch)")
+        return (!isVendorNameEmpty && !isPhoneNumberValid && isEmailValid && isPasswordValid && doesPasswordsMatch)
     }
 }
