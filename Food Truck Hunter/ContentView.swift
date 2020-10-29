@@ -67,11 +67,13 @@ struct ContentView: View {
                                     .padding(.bottom, 1)
                                     .animation(.easeInOut)
                             }
+
                             
                             Section() {
-                                HStack(alignment: .center) {
-                                   NavigationLink(destination: ForgotPasswordView(email: self.emailEnter)) {
-                                       Text("Forgot password?").font(.headline)
+                                HStack() {
+                                    Spacer()
+                                    NavigationLink(destination: ForgotPasswordView()) {
+                                        Text("Forgot password?").font(.headline)
                                         .foregroundColor(Color.red)
                                                                                    
                                    }
@@ -169,7 +171,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal, 40)
                     
-                    NavigationLink(destination: CreateUserAccountView()) {
+                    NavigationLink(destination: CreateAccountView()) {
                         Text("Create an account")
                             .font(.headline)
                             .foregroundColor(Color.red)

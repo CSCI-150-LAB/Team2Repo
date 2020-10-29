@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 struct UserModel : Identifiable, Decodable {
-    let email : String
+    let email : String?
     let favorites : [String]
     let first_name : String
     let id : Int
@@ -13,8 +13,7 @@ struct UserModel : Identifiable, Decodable {
     let status : String
     let type : String
     
-//    init(default_location: String!, email: String!, first_name: String!, id: Int!, last_name: String!, phone_number: String!, type: String!) {
-//        self.default_location = default_location
+//    init(email: String!, first_name: String!, id: Int!, last_name: String!, phone_number: String!, type: String!) {
 //        self.email = email
 //        self.first_name = first_name
 //        self.id = id

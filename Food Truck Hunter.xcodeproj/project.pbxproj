@@ -13,11 +13,9 @@
 		79FF44BFF41139BE939D46C6 /* Pods_Food_Truck_HunterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */; };
 		910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910667132534CE9700F1BF62 /* AccountSettingView.swift */; };
 		91557F422523E77300427422 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F412523E77300427422 /* ForgotPasswordView.swift */; };
-		91557F4A2523E7BF00427422 /* CreateVendorAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F492523E7BF00427422 /* CreateVendorAccountView.swift */; };
-		91557F4F2523E7E000427422 /* CreateUserAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F4E2523E7E000427422 /* CreateUserAccountView.swift */; };
+		91557F4F2523E7E000427422 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F4E2523E7E000427422 /* CreateAccountView.swift */; };
 		91557F552523E99A00427422 /* FormUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F542523E99A00427422 /* FormUtilities.swift */; };
 		91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F5C2523E9EB00427422 /* UsersViewModel.swift */; };
-		915633EA2539FE9B00F6ED01 /* CreateUserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915633E92539FE9B00F6ED01 /* CreateUserAccountViewModel.swift */; };
 		915633EF253A008A00F6ED01 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915633EE253A008A00F6ED01 /* FormModel.swift */; };
 		91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91597074253017B600DF1EB2 /* DefaultButtonView.swift */; };
 		91B77A4125219D2800713501 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A4025219D2800713501 /* AppDelegate.swift */; };
@@ -31,6 +29,12 @@
 		91B77A6625219D2900713501 /* Food_Truck_HunterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A6525219D2900713501 /* Food_Truck_HunterUITests.swift */; };
 		91B77A8925219D6D00713501 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91B77A8825219D6D00713501 /* GoogleService-Info.plist */; };
 		91C807E3252D089400A1A02E /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C807E2252D089400A1A02E /* UsersModel.swift */; };
+		91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC042253F2E1E00C4F96B /* RadioButtonView.swift */; };
+		91CBC049253F38F900C4F96B /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC048253F38F900C4F96B /* HorizontalLineView.swift */; };
+		91CBC051253F3EDE00C4F96B /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC050253F3EDE00C4F96B /* RadioButtonGroup.swift */; };
+		91CBC059253F5ABC00C4F96B /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC058253F5ABC00C4F96B /* CreateAccountViewModel.swift */; };
+		91CBC063253F6A1400C4F96B /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC062253F6A1400C4F96B /* General.swift */; };
+		91CBC06E253F6BE700C4F96B /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */; };
 		91DB46CC2539099A00987893 /* VendorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46CB2539099A00987893 /* VendorsModel.swift */; };
 		91DB46D12539424F00987893 /* CallBacksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46D02539424F00987893 /* CallBacksModel.swift */; };
 		91DB46F5253956FD00987893 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46F4253956FD00987893 /* LogInModel.swift */; };
@@ -68,11 +72,9 @@
 		7745A67C172EECC6623853F1 /* Pods-Food Truck Hunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.release.xcconfig"; sourceTree = "<group>"; };
 		910667132534CE9700F1BF62 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		91557F412523E77300427422 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		91557F492523E7BF00427422 /* CreateVendorAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVendorAccountView.swift; sourceTree = "<group>"; };
-		91557F4E2523E7E000427422 /* CreateUserAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserAccountView.swift; sourceTree = "<group>"; };
+		91557F4E2523E7E000427422 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		91557F542523E99A00427422 /* FormUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormUtilities.swift; sourceTree = "<group>"; };
 		91557F5C2523E9EB00427422 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
-		915633E92539FE9B00F6ED01 /* CreateUserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserAccountViewModel.swift; sourceTree = "<group>"; };
 		915633EE253A008A00F6ED01 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		91597074253017B600DF1EB2 /* DefaultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonView.swift; sourceTree = "<group>"; };
 		91B77A3D25219D2800713501 /* Food Truck Hunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Truck Hunter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,12 @@
 		91B77A6725219D2900713501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91B77A8825219D6D00713501 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		91C807E2252D089400A1A02E /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		91CBC042253F2E1E00C4F96B /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
+		91CBC048253F38F900C4F96B /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
+		91CBC050253F3EDE00C4F96B /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
+		91CBC058253F5ABC00C4F96B /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		91CBC062253F6A1400C4F96B /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		91DB46CB2539099A00987893 /* VendorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorsModel.swift; sourceTree = "<group>"; };
 		91DB46D02539424F00987893 /* CallBacksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallBacksModel.swift; sourceTree = "<group>"; };
 		91DB46F4253956FD00987893 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
@@ -169,10 +177,10 @@
 		91557F3E2523E72500427422 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				91CBC061253F69D200C4F96B /* Extensions */,
 				9159705B252FF77700DF1EB2 /* Components */,
 				91557F412523E77300427422 /* ForgotPasswordView.swift */,
-				91557F492523E7BF00427422 /* CreateVendorAccountView.swift */,
-				91557F4E2523E7E000427422 /* CreateUserAccountView.swift */,
+				91557F4E2523E7E000427422 /* CreateAccountView.swift */,
 				33B750AA252843FB005C3ADA /* TempLandingView.swift */,
 				33D5147A253F403300D0442E /* MapView.swift */,
 				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
@@ -185,7 +193,8 @@
 			children = (
 				91557F5C2523E9EB00427422 /* UsersViewModel.swift */,
 				91DB46F92539593700987893 /* LoginViewModel.swift */,
-				915633E92539FE9B00F6ED01 /* CreateUserAccountViewModel.swift */,
+				91CBC058253F5ABC00C4F96B /* CreateAccountViewModel.swift */,
+				91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 		9159705B252FF77700DF1EB2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				91CBC047253F38CF00C4F96B /* Line */,
 				915970722530153700DF1EB2 /* Buttons */,
 			);
 			path = Components;
@@ -210,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				91597074253017B600DF1EB2 /* DefaultButtonView.swift */,
+				91CBC042253F2E1E00C4F96B /* RadioButtonView.swift */,
+				91CBC050253F3EDE00C4F96B /* RadioButtonGroup.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -280,6 +292,22 @@
 				91B77A6725219D2900713501 /* Info.plist */,
 			);
 			path = "Food Truck HunterUITests";
+			sourceTree = "<group>";
+		};
+		91CBC047253F38CF00C4F96B /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				91CBC048253F38F900C4F96B /* HorizontalLineView.swift */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		91CBC061253F69D200C4F96B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				91CBC062253F6A1400C4F96B /* General.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,9 +585,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91557F4F2523E7E000427422 /* CreateUserAccountView.swift in Sources */,
+				91557F4F2523E7E000427422 /* CreateAccountView.swift in Sources */,
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
-				915633EA2539FE9B00F6ED01 /* CreateUserAccountViewModel.swift in Sources */,
 				915633EF253A008A00F6ED01 /* FormModel.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,
 				91B77A4525219D2800713501 /* ContentView.swift in Sources */,
@@ -570,9 +597,14 @@
 				91DB46D12539424F00987893 /* CallBacksModel.swift in Sources */,
 				91557F422523E77300427422 /* ForgotPasswordView.swift in Sources */,
 				91DB46FA2539593700987893 /* LoginViewModel.swift in Sources */,
-				91557F4A2523E7BF00427422 /* CreateVendorAccountView.swift in Sources */,
+				91CBC063253F6A1400C4F96B /* General.swift in Sources */,
+				91CBC051253F3EDE00C4F96B /* RadioButtonGroup.swift in Sources */,
+				91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */,
 				91557F552523E99A00427422 /* FormUtilities.swift in Sources */,
 				91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */,
+				91CBC049253F38F900C4F96B /* HorizontalLineView.swift in Sources */,
+				91CBC059253F5ABC00C4F96B /* CreateAccountViewModel.swift in Sources */,
+				91CBC06E253F6BE700C4F96B /* ForgotPasswordViewModel.swift in Sources */,
 				91DB46CC2539099A00987893 /* VendorsModel.swift in Sources */,
 				33D5147B253F403300D0442E /* MapView.swift in Sources */,
 				91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */,

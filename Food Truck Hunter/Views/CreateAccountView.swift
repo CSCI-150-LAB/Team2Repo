@@ -4,9 +4,16 @@ import FirebaseAuth
 
 public var count = 0
 
-struct CreateUserAccountView: View {
+func test1() {
+    print("do something1.")
+}
+func test2() {
+    print("do something2.")
+}
+
+struct CreateAccountView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var form = CreateUserAccountViewModel(createUserAccountModel: FormModel(email: "", password: ""))
+    @ObservedObject var form = CreateAccountViewModel(formModel: FormModel(email: "", password: ""))
 
 //    @State private var buttonLabel : String = "Create an account"
 //    @State private var buttonColor : Color = Color.blue
@@ -24,42 +31,90 @@ struct CreateUserAccountView: View {
     var body: some View {
         ScrollView() {
             Section() {
+                RadioButtonGroup(items: ["User", "Vendor"], selectedLabel: "User") { selected in
+                    form.setType(selected)
+                }
+            }
+            .padding(.bottom, 20)
+            
+            Section() {
                 VStack(alignment: .leading) {
-                    Section() {
-                        Text("First Name").padding(.bottom, 0)
-                        ZStack(alignment: .trailing) {
-                            TextField("", text: self.$form.firstName)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
-                            
-                            if !(self.form.getFirstName().isEmpty) {
-                                Button(action: {
-                                    self.form.setFirstName("")
-                                }) {
-                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
-                                }.padding(.trailing, 20)
-                            }
-                        }.padding(.bottom, 14)
+                    if self.form.getType() == "User" {
+                        Section() {
+                            Text("First Name").padding(.bottom, 0)
+                            ZStack(alignment: .trailing) {
+                                TextField("", text: self.$form.firstName)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                                
+                                if !(self.form.getFirstName().isEmpty) {
+                                    Button(action: {
+                                        self.form.setFirstName("")
+                                    }) {
+                                        Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                    }.padding(.trailing, 20)
+                                }
+                            }.padding(.bottom, 14)
+                        }
+                        
+                        Section() {
+                            Text("Last Name").padding(.bottom, 0)
+                            ZStack(alignment: .trailing) {
+                                TextField("", text: self.$form.lastName)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                                
+                                if !self.form.lastName.isEmpty {
+                                    Button(action: {
+                                        self.form.setLastName("")
+                                    }) {
+                                        Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                    }.padding(.trailing, 20)
+                                }
+                            }.padding(.bottom, 14)
+                        }
                     }
-                    
-                    Section() {
-                        Text("Last Name").padding(.bottom, 0)
-                        ZStack(alignment: .trailing) {
-                            TextField("", text: self.$form.lastName)
-                                .padding(.all)
-                                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-                                .cornerRadius(5)
-                            
-                            if !self.form.lastName.isEmpty {
-                                Button(action: {
-                                    self.form.setLastName("")
-                                }) {
-                                    Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
-                                }.padding(.trailing, 20)
-                            }
-                        }.padding(.bottom, 14)
+                    else {
+                        Section() {
+                            Text("Vendor Name").padding(.bottom, 0)
+                            ZStack(alignment: .trailing) {
+                                TextField("", text: self.$form.vendorName)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                                
+                                if !(self.form.vendorName.isEmpty) {
+                                    Button(action: {
+                                        self.form.setVendorName("")
+                                    }) {
+                                        Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                    }.padding(.trailing, 20)
+                                }
+                            }.padding(.bottom, 14)
+                        }
+                        
+                        Section() {
+                            Text("Phone Number").padding(.bottom, 0)
+                            ZStack(alignment: .trailing) {
+                                TextField("", text: self.$form.phoneNumber)
+                                    .keyboardType(.phonePad)
+                                    .padding(.all)
+                                    .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
+                                    .cornerRadius(5)
+                                
+                                if !(self.form.phoneNumber.isEmpty) {
+                                    Button(action: {
+                                        self.form.setPhoneNumber("")
+                                    }) {
+                                        Image(systemName: "multiply").foregroundColor(Color(UIColor.opaqueSeparator))
+                                    }.padding(.trailing, 20)
+                                }
+                            }.padding(.bottom, 14)
+                        }
                     }
+
                     
                     Section() {
                         Text("Email Address")
@@ -156,10 +211,10 @@ struct CreateUserAccountView: View {
             }.padding(.horizontal)
             
             Section() {
-                DefaultButton(label: "Create Account", function: self.form.createAccount)
+                DefaultButton(label: "Create account", function: self.form.getType() == "User" ? self.form.createUserAccount : self.form.createVendorAccount)
             }
         }
-        .navigationTitle("Create an Account")
+        .navigationTitle("Create an account")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.form.resetForm()
@@ -185,6 +240,6 @@ extension UITextField {
 
 //struct CreateUserAccountView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        CreateUserAccountView(user: UsersViewModel)
+//        CreateUserAccountView(createUserAccountModel)
 //    }
 //}

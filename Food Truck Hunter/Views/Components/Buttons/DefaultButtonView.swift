@@ -19,6 +19,7 @@ struct DefaultButton: View {
     
     var body: some View {
         Button(action: {
+            self.hideKeyboard()
             self.function()
         }) {
             HStack() {
