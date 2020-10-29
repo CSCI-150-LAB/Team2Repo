@@ -63,7 +63,7 @@ struct ContentView: View {
 
                             HStack() {
                                 Spacer()
-                                NavigationLink(destination: ForgotPasswordView(email: self.emailEnter)) {
+                                NavigationLink(destination: ForgotPasswordView()) {
                                     Text("Forgot password?").font(.headline)
                                 }
                             }
@@ -159,7 +159,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal, 40)
                     
-                    NavigationLink(destination: CreateUserAccountView()) {
+                    NavigationLink(destination: CreateAccountView()) {
                         Text("Create an account")
                             .font(.headline)
                     }
