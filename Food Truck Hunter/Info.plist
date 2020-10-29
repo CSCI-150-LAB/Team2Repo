@@ -69,5 +69,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>See Food Trucks Near You</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>See Food Trucks Near You</string>
 </dict>
 </plist>

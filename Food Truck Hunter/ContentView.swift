@@ -4,7 +4,7 @@ import FirebaseFirestore
 import GoogleSignIn
 
 struct ContentView: View {
-    
+
     @State private var emailEnter = ""
     @State private var passwordEnter = ""
     @State var successfulLogin: Int? = nil
@@ -19,15 +19,22 @@ struct ContentView: View {
             ScrollView() {
                 VStack {
                     // MARK: Logo Section
-                    Section() {
+                    Image("logoPic")
+                        .resizable()
+                        .frame(width: 310, height: 310, alignment: .center)
+                        .padding(.top,20)
+                       // .aspectRatio(contentMode: .fill)
+                        
+                    
+                    //Section() {
                         // Possibly add an icon or image
-                        Text("Food Truck Hunter")
-                            .font(.system(.largeTitle, design: .rounded))
-                            .fontWeight(.bold)
-                    }
+                       // Text("Food Truck Hunter")
+                        //    .font(.system(.largeTitle, design: .rounded))
+                        //    .fontWeight(.bold)
+                        // }
                     // MARK: Input Fields Section
                     Section() {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .center) {
                             Section() {
                                 HStack {
                                     TextField("Email Address", text: self.$emailEnter)
@@ -61,20 +68,25 @@ struct ContentView: View {
                                     .animation(.easeInOut)
                             }
 
-                            HStack() {
-                                Spacer()
-                                NavigationLink(destination: ForgotPasswordView()) {
-                                    Text("Forgot password?").font(.headline)
+                            
+                            Section() {
+                                HStack() {
+                                    Spacer()
+                                    NavigationLink(destination: ForgotPasswordView()) {
+                                        Text("Forgot password?").font(.headline)
+                                        .foregroundColor(Color.red)
+                                                                                   
+                                   }
                                 }
                             }
                         }
                     }.padding(.all)
-                }
+                
                 // MARK: Log In Section
                 Section() {
                     NavigationLink(destination: LandingView(),tag: 1, selection: self.$successfulLogin) {
-//                        DefaultButton(label: "Log In", function: userLoginModel.logIn(emailEnter, passwordEnter, self.&successfulLogin), returnValue: true)
-//                    }
+//                        DefaultButton(label: "Log In", function: userLoginModel.logIn(emailEnter, passwordEnter, self.&successfulLogin), returnValue: true, buttonColor:Color.Red)
+//
                         Button(action: {
 //                             Check input fields to see if empty
                             if (!self.emailEnter.isEmpty && !self.passwordEnter.isEmpty) {
@@ -115,11 +127,11 @@ struct ContentView: View {
                                     Text("Log In")
                                         .font(.headline)
                                         .frame(minWidth: 0, maxWidth: .infinity)
-                                        .foregroundColor(Color.blue)
+                                        .foregroundColor(Color.red)
                                         .padding()
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 6.0)
-                                                .stroke(Color.blue, lineWidth: 1)
+                                                .stroke(Color.red, lineWidth: 2)
                                         )
                                 Spacer()
                             }
@@ -130,18 +142,18 @@ struct ContentView: View {
 
                         
                     Text("or")
-                        .padding(.vertical, 8.0)
-                        .foregroundColor(Color.gray)
+                        .padding(.vertical, 1)
+                        .foregroundColor(Color.black)
                                         
                     Button(action: {}) {
                         Text("Continue with Google")
                             .font(.headline)
                             .frame(minWidth: 0, maxWidth: .infinity)
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(Color.red)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color.blue, lineWidth: 1)
+                                    .stroke(Color.red, lineWidth: 2)
                             )
                     }
                     .padding(.horizontal, 40)
@@ -150,11 +162,11 @@ struct ContentView: View {
                         Text("Continue with Apple")
                             .font(.headline)
                             .frame(minWidth: 0, maxWidth: .infinity)
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(Color.red)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color.blue, lineWidth: 1)
+                                    .stroke(Color.red, lineWidth: 2)
                             )
                     }
                     .padding(.horizontal, 40)
@@ -162,9 +174,16 @@ struct ContentView: View {
                     NavigationLink(destination: CreateAccountView()) {
                         Text("Create an account")
                             .font(.headline)
+                            .foregroundColor(Color.red)
                     }
                 }
-            }
+                .padding(.bottom,20)
+              } // end v stack
+            }   // end scroll view
+            .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarHidden(true)
+            
         }
     }
 }

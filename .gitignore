@@ -1,2 +1,5 @@
-
+ 
 .DS_Store
+UserInterfaceState.xcuserstate
+*.xcuserdatad/UserInterfaceState.xcuserstate
+*.log
