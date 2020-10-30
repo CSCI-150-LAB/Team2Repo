@@ -115,19 +115,6 @@ struct SignInView: View {
                     }
                     .padding(.horizontal, 40)
                     
-                    Button(action: {}) {
-                        Text("Continue with Apple")
-                            .font(.headline)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .foregroundColor(Color.red)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color.red, lineWidth: 2)
-                            )
-                    }
-                    .padding(.horizontal, 40)
-                    
                     NavigationLink(destination: CreateAccountView()) {
                         Text("Create an account")
                             .font(.headline)
