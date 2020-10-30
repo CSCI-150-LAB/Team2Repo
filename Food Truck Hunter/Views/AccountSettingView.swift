@@ -1,17 +1,24 @@
 import SwiftUI
 
 struct AccountSettingView: View {
-//    @ObservedObject var user = UsersViewModel(formModel: FormModel(email: "", password: ""))
+    @EnvironmentObject var authState : AuthenticationState
+    @State var successfullySignOut : Bool = false;
+    
+    func signOut() {
+        self.successfullySignOut = authState.signOut()
+    }
     
     var body: some View {
         VStack() {
-            Text("Whatever")
+            if authState.session != nil {
+                Text(authState.session?.displayName ?? "empty")
+                Text(authState.session?.uid ?? "empty")
+                Text(authState.session?.email ?? "empty")
+            }
+            DefaultButton(label: "Logout", function: signOut)
+            if successfullySignOut {
+                SignInView()
+            }
         }
-    }
-}
-
-struct AccountSettingView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountSettingView()
     }
 }
