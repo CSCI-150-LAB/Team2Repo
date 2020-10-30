@@ -3,15 +3,34 @@ import Firebase
 import FirebaseFirestore
 import GoogleSignIn
 
-struct ContentView: View {
+struct SignInView: View {
 
     @State private var emailEnter = ""
     @State private var passwordEnter = ""
     @State var successfulLogin: Int? = nil
     @State var invalidEmailHintLabel : String = ""
     @State var invalidCredentialHintLabel : String = ""
+    @State var loading = false
+    @State var error = false
     
     @ObservedObject var userLoginModel = LoginViewModel(loginModel: FormModel(email: "", password: ""))
+    @EnvironmentObject var authState: AuthenticationState
+    
+    func signIn() {
+        loading = true
+        error = false
+        authState.signIn(email: emailEnter, password: passwordEnter) { (result, error) in
+            self.loading = false
+            if error != nil {
+                self.error = true
+            }
+            else {
+                print("signing in...")
+                self.emailEnter = ""
+                self.passwordEnter = ""
+            }
+        }
+    }
     
     // MARK: View Start
     var body: some View {
@@ -25,13 +44,6 @@ struct ContentView: View {
                         .padding(.top,20)
                        // .aspectRatio(contentMode: .fill)
                         
-                    
-                    //Section() {
-                        // Possibly add an icon or image
-                       // Text("Food Truck Hunter")
-                        //    .font(.system(.largeTitle, design: .rounded))
-                        //    .fontWeight(.bold)
-                        // }
                     // MARK: Input Fields Section
                     Section() {
                         VStack(alignment: .center) {
@@ -84,62 +96,7 @@ struct ContentView: View {
                 
                 // MARK: Log In Section
                 Section() {
-                    NavigationLink(destination: LandingView(),tag: 1, selection: self.$successfulLogin) {
-//                        DefaultButton(label: "Log In", function: userLoginModel.logIn(emailEnter, passwordEnter, self.&successfulLogin), returnValue: true, buttonColor:Color.Red)
-//
-                        Button(action: {
-//                             Check input fields to see if empty
-                            if (!self.emailEnter.isEmpty && !self.passwordEnter.isEmpty) {
-                                if true {//FormUtilities.validateEmail(self.emailEnter) {
-
-                                    self.invalidEmailHintLabel = ""
-
-                                    // MARK: Firebase Auth
-                                    Auth.auth().signIn(withEmail: self.emailEnter, password: self.passwordEnter, completion: {result, error in
-                                        // Unsuccessful
-                                        guard error == nil else {
-                                            print("Cannot sign in")
-                                            self.invalidCredentialHintLabel = "Email or password is incorrect."
-                                            return
-                                        }
-
-                                        // Successfully logged in
-                                        // Reset all fields
-                                        self.emailEnter = ""
-                                        self.passwordEnter = ""
-                                        self.successfulLogin = 1
-                                        self.invalidCredentialHintLabel = ""
-                                        print("Successfully signed in")
-                                    })
-                                }
-                                else {
-                                    self.invalidCredentialHintLabel = ""
-//                                    self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
-                                }
-                            }
-                            else {
-//                                self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
-//                                self.invalidCredentialHintLabel = FormUtilities.isEmptyErrorMsg(self.password, "password")
-                            }
-                        }) {
-                            HStack {
-                                Spacer()
-                                    Text("Log In")
-                                        .font(.headline)
-                                        .frame(minWidth: 0, maxWidth: .infinity)
-                                        .foregroundColor(Color.red)
-                                        .padding()
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 6.0)
-                                                .stroke(Color.red, lineWidth: 2)
-                                        )
-                                Spacer()
-                            }
-                        }
-                        .accessibility(label: Text("Log in"))
-                        .padding(.horizontal, 40)
-                    }
-
+                    DefaultButton(label: "Login", function: signIn)
                         
                     Text("or")
                         .padding(.vertical, 1)
@@ -188,9 +145,3 @@ struct ContentView: View {
     }
 }
 // MARK: View End
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
