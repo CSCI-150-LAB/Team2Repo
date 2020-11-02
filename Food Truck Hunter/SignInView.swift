@@ -83,7 +83,7 @@ struct SignInView: View {
                             
                             Section() {
                                 HStack() {
-                                    Spacer()
+
                                     NavigationLink(destination: ForgotPasswordView()) {
                                         Text("Forgot password?").font(.headline)
                                         .foregroundColor(Color.red)

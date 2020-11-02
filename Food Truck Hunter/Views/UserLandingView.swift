@@ -5,7 +5,7 @@ struct LandingView: View {
 
     var body: some View {
         TabView {
-            Text("Favourites Screen")
+            Text("Favorites Screen")
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favourites")
