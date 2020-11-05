@@ -4,7 +4,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+      
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -28,8 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //let vc = UIViewController()
           //  vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.2)
           //  window.rootViewController = vc
-            
-            
+               
         }
     }
 
