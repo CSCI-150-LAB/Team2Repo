@@ -11,9 +11,9 @@ func test2() {
     print("do something2.")
 }
 
-struct CreateAccountView: View {
+struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var form = CreateAccountViewModel(formModel: FormModel(email: "", password: ""))
+    @ObservedObject var form = SignUpViewModel(formModel: FormModel(email: "", password: ""))
 
 //    @State private var buttonLabel : String = "Create an account"
 //    @State private var buttonColor : Color = Color.blue

@@ -2,10 +2,9 @@ import SwiftUI
 
 
 struct LandingView: View {
-
     var body: some View {
         TabView {
-            Text("Favorites Screen")
+            FavoriteListView()
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favourites")

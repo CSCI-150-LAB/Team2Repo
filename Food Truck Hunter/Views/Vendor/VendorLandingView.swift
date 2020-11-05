@@ -6,15 +6,24 @@
 import SwiftUI
 
 func dummy() {
-// do something here
-print("inhere")
+    // do something here
+    print("inhere")
     // .frame(width: 100, height: 100)
 }
 
 struct VendorLandingPage: View {
+    @EnvironmentObject var authState : AuthenticationState
     @State private var truckName: String = ""
     @State private var edit: String = "edit"
+    
+    @State var successfullySignOut : Bool = false;
+    
+    func signOut() {
+        self.successfullySignOut = authState.signOut()
+    }
+
     @State private var  openStatus = false
+    
     var body: some View {
         ScrollView{
             Spacer()
@@ -133,16 +142,20 @@ struct VendorLandingPage: View {
                 .padding(.top,-20)
                 .padding(.bottom,0)
                 .padding(.leading,15)
+            
+            //LOGOUT
             VStack{
                 DefaultButton(label: "Logout", function: dummy, buttonColor: Color.white, bcolor: Color.red, lwidth: 5)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
                 .padding(.leading,15)
+                if successfullySignOut {
+                    SignInView()
+                }
                     
             }
             Spacer()
-                
         }
             
 
