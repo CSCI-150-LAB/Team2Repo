@@ -4,7 +4,9 @@
 // this is the view that vendors will see to change their truck properties
 
 import SwiftUI
+
 func dummy() {
+    // do something here
     print("inhere")
     // .frame(width: 100, height: 100)
 }
@@ -13,11 +15,14 @@ struct VendorLandingPage: View {
     @EnvironmentObject var authState : AuthenticationState
     @State private var truckName: String = ""
     @State private var edit: String = "edit"
+    
     @State var successfullySignOut : Bool = false;
     
     func signOut() {
         self.successfullySignOut = authState.signOut()
     }
+
+    @State private var  openStatus = false
     
     var body: some View {
         ScrollView{
@@ -26,11 +31,29 @@ struct VendorLandingPage: View {
         VStack(alignment: .leading){
             HStack(){
                 Spacer()
-                Text(" 'TRUCK NAME' Settings")
+                Text("'TRUCK NAME' Settings") // pull truck name here
                     .fontWeight(.bold)
-                    .font(.system(size: 20))
+                    .font(.system(size: 25))
                 Spacer()
             }
+         //   vendorSwitch()
+            HStack{
+            Toggle(isOn: $openStatus){
+                Spacer()
+                Text("Open For Buisness : ")
+                    .fontWeight(.bold)
+                    .font(.system(size:20))
+            }
+            .padding(.trailing,120)
+            }
+            
+            if (openStatus){
+                //set status to open on firebase
+            }
+            else {
+                // set status to closed on firebase
+            }
+            
             Spacer()
                 .frame(height: 20)
             
@@ -46,152 +69,48 @@ struct VendorLandingPage: View {
                 .cornerRadius(15)
                 .padding(.trailing,15)
                 .padding(.leading, 15)
-            DefaultButton(label: "Update", function: dummy)
+            DefaultButton(label: "Update Name", function: dummy)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
                 .padding(.leading,15)
                 //.ignoresSafeArea(.container)
             
-            Text("Edit Hours Of Operation By Day:")
+            Text("Closing Time Today:")
                 .fontWeight(.bold)
                 .padding(.leading,15)
+                .padding(.top,0)
+            
+            DefaultButton(label: "Update Time", function: dummy)
+                .frame(width: 350, height: 100)
                 .padding(.top,-20)
+                .padding(.bottom,0)
+                .padding(.leading,15)
                 
         }
         VStack(alignment: .leading){
             HStack{
-                Text("Monday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            HStack{
-                Text("Tuesday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            HStack(){
-                Text("Wednesday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            HStack{
-                Text("Thursday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            HStack{
-                Text("Friday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            HStack{
-                Text("Saturday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            HStack{
-                Text("Sunday:")
-                    .padding(.leading, 25)
-                //ENTER HOURS HERE
-                Button( edit, action: dummy)
-                    .foregroundColor(.red)
-                Spacer()
-                }
-            }
-        VStack(alignment: .leading){
-            HStack{
-            Text("Edit Location By Day:")
+            Text("Current Location:")
                 .fontWeight(.bold)
-                .padding(.top,2)
+                .padding(.top,-5)
                 .padding(.leading,15)
             Spacer()
             }
-            VStack(alignment: .leading){
-                HStack{
-                    Text("Monday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                }
-                HStack{
-                    Text("Tuesday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                }
-                HStack(){
-                    Text("Wednesday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                }
-                HStack{
-                    Text("Thursday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                }
-                HStack{
-                    Text("Friday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                }
-                HStack{
-                    Text("Saturday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                }
-                HStack{
-                    Text("Sunday:")
-                        .padding(.leading, 25)
-                    // LOCATION INFO HERE
-                    Button( edit, action: dummy)
-                        .foregroundColor(.red)
-                    Spacer()
-                    }
-                }
+            
+            DefaultButton(label: "Update Location", function: dummy)
+                .frame(width: 350, height: 100)
+                .padding(.top,-20)
+                .padding(.bottom,0)
+                .padding(.leading,15)
             
             Text("Edit Names Of Food Served:")
                 .fontWeight(.bold)
-                .padding(.top,2)
+                .padding(.top,-5)
                 .padding(.leading,15)
             
             // LIST OF FOODS HERE
             
-            DefaultButton(label: "edit", function: dummy)
+            DefaultButton(label: "Edit", function: dummy)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
@@ -204,7 +123,7 @@ struct VendorLandingPage: View {
             
             //MENU PICTURES HERE
             
-            DefaultButton(label: "edit", function: dummy)
+            DefaultButton(label: "Edit", function: dummy)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
@@ -218,21 +137,25 @@ struct VendorLandingPage: View {
             
             //PICTURES OF FOOD
             
-            DefaultButton(label: "edit", function: dummy)
+            DefaultButton(label: "Edit", function: dummy)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
                 .padding(.leading,15)
             
             //LOGOUT
-            
-            DefaultButton(label: "Sign Out", function: signOut)
-            
-            if successfullySignOut {
-                SignInView()
+            VStack{
+                DefaultButton(label: "Logout", function: dummy, buttonColor: Color.white, bcolor: Color.red, lwidth: 5)
+                .frame(width: 350, height: 100)
+                .padding(.top,-20)
+                .padding(.bottom,0)
+                .padding(.leading,15)
+                if successfullySignOut {
+                    SignInView()
+                }
+                    
             }
-            
-//            Spacer()
+            Spacer()
         }
             
 
