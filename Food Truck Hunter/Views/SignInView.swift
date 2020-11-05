@@ -1,37 +1,16 @@
 import SwiftUI
-import Firebase
-import FirebaseFirestore
 import GoogleSignIn
 
-struct SignInView: View {
+func doNothing() {}
 
-    @State private var emailEnter = ""
-    @State private var passwordEnter = ""
+struct SignInView: View {
     @State var successfulLogin: Int? = nil
     @State var invalidEmailHintLabel : String = ""
     @State var invalidCredentialHintLabel : String = ""
-    @State var loading = false
-    @State var error = false
     
-    @ObservedObject var userLoginModel = LoginViewModel(loginModel: FormModel(email: "", password: ""))
     @EnvironmentObject var authState: AuthenticationState
-    
-    func signIn() {
-        loading = true
-        error = false
-        authState.signIn(email: emailEnter, password: passwordEnter) { (result, error) in
-            self.loading = false
-            if error != nil {
-                self.error = true
-            }
-            else {
-                print("signing in...")
-                self.emailEnter = ""
-                self.passwordEnter = ""
-            }
-        }
-    }
-    
+    @ObservedObject var form = SignInViewModel(formModel: FormModel(email: "", password: ""))
+
     // MARK: View Start
     var body: some View {
         NavigationView {
@@ -49,45 +28,41 @@ struct SignInView: View {
                         VStack(alignment: .center) {
                             Section() {
                                 HStack {
-                                    TextField("Email Address", text: self.$emailEnter)
+                                    TextField("Email Address", text: self.$form.email)
                                         .keyboardType(.emailAddress)
                                         .autocapitalization(.none)
                                         .padding(.all)
                                         .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                                         .cornerRadius(6)
                                 }
-                                
-                                Text(self.userLoginModel.getEmailHintLabel())
-                                    .font(.system(size: 14))
-                                    .foregroundColor(Color.red)
-                                    .padding(.bottom, 2.0)
-                                    .animation(.easeInOut)
+                                .padding(.bottom, 5)
                             }
                             
                             Section() {
                                 HStack {
-                                    SecureField("Password", text: self.$passwordEnter)
+                                    SecureField("Password", text: self.$form.password)
                                         .autocapitalization(.none)
                                         .padding(.all)
                                         .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                                         .cornerRadius(6)
                                 }
-                                
-                                Text(self.userLoginModel.getPasswordHintLabel())
-                                    .font(.system(size: 14))
-                                    .foregroundColor(Color.red)
-                                    .padding(.bottom, 1)
-                                    .animation(.easeInOut)
+                                HStack {
+                                    Text(self.form.getPasswordHintLabel())  // Debug this...Message not showing
+                                        .font(.system(size: 14))
+                                        .foregroundColor(Color.red)
+                                        .padding(.bottom, 2.0)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .animation(.easeInOut)
+                                    Spacer()
+                                }
                             }
-
                             
                             Section() {
-                                HStack() {
-
+                                HStack {
+                                    Spacer()
                                     NavigationLink(destination: ForgotPasswordView()) {
                                         Text("Forgot password?").font(.headline)
                                         .foregroundColor(Color.red)
-                                                                                   
                                    }
                                 }
                             }
@@ -96,26 +71,10 @@ struct SignInView: View {
                 
                 // MARK: Log In Section
                 Section() {
-                    DefaultButton(label: "Login", function: signIn)
-                        
-                    Text("or")
-                        .padding(.vertical, 1)
-                        .foregroundColor(Color.black)
-                                        
-                    Button(action: {}) {
-                        Text("Continue with Google")
-                            .font(.headline)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .foregroundColor(Color.red)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color.red, lineWidth: 2)
-                            )
-                    }
-                    .padding(.horizontal, 40)
+                    DefaultButton(label: "Sign In", function: self.form.signInAction)
+//                    DefaultButton(label: "Continue with Google", function: doNothing)     // Leave this out for now
                     
-                    NavigationLink(destination: CreateAccountView()) {
+                    NavigationLink(destination: SignUpView()) {
                         Text("Create an account")
                             .font(.headline)
                             .foregroundColor(Color.red)

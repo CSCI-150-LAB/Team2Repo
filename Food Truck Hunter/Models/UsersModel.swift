@@ -3,7 +3,7 @@ import SwiftUI
 
 struct UserModel : Identifiable, Decodable {
     let email : String?
-    let favorites : [String]
+    let favorites : [FavoriteVendors]
     let first_name : String
     let id : Int
     let last_name : String

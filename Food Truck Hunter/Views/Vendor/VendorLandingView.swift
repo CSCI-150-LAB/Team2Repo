@@ -5,16 +5,20 @@
 
 import SwiftUI
 func dummy() {
-
-MapView()
-print("inhere")
+    print("inhere")
     // .frame(width: 100, height: 100)
 }
 
 struct VendorLandingPage: View {
+    @EnvironmentObject var authState : AuthenticationState
     @State private var truckName: String = ""
     @State private var edit: String = "edit"
-
+    @State var successfullySignOut : Bool = false;
+    
+    func signOut() {
+        self.successfullySignOut = authState.signOut()
+    }
+    
     var body: some View {
         ScrollView{
             Spacer()
@@ -220,7 +224,15 @@ struct VendorLandingPage: View {
                 .padding(.bottom,0)
                 .padding(.leading,15)
             
-            Spacer()
+            //LOGOUT
+            
+            DefaultButton(label: "Sign Out", function: signOut)
+            
+            if successfullySignOut {
+                SignInView()
+            }
+            
+//            Spacer()
         }
             
 
