@@ -12,8 +12,8 @@ struct MainView: View {
         if (authState.session != nil) {
             AnyView(LandingView())
         } else {
-           AnyView(VendorLandingPage()) // used to see/modify vendor view
-           // AnyView(SignInView()) // use this for normal functionality
+           AnyView(VendorLandingView()) // used to see/modify vendor view
+         //  AnyView(SignInView()) // use this for normal functionality
         }
       }.onAppear(perform: getUser)  }
 }
