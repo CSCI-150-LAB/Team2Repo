@@ -30,6 +30,13 @@ struct SignUpView: View {
     
     var body: some View {
         ScrollView() {
+            Spacer()
+                .frame(height:75)
+            Text("Create An Account")
+                .fontWeight(.bold)
+                .font(.system(size: 25))
+                .padding(.bottom,5)
+            
             Section() {
                 RadioButtonGroup(items: ["User", "Vendor"], selectedLabel: "User") { selected in
                     form.setType(selected)
@@ -214,7 +221,10 @@ struct SignUpView: View {
                 DefaultButton(label: "Create account", function: self.form.getType() == "User" ? self.form.createUserAccount : self.form.createVendorAccount)
             }
         }
-        .navigationTitle("Create an account")
+        .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.top)
+        //.navigationTitle("Create an account")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.form.resetForm()
@@ -222,7 +232,9 @@ struct SignUpView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
+                    .foregroundColor(.red)
                 Text("Login")
+                    .foregroundColor(.red)
             }
         })
     }

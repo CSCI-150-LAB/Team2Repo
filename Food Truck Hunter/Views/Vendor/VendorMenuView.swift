@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct VendorMenuView: View {
     var body: some View {
         ScrollView
@@ -14,7 +13,6 @@ struct VendorMenuView: View {
         .background(Color(UIColor(red: 0.80, green: 0.87, blue: 0.89, alpha: 1.00)))
         .navigationBarHidden(true)
     }
-    
 }
 
 struct VendorMenuView_Previews: PreviewProvider {

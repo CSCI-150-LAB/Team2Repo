@@ -56,18 +56,22 @@ struct SignInView: View {
                                     Spacer()
                                 }
                             }
+                        }.padding(.all)
+                        VStack(alignment:.center){
                             
                             Section() {
-                                HStack {
-                                    Spacer()
+                              
+                                    
                                     NavigationLink(destination: ForgotPasswordView()) {
                                         Text("Forgot password?").font(.headline)
                                         .foregroundColor(Color.red)
+                                        
+                                            .padding(.bottom,15)
                                    }
-                                }
+                    
                             }
-                        }
-                    }.padding(.all)
+                        }.padding(.top,-20)
+                    }//.padding(.all)
                 
                 // MARK: Log In Section
                 Section() {
