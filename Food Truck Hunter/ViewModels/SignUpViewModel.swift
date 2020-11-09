@@ -6,7 +6,7 @@ import FirebaseFirestore
 import GoogleSignIn
 import NanoID
 
-class CreateAccountViewModel : ObservableObject {
+class SignUpViewModel : ObservableObject {
     static let uID = ID()
     static func generateID() -> String {
         return uID.generate(alphabet: .numeric, size: 8)
@@ -29,7 +29,7 @@ class CreateAccountViewModel : ObservableObject {
     
     init(formModel : FormModel, firstName : String = "", lastName : String = "", vendorName : String = "", phoneNumber : String = "", email : String = "", password : String = "", retypedPassword : String = "", type : String = "User") {
         self.formModel = formModel
-        self.userID = CreateAccountViewModel.generateID()
+        self.userID = SignUpViewModel.generateID()
         self.firstName = firstName
         self.lastName = lastName
         self.vendorName = vendorName

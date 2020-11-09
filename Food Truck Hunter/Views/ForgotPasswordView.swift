@@ -6,7 +6,7 @@ struct ForgotPasswordView: View {
     @ObservedObject var form = ForgotPasswordViewModel(formModel: FormModel())
     
     @State private var buttonLabel : String = "Send Link"
-    @State private var buttonColor : Color = Color.blue
+    @State private var buttonColor : Color = Color.red
     @State private var buttonDisable : Bool = false
     @State private var isLoading : Bool = false
     @State private var isRotating : Bool = false
@@ -17,7 +17,11 @@ struct ForgotPasswordView: View {
 //    @State var invalidEmailHintLabel : String = ""
     
     var body: some View {
+       // Spacer()
+       //     .frame(height:25)
         ScrollView() {
+            Spacer()
+                .frame(height:135)
             Section() {
                 Text("Enter your email address so we can send you a link to reset your password.")
                     .fixedSize(horizontal: false, vertical: true)
@@ -136,14 +140,14 @@ struct ForgotPasswordView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
+                    .foregroundColor(.red)
                 Text("Login")
+                    .foregroundColor(.red)
             }
         })
+        .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.top)
     }
+    
 }
-
-//struct ForgotPasswordView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ForgotPasswordView()
-//    }
-//}

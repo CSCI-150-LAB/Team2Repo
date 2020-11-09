@@ -6,6 +6,8 @@ struct DefaultButton: View {
     let label : String
     let function : () -> Void
     var buttonColor : Color = Color.red
+    var bcolor : Color = Color.clear
+    var lwidth : Int = 1
 
     // Used for animating loading circle
 //    @State private var isCompleted : Bool = false
@@ -50,9 +52,12 @@ struct DefaultButton: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .foregroundColor(buttonColor)
                         .padding()
+                        .cornerRadius(10.0)
+                        .background(bcolor)
                         .overlay(
                             RoundedRectangle(cornerRadius: 6.0)
-                                .stroke(buttonColor, lineWidth: 1)
+                                .stroke(buttonColor, lineWidth: CGFloat(lwidth))
+                                
                         )
                 }
                 Spacer()

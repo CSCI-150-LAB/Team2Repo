@@ -11,9 +11,9 @@ func test2() {
     print("do something2.")
 }
 
-struct CreateAccountView: View {
+struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var form = CreateAccountViewModel(formModel: FormModel(email: "", password: ""))
+    @ObservedObject var form = SignUpViewModel(formModel: FormModel(email: "", password: ""))
 
 //    @State private var buttonLabel : String = "Create an account"
 //    @State private var buttonColor : Color = Color.blue
@@ -30,6 +30,13 @@ struct CreateAccountView: View {
     
     var body: some View {
         ScrollView() {
+            Spacer()
+                .frame(height:75)
+            Text("Create An Account")
+                .fontWeight(.bold)
+                .font(.system(size: 25))
+                .padding(.bottom,5)
+            
             Section() {
                 RadioButtonGroup(items: ["User", "Vendor"], selectedLabel: "User") { selected in
                     form.setType(selected)
@@ -214,7 +221,10 @@ struct CreateAccountView: View {
                 DefaultButton(label: "Create account", function: self.form.getType() == "User" ? self.form.createUserAccount : self.form.createVendorAccount)
             }
         }
-        .navigationTitle("Create an account")
+        .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.top)
+        //.navigationTitle("Create an account")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.form.resetForm()
@@ -222,7 +232,9 @@ struct CreateAccountView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
+                    .foregroundColor(.red)
                 Text("Login")
+                    .foregroundColor(.red)
             }
         })
     }
