@@ -29,8 +29,17 @@ struct RadioButton: View {
         self.lwidth = lwidth
     }
     
-    @State private var selectedColor : Color = Color.blue
-    @State private var defaultColor : Color = Color.gray
+
+//    Used for animating loading circle
+//    @State private var isCompleted : Bool = false
+//    @State private var isLoading : Bool = false
+//    @State private var isRotating : Bool = false
+//    @State private var animateStrokeStart : Bool = false
+//    @State private var animateStrokeEnd : Bool = true
+    
+    @State private var selectedColor : Color = Color.red
+    @State private var defaultColor : Color = Color(UIColor(red: 0.78, green: 0.82, blue: 0.82, alpha: 1.00))
+
 //    @State private var isButtonDisabled : Bool = false
     
     var body: some View {

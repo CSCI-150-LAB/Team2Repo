@@ -11,6 +11,8 @@
 		33B750AB252843FB005C3ADA /* UserLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B750AA252843FB005C3ADA /* UserLandingView.swift */; };
 		33D5147B253F403300D0442E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D5147A253F403300D0442E /* MapView.swift */; };
 		5B089B29254F82DB00ADAAC6 /* VendorLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */; };
+		5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */; };
+		5B089B742554CA4700ADAAC6 /* VendorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */; };
 		79FF44BFF41139BE939D46C6 /* Pods_Food_Truck_HunterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */; };
 		910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910667132534CE9700F1BF62 /* AccountSettingView.swift */; };
 		9152A7712555E1AA0059BFC0 /* VendorSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */; };
@@ -80,6 +82,8 @@
 		45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_HunterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAA6BF36C79D47506E00ABC /* Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter-Food Truck HunterTests/Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLandingView.swift; sourceTree = "<group>"; };
+		5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSettingsView.swift; sourceTree = "<group>"; };
+		5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorMenuView.swift; sourceTree = "<group>"; };
 		7745A67C172EECC6623853F1 /* Pods-Food Truck Hunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.release.xcconfig"; sourceTree = "<group>"; };
 		910667132534CE9700F1BF62 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSignUpView.swift; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */,
+				5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */,
+				5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -640,7 +646,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				91557F4F2523E7E000427422 /* SignUpView.swift in Sources */,
+<<<<<<< HEAD
 				918D45DA2554C7EB00790EAC /* TruckModel.swift in Sources */,
+=======
+				5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */,
+>>>>>>> master
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
 				915633EF253A008A00F6ED01 /* FormModel.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,
@@ -652,6 +662,7 @@
 				91DB46FA2539593700987893 /* SignInViewModel.swift in Sources */,
 				91CBC063253F6A1400C4F96B /* General.swift in Sources */,
 				91CBC051253F3EDE00C4F96B /* RadioButtonGroup.swift in Sources */,
+				5B089B742554CA4700ADAAC6 /* VendorMenuView.swift in Sources */,
 				9153D0C5254BA9E100750530 /* MainView.swift in Sources */,
 				9153D0C0254B917300750530 /* AuthenticationState.swift in Sources */,
 				91E78E302553CF57004BB965 /* CustomerVendorView.swift in Sources */,

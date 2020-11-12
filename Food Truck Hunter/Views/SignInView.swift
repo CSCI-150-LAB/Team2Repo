@@ -63,41 +63,37 @@ struct SignInView: View {
                                     Spacer()
                                 }
                             }
-                            
-                            Section() {
-                                HStack {
-                                    Spacer()
-                                    NavigationLink(destination: ForgotPasswordView()) {
-                                        Text("Forgot password?")
-                                            .font(.headline)
-                                            .foregroundColor(Color.red)
-                                   }
-                                }
-                            }.padding(.top, 0)
-                        }
-                    }.padding(.all)
-                
-                // MARK: Log In Section
-                Section() {
-                    if (!self.isClicked) {
-                        DefaultButton(label: "Sign in", function: self.signInUser)
-                    }
-//                    DefaultButton(label: "Continue with Google", function: doNothing)     // Leave this out for now
+                        }.padding(.all)
+                        VStack(alignment:.center){
+                            NavigationLink(destination: ForgotPasswordView()) {
+                                Text("Forgot password?")
+                                    .font(.headline)
+                                    .foregroundColor(Color.red)
+                                    .padding(.bottom,15)
+                           }
+                        }.padding(.top,-20)
+                    }//.padding(.all)
                     
-                    NavigationLink(destination: SignUpView()) {
-                        Text("Sign up")
-                            .font(.headline)
-                            .foregroundColor(Color.red)
+                    // MARK: Log In Section
+                    Section() {
+                        if (!self.isClicked) {
+                            DefaultButton(label: "Sign in", function: self.signInUser)
+                        }
+    //                    DefaultButton(label: "Continue with Google", function: doNothing)     // Leave this out for now
+                        
+                        NavigationLink(destination: SignUpView()) {
+                            Text("Sign up")
+                                .font(.headline)
+                                .foregroundColor(Color.red)
+                        }
                     }
-                }
-                .padding(.bottom,20)
-              } // end v stack
+                    .padding(.bottom,20)
+                } // end v stack
             }   // end scroll view
             .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
             .edgesIgnoringSafeArea(.all)
             .navigationBarHidden(true)
-            
         }
     }
+} // MARK: View End
 }
-// MARK: View End

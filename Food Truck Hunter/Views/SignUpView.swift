@@ -7,7 +7,25 @@ struct SignUpView: View {
     let vertHeight: Int = 80
     
     var body: some View {
+<<<<<<< HEAD
         VStack(alignment: .leading) {
+=======
+        ScrollView() {
+            Spacer()
+                .frame(height:75)
+            Text("Create An Account")
+                .fontWeight(.bold)
+                .font(.system(size: 25))
+                .padding(.bottom,5)
+            
+            Section() {
+                RadioButtonGroup(items: ["User", "Vendor"], selectedLabel: "User") { selected in
+                    form.setType(selected)
+                }
+            }
+            .padding(.bottom, 20)
+            
+>>>>>>> master
             Section() {
                 Text("I would like to sign up as:")
                     .font(.system(size: 16))
@@ -52,14 +70,19 @@ struct SignUpView: View {
                 }
             }.padding(.horizontal)
         }
-        .navigationTitle("Account Type")
-        .navigationBarBackButtonHidden(true)
+        .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.top)
+//        .navigationTitle("Account Type")
+//        .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
             HStack {
                 Image(systemName: "chevron.left")
+                    .foregroundColor(.red)
                 Text("Sign In")
+                    .foregroundColor(.red)
             }
         })
     }
