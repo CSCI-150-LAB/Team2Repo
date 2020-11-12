@@ -1,8 +1,6 @@
 import SwiftUI
 import GoogleSignIn
 
-func doNothing() {}
-
 struct SignInView: View {
     @EnvironmentObject var authState: AuthenticationState
     @ObservedObject var form = SignInViewModel(formModel: FormModel(email: "", password: ""))
@@ -79,7 +77,6 @@ struct SignInView: View {
                         if (!self.isClicked) {
                             DefaultButton(label: "Sign in", function: self.signInUser)
                         }
-    //                    DefaultButton(label: "Continue with Google", function: doNothing)     // Leave this out for now
                         
                         NavigationLink(destination: SignUpView()) {
                             Text("Sign up")
@@ -96,4 +93,3 @@ struct SignInView: View {
         }
     }
 } // MARK: View End
-}

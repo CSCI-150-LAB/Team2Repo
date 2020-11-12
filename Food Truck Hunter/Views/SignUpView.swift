@@ -7,26 +7,10 @@ struct SignUpView: View {
     let vertHeight: Int = 80
     
     var body: some View {
-<<<<<<< HEAD
         VStack(alignment: .leading) {
-=======
-        ScrollView() {
-            Spacer()
-                .frame(height:75)
-            Text("Create An Account")
-                .fontWeight(.bold)
-                .font(.system(size: 25))
-                .padding(.bottom,5)
-            
             Section() {
-                RadioButtonGroup(items: ["User", "Vendor"], selectedLabel: "User") { selected in
-                    form.setType(selected)
-                }
-            }
-            .padding(.bottom, 20)
-            
->>>>>>> master
-            Section() {
+                Spacer()
+                    .frame(height: 85)
                 Text("I would like to sign up as:")
                     .font(.system(size: 16))
                     .padding(.top, 25)
@@ -74,7 +58,7 @@ struct SignUpView: View {
         .edgesIgnoringSafeArea(.bottom)
         .edgesIgnoringSafeArea(.top)
 //        .navigationTitle("Account Type")
-//        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {

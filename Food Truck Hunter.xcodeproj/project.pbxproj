@@ -204,7 +204,6 @@
 			children = (
 				9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */,
 				9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */,
-				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
 				91557F412523E77300427422 /* ForgotPasswordView.swift */,
 				33D5147A253F403300D0442E /* MapView.swift */,
 				91E78E1D255315CF004BB965 /* SignInView.swift */,
@@ -344,6 +343,7 @@
 		91E78E2A2553CE62004BB965 /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
 				91E78E2F2553CF57004BB965 /* CustomerVendorView.swift */,
 				91EE99072551282F00BFCCAB /* FavoriteListView.swift */,
 				91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */,
@@ -646,11 +646,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				91557F4F2523E7E000427422 /* SignUpView.swift in Sources */,
-<<<<<<< HEAD
 				918D45DA2554C7EB00790EAC /* TruckModel.swift in Sources */,
-=======
 				5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */,
->>>>>>> master
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
 				915633EF253A008A00F6ED01 /* FormModel.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,

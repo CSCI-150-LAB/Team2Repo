@@ -12,7 +12,7 @@ struct MainView: View {
         if (authState.session != nil) {
             switch authState.session?.type {
             case "vendor":
-                AnyView(VendorLandingPage()) // used to see/modify vendor view
+                AnyView(VendorLandingView()) // used to see/modify vendor view
             case "customer":
                 AnyView(LandingView())
             default:
@@ -21,7 +21,8 @@ struct MainView: View {
         } else {
            AnyView(SignInView()) // use this for normal functionality
         }
-      }.onAppear(perform: getUser)  }
+      }.onAppear(perform: getUser)
+    }
 }
 
 struct MainView_Previews: PreviewProvider {
