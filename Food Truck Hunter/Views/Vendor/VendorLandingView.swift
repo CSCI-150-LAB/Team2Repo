@@ -4,18 +4,17 @@ import SwiftUI
 struct VendorLandingView: View {
     var body: some View {
         TabView {
-            VendorMenuView()
-                .ignoresSafeArea(.all)
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("My Menu")
-            }
-            VendorSettingsView()
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Truck Settings")
-            }
-            
+//            VendorMenuView()
+//                .ignoresSafeArea(.all)
+//                .tabItem {
+//                    Image(systemName: "square.and.pencil")
+//                    Text("My Menu")
+//            }
+//            VendorSettingsView()
+//                .tabItem {
+//                    Image(systemName: "gear")
+//                    Text("Truck Settings")
+//            }
         }
         .navigationBarBackButtonHidden(true)
     }

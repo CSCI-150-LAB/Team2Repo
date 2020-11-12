@@ -12,11 +12,29 @@ class User : ObservableObject {
     let last_name: String?
     let phone_number: String?
     let profile_img: String?
-    let review_count: Int?
+    let truck_id: Int?
+    let truck_name: String?
+    let total_review: Int?
     let status: String?
     let type: String?
 
-    init(uid: String, email: String?, displayName: String?, favorites: [AnyObject]?, first_name: String?, id: Int?, last_name: String?, phone_number: String?, profile_img: String?, review_count: Int?, status: String?, type: String?) {
+    init(
+        uid: String,
+        email: String?,
+        displayName: String?,
+        favorites: [AnyObject]? = [],
+        first_name: String?,
+        id: Int?,
+        last_name: String?,
+        phone_number: String?,
+        profile_img: String? = "",
+        truck_id: Int? = 0,
+        truck_name: String? = "",
+        total_review: Int? = 0,
+        status: String? = "basic",
+        type: String?
+    ) {
+        
         self.uid = uid
         self.email = email
         self.displayName = displayName
@@ -26,7 +44,9 @@ class User : ObservableObject {
         self.last_name = last_name
         self.phone_number = phone_number
         self.profile_img = profile_img
-        self.review_count = review_count
+        self.truck_id = truck_id
+        self.truck_name = truck_name
+        self.total_review = total_review
         self.status = status
         self.type = type
     }

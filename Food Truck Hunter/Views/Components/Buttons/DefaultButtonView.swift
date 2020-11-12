@@ -63,7 +63,7 @@ struct DefaultButton: View {
                 Spacer()
             }
         }
-        .padding(.bottom, 8)
+        .padding(.bottom, 20)
         .padding(.horizontal, 44)
         .accessibility(label: Text("\(label) button"))
 //        .disabled(isButtonDisabled)
@@ -80,10 +80,5 @@ struct DefaultButton: View {
 //    public func makeBody(configuration: Self.Configuration) -> some View {
 //        return configuration.label
 //
-//    }
-//}
-//struct DefaultButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DefaultButton(lable: <#T##String#>, function: <#T##() -> Void#>, returnValue: <#T##Bool#>)
 //    }
 //}
