@@ -4,12 +4,19 @@ import GoogleSignIn
 func doNothing() {}
 
 struct SignInView: View {
+    @EnvironmentObject var authState: AuthenticationState
+    @ObservedObject var form = SignInViewModel(formModel: FormModel(email: "", password: ""))
+    
     @State var successfulLogin: Int? = nil
     @State var invalidEmailHintLabel : String = ""
     @State var invalidCredentialHintLabel : String = ""
+    @State var isClicked: Bool = false
     
-    @EnvironmentObject var authState: AuthenticationState
-    @ObservedObject var form = SignInViewModel(formModel: FormModel(email: "", password: ""))
+    func signInUser() {
+        self.isClicked.toggle()
+        self.form.signInAction()
+        self.isClicked.toggle()
+    }
 
     // MARK: View Start
     var body: some View {
@@ -61,21 +68,24 @@ struct SignInView: View {
                                 HStack {
                                     Spacer()
                                     NavigationLink(destination: ForgotPasswordView()) {
-                                        Text("Forgot password?").font(.headline)
-                                        .foregroundColor(Color.red)
+                                        Text("Forgot password?")
+                                            .font(.headline)
+                                            .foregroundColor(Color.red)
                                    }
                                 }
-                            }
+                            }.padding(.top, 0)
                         }
                     }.padding(.all)
                 
                 // MARK: Log In Section
                 Section() {
-                    DefaultButton(label: "Sign In", function: self.form.signInAction)
+                    if (!self.isClicked) {
+                        DefaultButton(label: "Sign in", function: self.signInUser)
+                    }
 //                    DefaultButton(label: "Continue with Google", function: doNothing)     // Leave this out for now
                     
                     NavigationLink(destination: SignUpView()) {
-                        Text("Create an account")
+                        Text("Sign up")
                             .font(.headline)
                             .foregroundColor(Color.red)
                     }

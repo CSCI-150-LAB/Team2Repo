@@ -1,11 +1,6 @@
 import Foundation
 import SwiftUI
 
-
-func test() {
-    print("do something.")
-}
-
 struct RadioButton: View {
     // Public variables
     let label : String
@@ -14,6 +9,7 @@ struct RadioButton: View {
     let size: CGFloat
     let color: Color
     let textSize: CGFloat
+    let lwidth: Int
 
     init(
         _ label: String,
@@ -21,7 +17,8 @@ struct RadioButton: View {
         selectedID: String,
         size: CGFloat = 20,
         color: Color = Color.primary,
-        textSize: CGFloat = 14
+        textSize: CGFloat = 14,
+        lwidth: Int = 1
         ) {
         self.label = label
         self.size = size
@@ -29,14 +26,8 @@ struct RadioButton: View {
         self.textSize = textSize
         self.selectedLabel = selectedID
         self.callback = callback
+        self.lwidth = lwidth
     }
-    
-//    Used for animating loading circle
-//    @State private var isCompleted : Bool = false
-//    @State private var isLoading : Bool = false
-//    @State private var isRotating : Bool = false
-//    @State private var animateStrokeStart : Bool = false
-//    @State private var animateStrokeEnd : Bool = true
     
     @State private var selectedColor : Color = Color.blue
     @State private var defaultColor : Color = Color.gray
@@ -52,21 +43,21 @@ struct RadioButton: View {
                     Text(label)
                         .font(.headline)
                         .frame(minWidth: 0, maxWidth: .infinity)
+                        .cornerRadius(10.0)
                         .padding(.horizontal)
-                        .padding(.vertical, 3)
+                        .padding(.vertical, 20)
                         .foregroundColor(self.selectedLabel == self.label ? selectedColor : defaultColor)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6.0)
+                                .stroke(self.selectedLabel == self.label ? selectedColor : defaultColor, lineWidth: CGFloat(lwidth))
+                                
+                        )
                     Spacer()
                 }
-                HorizontalLine(color: (self.selectedLabel == self.label ? selectedColor : defaultColor), height: 2.0)
+//                HorizontalLine(color: (self.selectedLabel == self.label ? selectedColor : defaultColor), height: 2.0)
             }.foregroundColor(self.color)
         }.foregroundColor(self.color)
 //        .frame(minWidth: 0, maxWidth: 200)
-        .accessibility(label: Text("\(label) button"))
+        .accessibility(label: Text("Account type \(label) button"))
     }
 }
-
-//struct RadioButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RadioButton("User")
-//    }
-//}

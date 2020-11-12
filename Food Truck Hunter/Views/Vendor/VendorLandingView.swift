@@ -145,7 +145,7 @@ struct VendorLandingPage: View {
             
             //LOGOUT
             VStack{
-                DefaultButton(label: "Logout", function: dummy, buttonColor: Color.white, bcolor: Color.red, lwidth: 5)
+                DefaultButton(label: "Logout", function: signOut, buttonColor: Color.white, bcolor: Color.red, lwidth: 5)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)

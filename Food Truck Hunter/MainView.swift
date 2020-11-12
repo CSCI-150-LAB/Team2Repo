@@ -10,10 +10,16 @@ struct MainView: View {
     var body: some View {
       Group {
         if (authState.session != nil) {
-            AnyView(LandingView())
+            switch authState.session?.type {
+            case "vendor":
+                AnyView(VendorLandingPage()) // used to see/modify vendor view
+            case "customer":
+                AnyView(LandingView())
+            default:
+                SignInView()
+            }
         } else {
-           AnyView(VendorLandingPage()) // used to see/modify vendor view
-           // AnyView(SignInView()) // use this for normal functionality
+           AnyView(SignInView()) // use this for normal functionality
         }
       }.onAppear(perform: getUser)  }
 }
