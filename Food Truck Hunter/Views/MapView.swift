@@ -48,29 +48,11 @@ struct MapView: UIViewRepresentable {
             parent.centerCoordinate = mapView.centerCoordinate
         }
         
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            // this is our unique identifier for view reuse
-               let identifier = "Placemark"
-
-               // attempt to find a cell we can recycle
-               var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
-               if annotationView == nil {
-                   // we didn't find one; make a new one
-                   annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-
-                   // allow this to show pop up information
-                   annotationView?.canShowCallout = true
-
-                   // attach an information button to the view
-                   annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-               } else {
-                   // we have a view to reuse, so give it the new annotation
-                   annotationView?.annotation = annotation
-               }
-
-               // whether it's a new view or a recycled one, send it back
-               return annotationView
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let annotationTitle = view.annotation?.title
+                    {
+                        print("User tapped on annotation with title: \(annotationTitle!)")
+                    }
         }
     }
 }

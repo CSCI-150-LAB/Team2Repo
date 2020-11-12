@@ -38,27 +38,9 @@ struct LandingView: View {
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favourites")
-            }
-            ZStack{
-                MapView(centerCoordinate: $centerCoordinate, annotations: locations).ignoresSafeArea()
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            getLocations()
-                        }) {
-                            Image(systemName: "plus")
-                        }
-                        .padding()
-                        .background(Color.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
-                    }
                 }
-            }
+                MapView(centerCoordinate: $centerCoordinate, annotations: locations).ignoresSafeArea()
+                .onAppear(perform: getLocations)
                 .tabItem {
                     Image(systemName: "mappin.circle.fill")
                     Text("Nearby")
