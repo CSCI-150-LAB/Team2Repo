@@ -57,7 +57,7 @@ struct SignUpView: View {
         .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
         .edgesIgnoringSafeArea(.bottom)
         .edgesIgnoringSafeArea(.top)
-//        .navigationTitle("Account Type")
+        .navigationTitle("Account Type")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.presentationMode.wrappedValue.dismiss()
