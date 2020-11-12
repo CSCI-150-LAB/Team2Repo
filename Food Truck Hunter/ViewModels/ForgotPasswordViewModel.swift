@@ -32,16 +32,24 @@ class ForgotPasswordViewModel : ObservableObject {
         self.setEmailHintLabel("")
     }
     
-    func resetPassword() {
-        Auth.auth().sendPasswordReset(withEmail: self.getEmail()) { error in
-            guard error == nil else {
-                print("No account associated with \(self.getEmail())\n")
-                self.setEmailHintLabel("No account associated with this email address.")
-                return
-            }
+    func resetPasswordAction() {
+        if (validateInputField()) {
+            Auth.auth().sendPasswordReset(withEmail: self.getEmail()) { error in
+                guard error == nil else {
+                    print("No account associated with \(self.getEmail())\n")
+                    self.setEmailHintLabel("No account associated with this email address.")
+                    return
+                }
 
-            print("Sent link to \(self.getEmail()).")
-            self.resetForm()
+                print("Sent link to \(self.getEmail()).")
+                self.resetForm()
+            }
         }
+    }
+    
+    func validateInputField() -> Bool {
+        let isEmailValid = FormUtilities.validateEmail(self.getEmail(), &self.formModel.emailHintLabel)
+        
+        return isEmailValid
     }
 }
