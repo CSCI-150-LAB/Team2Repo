@@ -25,6 +25,13 @@ struct VendorSignUpView: View {
     var body: some View {
         ScrollView() {
             VStack(alignment: .leading) {
+                Spacer()
+                    .frame(height:100)
+                Text("Vendor Registration")
+                    .font(.system(size:35))
+                    .bold()
+                Spacer()
+                    .frame(height:15)
                 Text("Helping small business grow. Sign up today!")
                     .font(.system(size: 14))
                     .padding(.bottom, 18)
@@ -257,7 +264,10 @@ struct VendorSignUpView: View {
                 
             }.padding(.horizontal, 22)
         }
-        .navigationTitle(("Vendor Registration"))
+        .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+        .ignoresSafeArea(edges:.bottom)
+        .ignoresSafeArea(edges:.top)
+       // .navigationTitle(("Vendor Registration"))
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.form.resetForm()
@@ -265,7 +275,9 @@ struct VendorSignUpView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
+                    .foregroundColor(Color.red)
                 Text("Account")
+                    .foregroundColor(Color.red)
             }
         })
     }

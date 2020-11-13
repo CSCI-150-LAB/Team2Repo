@@ -10,7 +10,7 @@ struct SignUpView: View {
         VStack(alignment: .leading) {
             Section() {
                 Spacer()
-                    .frame(height: 85)
+                    .frame(height: 115)
                 Text("I would like to sign up as:")
                     .font(.system(size: 16))
                     .padding(.top, 25)
