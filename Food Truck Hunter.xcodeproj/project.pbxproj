@@ -15,6 +15,10 @@
 		5B089B742554CA4700ADAAC6 /* VendorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */; };
 		79FF44BFF41139BE939D46C6 /* Pods_Food_Truck_HunterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */; };
 		910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910667132534CE9700F1BF62 /* AccountSettingView.swift */; };
+		912314FA2561DEFF001D2EB8 /* TruckPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912314F92561DEFF001D2EB8 /* TruckPhoneNumberView.swift */; };
+		912314FF2561E21F001D2EB8 /* CustomerVendorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912314FE2561E21F001D2EB8 /* CustomerVendorMenuView.swift */; };
+		9133E0D0255F00C400B721FF /* TruckHourStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133E0CF255F00C400B721FF /* TruckHourStatusView.swift */; };
+		9133E0D5255F07BD00B721FF /* TruckClosingHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133E0D4255F07BD00B721FF /* TruckClosingHourView.swift */; };
 		9152A7712555E1AA0059BFC0 /* VendorSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */; };
 		9152A7862555ECA30059BFC0 /* CustomerSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */; };
 		9153D0C0254B917300750530 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9153D0BF254B917300750530 /* AuthenticationState.swift */; };
@@ -24,6 +28,7 @@
 		91557F4F2523E7E000427422 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F4E2523E7E000427422 /* SignUpView.swift */; };
 		91557F552523E99A00427422 /* FormUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F542523E99A00427422 /* FormUtilities.swift */; };
 		91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F5C2523E9EB00427422 /* UsersViewModel.swift */; };
+		91558065255E3B4B0056156F /* FavoriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91558064255E3B4B0056156F /* FavoriteListViewModel.swift */; };
 		915633EF253A008A00F6ED01 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915633EE253A008A00F6ED01 /* FormModel.swift */; };
 		91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91597074253017B600DF1EB2 /* DefaultButtonView.swift */; };
 		918D45DA2554C7EB00790EAC /* TruckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918D45D92554C7EB00790EAC /* TruckModel.swift */; };
@@ -86,6 +91,10 @@
 		5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorMenuView.swift; sourceTree = "<group>"; };
 		7745A67C172EECC6623853F1 /* Pods-Food Truck Hunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.release.xcconfig"; sourceTree = "<group>"; };
 		910667132534CE9700F1BF62 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
+		912314F92561DEFF001D2EB8 /* TruckPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckPhoneNumberView.swift; sourceTree = "<group>"; };
+		912314FE2561E21F001D2EB8 /* CustomerVendorMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerVendorMenuView.swift; sourceTree = "<group>"; };
+		9133E0CF255F00C400B721FF /* TruckHourStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckHourStatusView.swift; sourceTree = "<group>"; };
+		9133E0D4255F07BD00B721FF /* TruckClosingHourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckClosingHourView.swift; sourceTree = "<group>"; };
 		9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSignUpView.swift; sourceTree = "<group>"; };
 		9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSignUpView.swift; sourceTree = "<group>"; };
 		9153D0BF254B917300750530 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
@@ -95,6 +104,7 @@
 		91557F4E2523E7E000427422 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		91557F542523E99A00427422 /* FormUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormUtilities.swift; sourceTree = "<group>"; };
 		91557F5C2523E9EB00427422 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		91558064255E3B4B0056156F /* FavoriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewModel.swift; sourceTree = "<group>"; };
 		915633EE253A008A00F6ED01 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		91597074253017B600DF1EB2 /* DefaultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonView.swift; sourceTree = "<group>"; };
 		918D45D92554C7EB00790EAC /* TruckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckModel.swift; sourceTree = "<group>"; };
@@ -224,6 +234,7 @@
 				91DB46F92539593700987893 /* SignInViewModel.swift */,
 				91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */,
 				91557F5C2523E9EB00427422 /* UsersViewModel.swift */,
+				91558064255E3B4B0056156F /* FavoriteListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -242,6 +253,9 @@
 			children = (
 				915970722530153700DF1EB2 /* Buttons */,
 				91CBC047253F38CF00C4F96B /* Line */,
+				9133E0CF255F00C400B721FF /* TruckHourStatusView.swift */,
+				9133E0D4255F07BD00B721FF /* TruckClosingHourView.swift */,
+				912314F92561DEFF001D2EB8 /* TruckPhoneNumberView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -348,6 +362,7 @@
 				91EE99072551282F00BFCCAB /* FavoriteListView.swift */,
 				91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */,
 				33B750AA252843FB005C3ADA /* UserLandingView.swift */,
+				912314FE2561E21F001D2EB8 /* CustomerVendorMenuView.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -648,9 +663,12 @@
 				91557F4F2523E7E000427422 /* SignUpView.swift in Sources */,
 				918D45DA2554C7EB00790EAC /* TruckModel.swift in Sources */,
 				5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */,
+				9133E0D5255F07BD00B721FF /* TruckClosingHourView.swift in Sources */,
+				912314FA2561DEFF001D2EB8 /* TruckPhoneNumberView.swift in Sources */,
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
 				915633EF253A008A00F6ED01 /* FormModel.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,
+				912314FF2561E21F001D2EB8 /* CustomerVendorMenuView.swift in Sources */,
 				9152A7862555ECA30059BFC0 /* CustomerSignUpView.swift in Sources */,
 				91DB46F5253956FD00987893 /* LogInModel.swift in Sources */,
 				33B750AB252843FB005C3ADA /* UserLandingView.swift in Sources */,
@@ -667,6 +685,8 @@
 				91E78E262553BD8A004BB965 /* Unwrap.swift in Sources */,
 				91EE990D25512E2A00BFCCAB /* FavoriteRow.swift in Sources */,
 				91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */,
+				9133E0D0255F00C400B721FF /* TruckHourStatusView.swift in Sources */,
+				91558065255E3B4B0056156F /* FavoriteListViewModel.swift in Sources */,
 				91557F552523E99A00427422 /* FormUtilities.swift in Sources */,
 				91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */,
 				9153D0CA254BB9F000750530 /* UserModel.swift in Sources */,
