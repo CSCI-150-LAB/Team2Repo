@@ -12,6 +12,8 @@ import FirebaseFirestore
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
     var annotations: [MKPointAnnotation]
+    @Binding var annotationTapAction: Bool
+    
 //    var locationManager = CLLocationManager()
     
 //    func setupManager() {
@@ -38,6 +40,7 @@ struct MapView: UIViewRepresentable {
     }
 
     class Coordinator: NSObject, MKMapViewDelegate {
+        
         var parent: MapView
 
         init(_ parent: MapView) {
@@ -51,11 +54,23 @@ struct MapView: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             if let annotationTitle = view.annotation?.title
                     {
-                        print("User tapped on annotation with title: \(annotationTitle!)")
+                        print("User selected annotation with title: \(annotationTitle!)")
+                        parent.annotationTapAction.toggle()
                     }
+        
         }
+        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+            if let annotationTitle = view.annotation?.title
+                {
+                    print("User deselected annotation with title: \(annotationTitle!)")
+                    parent.annotationTapAction.toggle()
+                }
+        }
+        
+        
     }
 }
+
 
 
 

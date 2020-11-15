@@ -5,6 +5,8 @@ import FirebaseFirestore
 struct LandingView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [MKPointAnnotation]()
+    @State var mapMenu_shown = false
+   
     
     func getLocations() {
         Firestore.firestore().collection("Trucks").getDocuments { (snapshot, error) in
@@ -39,12 +41,23 @@ struct LandingView: View {
                     Image(systemName: "heart.fill")
                     Text("Favourites")
                 }
-                MapView(centerCoordinate: $centerCoordinate, annotations: locations).ignoresSafeArea()
-                .onAppear(perform: getLocations)
-                .tabItem {
-                    Image(systemName: "mappin.circle.fill")
-                    Text("Nearby")
-                }
+            ZStack{
+                MapView(centerCoordinate: $centerCoordinate, annotations: locations, annotationTapAction: $mapMenu_shown).ignoresSafeArea()
+                MapMenu(isShown: $mapMenu_shown){
+                    Button(action: {
+                                
+                                print("Button Tapped")
+                                
+                            }) {
+                                
+                                Text("Press Me")
+                                
+                            }
+                }.onAppear(perform: getLocations)
+            }.tabItem {
+                Image(systemName: "mappin.circle.fill")
+                Text("Nearby")
+            }
             AccountSettingView()
                 .tabItem {
                     Image(systemName: "gear")

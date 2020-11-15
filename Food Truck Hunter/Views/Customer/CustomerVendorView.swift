@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomerVendorView: View {
     @State private var  Favorited = false
+    
     var body: some View {
         
         VStack(alignment:.center){
