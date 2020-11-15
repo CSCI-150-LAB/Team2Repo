@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct FavoriteRow: View {
-    var favoriteVendor : FavoriteVendors
+    var truckName: String
     var body: some View {
         HStack {
             Image("food-truck")
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(favoriteVendor.name)
+            Text(truckName)
             Spacer()
         }
     }
