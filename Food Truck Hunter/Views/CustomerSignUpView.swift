@@ -24,7 +24,15 @@ struct CustomerSignUpView: View {
     var body: some View {
         ScrollView() {
             VStack(alignment: .leading) {
-                Text("Finding food trucks never been so easy. Sign up today!")
+                Spacer()
+                   .frame(height:100)
+                Text("Customer Registration")
+                    .font(.system(size:30))
+                    .bold()
+                Spacer()
+                    .frame(height:15)
+                
+                Text("Finding food trucks has never been so easy. Sign up today!")
                     .font(.system(size: 14))
                     .padding(.bottom, 18)
                 
@@ -183,7 +191,10 @@ struct CustomerSignUpView: View {
                 }
             }.padding(.horizontal, 22)
         }
-        .navigationTitle(("Customer Registration"))
+        .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
+        .ignoresSafeArea(edges:.bottom)
+        .ignoresSafeArea(edges:.top)
+        //.navigationTitle(("Customer Registration"))
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: {
             self.form.resetForm()
@@ -191,8 +202,15 @@ struct CustomerSignUpView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
+                    .foregroundColor(Color.red)
                 Text("Account")
+                    .foregroundColor(Color.red)
+                
+                    
             }
         })
+        //.background(Color.green)
+        
     }
+    
 }

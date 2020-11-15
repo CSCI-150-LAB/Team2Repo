@@ -11,12 +11,16 @@ struct AccountSettingView: View {
     var body: some View {
         VStack() {
             if authState.session != nil {
-                Text(authState.session?.displayName ?? "empty")
-                Text(authState.session?.uid ?? "empty")
-                Text(authState.session?.email ?? "empty")
+              //  Text(authState.session?.displayName ?? "empty")
+                //Text(authState.session?.uid ?? "empty")
+                Text("Name: \(authState.session?.first_name ?? "no first name" ) \(authState.session?.last_name ?? "no last name")")
+                
+                Text("Email: \(authState.session?.email ?? "empty") ")
             }
+            
             DefaultButton(label: "Logout", function: signOut)
-            if successfullySignOut {
+            
+            if successfullySignOut{
                 SignInView()
             }
         }
