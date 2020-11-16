@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 
+func doNothing() {}
 struct AnnotationMenuView: View {
  //   var annotation: MKPointAnnotation
     

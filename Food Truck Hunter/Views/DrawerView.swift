@@ -35,15 +35,10 @@ struct DrawerView<Content: View> : View {
                 VStack{
                     Spacer()
                     ZStack{
-                        Color.black.opacity(0.3)
+                        Color.white.opacity(1.0)
                             .frame(width: UIScreen.main.bounds.size.width, height:modalHeight)
                             .cornerRadius(10)
                             .shadow(radius: 5)
-                        Color.black.opacity(0.3)
-                            .frame(width: UIScreen.main.bounds.size.width, height:modalHeight)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                            .blur(radius: 20)
                         self.content()
                             .frame(width: UIScreen.main.bounds.size.width, height:modalHeight)
                             
