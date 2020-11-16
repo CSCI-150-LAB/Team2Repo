@@ -42,18 +42,12 @@ struct LandingView: View {
                     Text("Favourites")
                 }
             ZStack{
-                MapView(centerCoordinate: $centerCoordinate, annotations: locations, annotationTapAction: $mapMenu_shown).ignoresSafeArea()
-                MapMenu(isShown: $mapMenu_shown){
-                    Button(action: {
-                                
-                                print("Button Tapped")
-                                
-                            }) {
-                                
-                                Text("Press Me")
-                                
-                            }
-                }.onAppear(perform: getLocations)
+                MapView(centerCoordinate: $centerCoordinate, annotations: locations, annotationTapAction: $mapMenu_shown)
+                    .ignoresSafeArea()
+                    .onAppear(perform: getLocations)
+                DrawerView(isShown: $mapMenu_shown){
+                    AnnotationMenuView()
+                }
             }.tabItem {
                 Image(systemName: "mappin.circle.fill")
                 Text("Nearby")

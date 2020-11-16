@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct MapMenu<Content: View> : View {
+struct DrawerView<Content: View> : View {
     @GestureState private var dragState = DragState.inactive
     @Binding var isShown:Bool
     
-    var modalHeight = UIScreen.main.bounds.size.height * (1/3)
+    var modalHeight:CGFloat = UIScreen.main.bounds.size.height * (1/3)
     
     private func onDragEnded(drag: DragGesture.Value) {
         let dragThreshold = modalHeight * (2/3)
@@ -22,8 +22,8 @@ struct MapMenu<Content: View> : View {
     
     
     
-    
     var content: () -> Content
+
     var body: some View {
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
@@ -45,17 +45,13 @@ struct MapMenu<Content: View> : View {
                             .shadow(radius: 5)
                             .blur(radius: 20)
                         self.content()
-                            .padding()
-                            .padding(.bottom, 65)
                             .frame(width: UIScreen.main.bounds.size.width, height:modalHeight)
-                            .clipped()
+                            
                     }
                     .offset(y: isShown ? ((self.dragState.isDragging && dragState.translation.height >= 1) ? dragState.translation.height : 0) : modalHeight)
                     .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
                     .gesture(drag)
-                    
-                    
-                }
+            }
         }
     }
 }
