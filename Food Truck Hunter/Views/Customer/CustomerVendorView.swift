@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct CustomerVendorView: View {
+
     @ObservedObject var viewModel: FavoriteListViewModel = FavoriteListViewModel()
     @State var isUsersFavorite = false
     var truckDocID: String
@@ -18,6 +19,7 @@ struct CustomerVendorView: View {
         DispatchQueue.main.async {
             self.viewModel.getTruck(truckDocID: self.truckDocID)
             print("Data loaded!") 
+
         }
     }
     
