@@ -1,15 +1,20 @@
 import SwiftUI
 import GoogleSignIn
 
-func doNothing() {}
-
 struct SignInView: View {
+    @EnvironmentObject var authState: AuthenticationState
+    @ObservedObject var form = SignInViewModel(formModel: FormModel(email: "", password: ""))
+    
     @State var successfulLogin: Int? = nil
     @State var invalidEmailHintLabel : String = ""
     @State var invalidCredentialHintLabel : String = ""
+    @State var isClicked: Bool = false
     
-    @EnvironmentObject var authState: AuthenticationState
-    @ObservedObject var form = SignInViewModel(formModel: FormModel(email: "", password: ""))
+    func signInUser() {
+        self.isClicked.toggle()
+        self.form.signInAction()
+        self.isClicked.toggle()
+    }
 
     // MARK: View Start
     var body: some View {
@@ -58,40 +63,33 @@ struct SignInView: View {
                             }
                         }.padding(.all)
                         VStack(alignment:.center){
-                            
-                            Section() {
-                              
-                                    
-                                    NavigationLink(destination: ForgotPasswordView()) {
-                                        Text("Forgot password?").font(.headline)
-                                        .foregroundColor(Color.red)
-                                        
-                                            .padding(.bottom,15)
-                                   }
-                    
-                            }
+                            NavigationLink(destination: ForgotPasswordView()) {
+                                Text("Forgot password?")
+                                    .font(.headline)
+                                    .foregroundColor(Color.red)
+                                    .padding(.bottom,15)
+                           }
                         }.padding(.top,-20)
                     }//.padding(.all)
-                
-                // MARK: Log In Section
-                Section() {
-                    DefaultButton(label: "Sign In", function: self.form.signInAction)
-//                    DefaultButton(label: "Continue with Google", function: doNothing)     // Leave this out for now
                     
-                    NavigationLink(destination: SignUpView()) {
-                        Text("Create an account")
-                            .font(.headline)
-                            .foregroundColor(Color.red)
+                    // MARK: Log In Section
+                    Section() {
+                        if (!self.isClicked) {
+                            DefaultButton(label: "Sign in", function: self.signInUser)
+                        }
+                        
+                        NavigationLink(destination: SignUpView()) {
+                            Text("Sign up")
+                                .font(.headline)
+                                .foregroundColor(Color.red)
+                        }
                     }
-                }
-                .padding(.bottom,20)
-              } // end v stack
+                    .padding(.bottom,20)
+                } // end v stack
             }   // end scroll view
             .background(Color(UIColor(red: 0.15, green: 0.80, blue: 0.97, alpha: 1.00)))
             .edgesIgnoringSafeArea(.all)
             .navigationBarHidden(true)
-            
         }
     }
-}
-// MARK: View End
+} // MARK: View End

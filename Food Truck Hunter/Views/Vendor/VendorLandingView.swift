@@ -15,7 +15,6 @@ struct VendorLandingView: View {
                     Image(systemName: "gear")
                     Text("Truck Settings")
             }
-            
         }
         .navigationBarBackButtonHidden(true)
     }

@@ -49,46 +49,11 @@ class SignInViewModel: AuthenticationState {
         self.formModel.passwordHintLabel = message
     }
     
-//    func fetchUser() {
-//        let db = Firestore.firestore()
-//        db.collection("Users").whereField("id", isEqualTo: 15004034).getDocuments() {(querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            }
-//            else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-//    }
-    
-//    func logIn() {
-//
-//        if validateInputFields() {
-//            Auth.auth().signIn(withEmail: self.getEmail(), password: self.getPassword(), completion: {result, error in
-//                // Unsuccessful
-//                guard error == nil else {
-//                    print("Cannot sign in")
-//                    self.setPasswordHintLabel("Email or password is incorrect.")
-//                    return
-//                }
-//
-//                // Successfully logged in
-////                self.setDidSignIn()
-//                self.setPasswordHintLabel("")
-//                self.resetForm()
-//                print("Successfully signed in")
-//            })
-//        }
-//    }
-    
     func signInAction() {
         self.signIn(email: self.getEmail(), password: self.getPassword()) { (result, error) in
             if error != nil {
 //                self.setPasswordHintLabel(String(describing: error?.localizedDescription))
                 self.setPasswordHintLabel("Email or password is incorrect.")
-                print(self.getPasswordHintLabel())
             } else {
                 self.resetForm()
             }

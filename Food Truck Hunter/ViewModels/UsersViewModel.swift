@@ -5,13 +5,13 @@ import GoogleSignIn
 import NanoID
 
 class UsersViewModel: ObservableObject {
-    @Published private var userModel : UserModel
+    @Published private var userModel : User
     private let db = Firestore.firestore()
     private let dispatch = DispatchGroup()
     
     public var userEmail : String
     
-    init(userModel: UserModel, userEmail : String = "") {
+    init(userModel: User, userEmail : String = "") {
         self.userModel = userModel
         self.userEmail = userEmail
     }
@@ -20,11 +20,7 @@ class UsersViewModel: ObservableObject {
         return self.userEmail
     }
     
-    func getUserFullName() -> String {
-        return ("\(userModel.first_name) \(userModel.last_name)")
-    }
-    
-    func getUserInfo() -> UserModel {
+    func getUserInfo() -> User {
         return self.userModel
     }
     

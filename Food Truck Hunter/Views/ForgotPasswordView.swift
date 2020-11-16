@@ -13,9 +13,6 @@ struct ForgotPasswordView: View {
     @State private var animateStrokeStart : Bool = false
     @State private var animateStrokeEnd : Bool = true
     
-//    @State var email : String = ""
-//    @State var invalidEmailHintLabel : String = ""
-    
     var body: some View {
        // Spacer()
        //     .frame(height:25)
@@ -52,83 +49,81 @@ struct ForgotPasswordView: View {
             }
             
             Section() {
-                Button(action: {
-                    if self.form.getEmail().isEmpty {
-//                        self.invalidEmailHintLabel = FormUtilities.isEmptyErrorMsg(self.email, "email")
-                    }
-                    else {
-                        self.form.setEmailHintLabel("")
-                        if true {//FormUtilities.validateEmail(self.email) {
-                            self.hideKeyboard()
-                            buttonLabel = ""
-                            buttonDisable.toggle()
-                            isLoading.toggle()
-                            Auth.auth().sendPasswordReset(withEmail: self.form.getEmail()) { error in
-                                guard error == nil else {
-                                    isLoading.toggle()
-                                    buttonLabel = "Send link"
-                                    buttonDisable.toggle()
-                                    print("No account associated with \(self.form.getEmail())\n")
-                                    self.form.setEmailHintLabel("No account associated with this email address.")
-                                    return
-                                }
-
-                                isLoading.toggle()
-                                buttonColor = Color.green
-                                buttonLabel = "Sent!"
-                                print("Sent link to \(self.form.getEmail()).")
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    buttonLabel = "Send link"
-                                    buttonColor = Color.blue
-                                    buttonDisable.toggle()
-                                }
-                            }
-                        }
-                        else {
-//                            self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
-                        }
-                    }
-                }) {
-                    HStack {
-                        Spacer()
-                        ZStack {
-                            if isLoading {
-                                Circle()
-                                    .trim(from: animateStrokeStart ? 1/3 : 1/9, to: animateStrokeEnd ? 2/5 : 1)
-                                    .stroke(Color.blue, style: StrokeStyle(lineWidth: 3.0, lineCap: .round))
-                                    .frame(width: 30, height: 30, alignment: .center)
-                                    .rotationEffect(Angle(degrees: isRotating ? 360 : 0))
-                                    .opacity(isLoading ? 1 : 0)
-                                    .onAppear() {
-                                        withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
-                                            isRotating.toggle()
-                                        }
-                                        
-                                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true)) {
-                                            animateStrokeStart.toggle()
-                                        }
-                                        
-                                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true)) {
-                                            animateStrokeEnd.toggle()
-                                        }
-                                    }
-                            }
-
-                            Text(buttonLabel)
-                                .font(.headline)
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .foregroundColor(buttonColor)
-                                .padding()
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 6.0)
-                                            .stroke(buttonColor, lineWidth: 1)
-                                    )
-                        }
-                        Spacer()
-                    }
-                }
-                .disabled(buttonDisable)
-                .accessibility(label: Text("Send password reset link"))
+                DefaultButton(label: "Send link", function: self.form.resetPasswordAction)
+//                Button(action: {
+//                    if
+//                        self.form.setEmailHintLabel("")
+//                        if true {//FormUtilities.validateEmail(self.email) {
+//                            self.hideKeyboard()
+//                            buttonLabel = ""
+//                            buttonDisable.toggle()
+//                            isLoading.toggle()
+//                            Auth.auth().sendPasswordReset(withEmail: self.form.getEmail()) { error in
+//                                guard error == nil else {
+//                                    isLoading.toggle()
+//                                    buttonLabel = "Send link"
+//                                    buttonDisable.toggle()
+//                                    print("No account associated with \(self.form.getEmail())\n")
+//                                    self.form.setEmailHintLabel("No account associated with this email address.")
+//                                    return
+//                                }
+//
+//                                isLoading.toggle()
+//                                buttonColor = Color.green
+//                                buttonLabel = "Sent!"
+//                                print("Sent link to \(self.form.getEmail()).")
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                                    buttonLabel = "Send link"
+//                                    buttonColor = Color.blue
+//                                    buttonDisable.toggle()
+//                                }
+//                            }
+//                        }
+//                        else {
+////                            self.invalidEmailHintLabel = FormUtilities.validateEmailErrorMsg(self.email)
+//                        }
+//                    }
+//                }) {
+//                    HStack {
+//                        Spacer()
+//                        ZStack {
+//                            if isLoading {
+//                                Circle()
+//                                    .trim(from: animateStrokeStart ? 1/3 : 1/9, to: animateStrokeEnd ? 2/5 : 1)
+//                                    .stroke(Color.blue, style: StrokeStyle(lineWidth: 3.0, lineCap: .round))
+//                                    .frame(width: 30, height: 30, alignment: .center)
+//                                    .rotationEffect(Angle(degrees: isRotating ? 360 : 0))
+//                                    .opacity(isLoading ? 1 : 0)
+//                                    .onAppear() {
+//                                        withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: false)) {
+//                                            isRotating.toggle()
+//                                        }
+//
+//                                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true)) {
+//                                            animateStrokeStart.toggle()
+//                                        }
+//
+//                                        withAnimation(Animation.linear(duration: 1).delay(0.5).repeatForever(autoreverses: true)) {
+//                                            animateStrokeEnd.toggle()
+//                                        }
+//                                    }
+//                            }
+//
+//                            Text(buttonLabel)
+//                                .font(.headline)
+//                                .frame(minWidth: 0, maxWidth: .infinity)
+//                                .foregroundColor(buttonColor)
+//                                .padding()
+//                                    .overlay(
+//                                        RoundedRectangle(cornerRadius: 6.0)
+//                                            .stroke(buttonColor, lineWidth: 1)
+//                                    )
+//                        }
+//                        Spacer()
+//                    }
+//                }
+//                .disabled(buttonDisable)
+//                .accessibility(label: Text("Send password reset link"))
             }
         }
         .padding(.all)
@@ -141,7 +136,7 @@ struct ForgotPasswordView: View {
             HStack {
                 Image(systemName: "chevron.left")
                     .foregroundColor(.red)
-                Text("Login")
+                Text("Sign in")
                     .foregroundColor(.red)
             }
         })
