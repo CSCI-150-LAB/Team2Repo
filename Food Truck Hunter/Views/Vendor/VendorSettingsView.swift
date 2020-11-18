@@ -9,13 +9,7 @@ func dummy() {
     // do something here
     print("inhere")
     // .frame(width: 100, height: 100)
-}
 
-func updateName() {
-    // do something here
-    
-    print("Updated name")
-    // .frame(width: 100, height: 100)
 }
 
 struct VendorSettingsView: View {
@@ -27,7 +21,6 @@ struct VendorSettingsView: View {
     
     func signOut() {
         self.successfullySignOut = authState.signOut()
-        print("Loging out a user")
     }
 
     @State private var  openStatus = false
@@ -80,7 +73,7 @@ struct VendorSettingsView: View {
                 .cornerRadius(15)
                 .padding(.trailing,15)
                 .padding(.leading, 15)
-            DefaultButton(label: "Update Name", function: updateName)
+            DefaultButton(label: "Update Name", function: dummy)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
@@ -116,22 +109,18 @@ struct VendorSettingsView: View {
             
             
             //LOGOUT
-            VStack(){
-                
-                if authState.session != nil {
-                    Text(authState.session?.displayName ?? "empty")
-                    Text(authState.session?.uid ?? "empty")
-                    Text(authState.session?.email ?? "empty")
-                }
+            VStack{
                 DefaultButton(label: "Logout", function: signOut, buttonColor: Color.white, bcolor: Color.red, lwidth: 5)
-                    .frame(width: 350, height: 100)
-                    .padding(.top,-20)
-                    .padding(.bottom,0)
-                    .padding(.leading,15)
-                    if successfullySignOut {
-                        SignInView()
-                    }
+                .frame(width: 350, height: 100)
+                .padding(.top,-20)
+                .padding(.bottom,0)
+                .padding(.leading,15)
                 
+                
+                if successfullySignOut {
+                    SignInView()
+                }
+                    
             }
             Spacer()
         }

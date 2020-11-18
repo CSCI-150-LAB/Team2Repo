@@ -8,21 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		0314C793EF6D62C35ACAF794 /* Pods_Food_Truck_Hunter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15E1A7F57BAE73A3F13656A /* Pods_Food_Truck_Hunter.framework */; };
-		33B750AB252843FB005C3ADA /* TempLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B750AA252843FB005C3ADA /* TempLandingView.swift */; };
+		33B750AB252843FB005C3ADA /* UserLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B750AA252843FB005C3ADA /* UserLandingView.swift */; };
 		33D5147B253F403300D0442E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D5147A253F403300D0442E /* MapView.swift */; };
+		5B089B29254F82DB00ADAAC6 /* VendorLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */; };
+		5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */; };
+		5B089B742554CA4700ADAAC6 /* VendorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */; };
 		79FF44BFF41139BE939D46C6 /* Pods_Food_Truck_HunterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */; };
 		910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910667132534CE9700F1BF62 /* AccountSettingView.swift */; };
+		9152A7712555E1AA0059BFC0 /* VendorSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */; };
+		9152A7862555ECA30059BFC0 /* CustomerSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */; };
+		9153D0C0254B917300750530 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9153D0BF254B917300750530 /* AuthenticationState.swift */; };
+		9153D0C5254BA9E100750530 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9153D0C4254BA9E100750530 /* MainView.swift */; };
+		9153D0CA254BB9F000750530 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9153D0C9254BB9F000750530 /* UserModel.swift */; };
 		91557F422523E77300427422 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F412523E77300427422 /* ForgotPasswordView.swift */; };
-		91557F4A2523E7BF00427422 /* CreateVendorAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F492523E7BF00427422 /* CreateVendorAccountView.swift */; };
-		91557F4F2523E7E000427422 /* CreateUserAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F4E2523E7E000427422 /* CreateUserAccountView.swift */; };
+		91557F4F2523E7E000427422 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F4E2523E7E000427422 /* SignUpView.swift */; };
 		91557F552523E99A00427422 /* FormUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F542523E99A00427422 /* FormUtilities.swift */; };
 		91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91557F5C2523E9EB00427422 /* UsersViewModel.swift */; };
-		915633EA2539FE9B00F6ED01 /* CreateUserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915633E92539FE9B00F6ED01 /* CreateUserAccountViewModel.swift */; };
 		915633EF253A008A00F6ED01 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915633EE253A008A00F6ED01 /* FormModel.swift */; };
 		91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91597074253017B600DF1EB2 /* DefaultButtonView.swift */; };
+		918D45DA2554C7EB00790EAC /* TruckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918D45D92554C7EB00790EAC /* TruckModel.swift */; };
 		91B77A4125219D2800713501 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A4025219D2800713501 /* AppDelegate.swift */; };
 		91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A4225219D2800713501 /* SceneDelegate.swift */; };
-		91B77A4525219D2800713501 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A4425219D2800713501 /* ContentView.swift */; };
 		91B77A4825219D2800713501 /* Food_Truck_Hunter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A4625219D2800713501 /* Food_Truck_Hunter.xcdatamodeld */; };
 		91B77A4A25219D2900713501 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91B77A4925219D2900713501 /* Assets.xcassets */; };
 		91B77A4D25219D2900713501 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91B77A4C25219D2900713501 /* Preview Assets.xcassets */; };
@@ -30,11 +36,21 @@
 		91B77A5B25219D2900713501 /* Food_Truck_HunterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A5A25219D2900713501 /* Food_Truck_HunterTests.swift */; };
 		91B77A6625219D2900713501 /* Food_Truck_HunterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B77A6525219D2900713501 /* Food_Truck_HunterUITests.swift */; };
 		91B77A8925219D6D00713501 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91B77A8825219D6D00713501 /* GoogleService-Info.plist */; };
-		91C807E3252D089400A1A02E /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C807E2252D089400A1A02E /* UsersModel.swift */; };
-		91DB46CC2539099A00987893 /* VendorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46CB2539099A00987893 /* VendorsModel.swift */; };
-		91DB46D12539424F00987893 /* CallBacksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46D02539424F00987893 /* CallBacksModel.swift */; };
+		91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC042253F2E1E00C4F96B /* RadioButtonView.swift */; };
+		91CBC049253F38F900C4F96B /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC048253F38F900C4F96B /* HorizontalLineView.swift */; };
+		91CBC051253F3EDE00C4F96B /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC050253F3EDE00C4F96B /* RadioButtonGroup.swift */; };
+		91CBC059253F5ABC00C4F96B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */; };
+		91CBC063253F6A1400C4F96B /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC062253F6A1400C4F96B /* General.swift */; };
+		91CBC06E253F6BE700C4F96B /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */; };
+		91DB46CC2539099A00987893 /* VendorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46CB2539099A00987893 /* VendorModel.swift */; };
 		91DB46F5253956FD00987893 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46F4253956FD00987893 /* LogInModel.swift */; };
-		91DB46FA2539593700987893 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46F92539593700987893 /* LoginViewModel.swift */; };
+		91DB46FA2539593700987893 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46F92539593700987893 /* SignInViewModel.swift */; };
+		91E78E1E255315CF004BB965 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E78E1D255315CF004BB965 /* SignInView.swift */; };
+		91E78E262553BD8A004BB965 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E78E252553BD8A004BB965 /* Unwrap.swift */; };
+		91E78E302553CF57004BB965 /* CustomerVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E78E2F2553CF57004BB965 /* CustomerVendorView.swift */; };
+		91EE99082551282F00BFCCAB /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EE99072551282F00BFCCAB /* FavoriteListView.swift */; };
+		91EE990D25512E2A00BFCCAB /* FavoriteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */; };
+		91EE9920255135AE00BFCCAB /* FavoriteVendorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EE991F255135AE00BFCCAB /* FavoriteVendorsModel.swift */; };
 		C33886F26E356D41DFC334F5 /* Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC30453FF150886F10BEEC93 /* Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,24 +77,30 @@
 		10F234B7CC98E4DD441D2AE2 /* Pods-Food Truck Hunter-Food Truck HunterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter-Food Truck HunterUITests.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter-Food Truck HunterUITests/Pods-Food Truck Hunter-Food Truck HunterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1D5C851450DFF31BB398D946 /* Pods-Food Truck Hunter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.debug.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.debug.xcconfig"; sourceTree = "<group>"; };
 		20ACA374320BA51F4EF8E331 /* Pods-Food Truck HunterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck HunterTests.release.xcconfig"; path = "Target Support Files/Pods-Food Truck HunterTests/Pods-Food Truck HunterTests.release.xcconfig"; sourceTree = "<group>"; };
-		33B750AA252843FB005C3ADA /* TempLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempLandingView.swift; sourceTree = "<group>"; };
+		33B750AA252843FB005C3ADA /* UserLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLandingView.swift; sourceTree = "<group>"; };
 		33D5147A253F403300D0442E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_HunterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAA6BF36C79D47506E00ABC /* Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter-Food Truck HunterTests/Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLandingView.swift; sourceTree = "<group>"; };
+		5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSettingsView.swift; sourceTree = "<group>"; };
+		5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorMenuView.swift; sourceTree = "<group>"; };
 		7745A67C172EECC6623853F1 /* Pods-Food Truck Hunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.release.xcconfig"; sourceTree = "<group>"; };
 		910667132534CE9700F1BF62 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
+		9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSignUpView.swift; sourceTree = "<group>"; };
+		9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSignUpView.swift; sourceTree = "<group>"; };
+		9153D0BF254B917300750530 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
+		9153D0C4254BA9E100750530 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		9153D0C9254BB9F000750530 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		91557F412523E77300427422 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		91557F492523E7BF00427422 /* CreateVendorAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVendorAccountView.swift; sourceTree = "<group>"; };
-		91557F4E2523E7E000427422 /* CreateUserAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserAccountView.swift; sourceTree = "<group>"; };
+		91557F4E2523E7E000427422 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		91557F542523E99A00427422 /* FormUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormUtilities.swift; sourceTree = "<group>"; };
 		91557F5C2523E9EB00427422 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
-		915633E92539FE9B00F6ED01 /* CreateUserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserAccountViewModel.swift; sourceTree = "<group>"; };
 		915633EE253A008A00F6ED01 /* FormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		91597074253017B600DF1EB2 /* DefaultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonView.swift; sourceTree = "<group>"; };
+		918D45D92554C7EB00790EAC /* TruckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckModel.swift; sourceTree = "<group>"; };
 		91B77A3D25219D2800713501 /* Food Truck Hunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Truck Hunter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B77A4025219D2800713501 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91B77A4225219D2800713501 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		91B77A4425219D2800713501 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		91B77A4725219D2800713501 /* Food_Truck_Hunter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Food_Truck_Hunter.xcdatamodel; sourceTree = "<group>"; };
 		91B77A4925219D2900713501 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91B77A4C25219D2900713501 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -91,11 +113,21 @@
 		91B77A6525219D2900713501 /* Food_Truck_HunterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_Truck_HunterUITests.swift; sourceTree = "<group>"; };
 		91B77A6725219D2900713501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91B77A8825219D6D00713501 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		91C807E2252D089400A1A02E /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
-		91DB46CB2539099A00987893 /* VendorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorsModel.swift; sourceTree = "<group>"; };
-		91DB46D02539424F00987893 /* CallBacksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallBacksModel.swift; sourceTree = "<group>"; };
+		91CBC042253F2E1E00C4F96B /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
+		91CBC048253F38F900C4F96B /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
+		91CBC050253F3EDE00C4F96B /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
+		91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		91CBC062253F6A1400C4F96B /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		91DB46CB2539099A00987893 /* VendorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorModel.swift; sourceTree = "<group>"; };
 		91DB46F4253956FD00987893 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
-		91DB46F92539593700987893 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		91DB46F92539593700987893 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		91E78E1D255315CF004BB965 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		91E78E252553BD8A004BB965 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
+		91E78E2F2553CF57004BB965 /* CustomerVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerVendorView.swift; sourceTree = "<group>"; };
+		91EE99072551282F00BFCCAB /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
+		91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRow.swift; sourceTree = "<group>"; };
+		91EE991F255135AE00BFCCAB /* FavoriteVendorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVendorsModel.swift; sourceTree = "<group>"; };
 		AC30453FF150886F10BEEC93 /* Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15E1A7F57BAE73A3F13656A /* Pods_Food_Truck_Hunter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_Hunter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACF0D5299F0EEFBACD3253E /* Pods-Food Truck Hunter-Food Truck HunterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter-Food Truck HunterTests.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter-Food Truck HunterTests/Pods-Food Truck Hunter-Food Truck HunterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,11 +189,12 @@
 		91557F3D2523E71800427422 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				91C807E2252D089400A1A02E /* UsersModel.swift */,
-				91DB46CB2539099A00987893 /* VendorsModel.swift */,
-				91DB46D02539424F00987893 /* CallBacksModel.swift */,
-				91DB46F4253956FD00987893 /* LogInModel.swift */,
+				91EE991F255135AE00BFCCAB /* FavoriteVendorsModel.swift */,
 				915633EE253A008A00F6ED01 /* FormModel.swift */,
+				91DB46F4253956FD00987893 /* LogInModel.swift */,
+				9153D0C9254BB9F000750530 /* UserModel.swift */,
+				91DB46CB2539099A00987893 /* VendorModel.swift */,
+				918D45D92554C7EB00790EAC /* TruckModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,13 +202,17 @@
 		91557F3E2523E72500427422 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9159705B252FF77700DF1EB2 /* Components */,
+				9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */,
+				9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */,
 				91557F412523E77300427422 /* ForgotPasswordView.swift */,
-				91557F492523E7BF00427422 /* CreateVendorAccountView.swift */,
-				91557F4E2523E7E000427422 /* CreateUserAccountView.swift */,
-				33B750AA252843FB005C3ADA /* TempLandingView.swift */,
 				33D5147A253F403300D0442E /* MapView.swift */,
-				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
+				91E78E1D255315CF004BB965 /* SignInView.swift */,
+				91557F4E2523E7E000427422 /* SignUpView.swift */,
+				9159705B252FF77700DF1EB2 /* Components */,
+				91CBC061253F69D200C4F96B /* Extensions */,
+				91E78E372553D1DE004BB965 /* Helpers */,
+				91E78E2A2553CE62004BB965 /* Customer */,
+				91E78E2B2553CE8D004BB965 /* Vendor */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,9 +220,10 @@
 		91557F3F2523E72C00427422 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */,
+				91DB46F92539593700987893 /* SignInViewModel.swift */,
+				91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */,
 				91557F5C2523E9EB00427422 /* UsersViewModel.swift */,
-				91DB46F92539593700987893 /* LoginViewModel.swift */,
-				915633E92539FE9B00F6ED01 /* CreateUserAccountViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -193,6 +231,7 @@
 		91557F532523E97800427422 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9153D0BF254B917300750530 /* AuthenticationState.swift */,
 				91557F542523E99A00427422 /* FormUtilities.swift */,
 			);
 			path = Helpers;
@@ -202,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				915970722530153700DF1EB2 /* Buttons */,
+				91CBC047253F38CF00C4F96B /* Line */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				91597074253017B600DF1EB2 /* DefaultButtonView.swift */,
+				91CBC042253F2E1E00C4F96B /* RadioButtonView.swift */,
+				91CBC050253F3EDE00C4F96B /* RadioButtonGroup.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -246,7 +288,7 @@
 				91B77A8825219D6D00713501 /* GoogleService-Info.plist */,
 				91B77A4025219D2800713501 /* AppDelegate.swift */,
 				91B77A4225219D2800713501 /* SceneDelegate.swift */,
-				91B77A4425219D2800713501 /* ContentView.swift */,
+				9153D0C4254BA9E100750530 /* MainView.swift */,
 				91B77A4925219D2900713501 /* Assets.xcassets */,
 				91B77A4E25219D2900713501 /* LaunchScreen.storyboard */,
 				91B77A5125219D2900713501 /* Info.plist */,
@@ -280,6 +322,52 @@
 				91B77A6725219D2900713501 /* Info.plist */,
 			);
 			path = "Food Truck HunterUITests";
+			sourceTree = "<group>";
+		};
+		91CBC047253F38CF00C4F96B /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				91CBC048253F38F900C4F96B /* HorizontalLineView.swift */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		91CBC061253F69D200C4F96B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				91CBC062253F6A1400C4F96B /* General.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		91E78E2A2553CE62004BB965 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
+				91E78E2F2553CF57004BB965 /* CustomerVendorView.swift */,
+				91EE99072551282F00BFCCAB /* FavoriteListView.swift */,
+				91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */,
+				33B750AA252843FB005C3ADA /* UserLandingView.swift */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		91E78E2B2553CE8D004BB965 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */,
+				5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */,
+				5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		91E78E372553D1DE004BB965 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				91E78E252553BD8A004BB965 /* Unwrap.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,23 +645,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91557F4F2523E7E000427422 /* CreateUserAccountView.swift in Sources */,
+				91557F4F2523E7E000427422 /* SignUpView.swift in Sources */,
+				918D45DA2554C7EB00790EAC /* TruckModel.swift in Sources */,
+				5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */,
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
-				915633EA2539FE9B00F6ED01 /* CreateUserAccountViewModel.swift in Sources */,
 				915633EF253A008A00F6ED01 /* FormModel.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,
-				91B77A4525219D2800713501 /* ContentView.swift in Sources */,
-				91C807E3252D089400A1A02E /* UsersModel.swift in Sources */,
+				9152A7862555ECA30059BFC0 /* CustomerSignUpView.swift in Sources */,
 				91DB46F5253956FD00987893 /* LogInModel.swift in Sources */,
-				33B750AB252843FB005C3ADA /* TempLandingView.swift in Sources */,
+				33B750AB252843FB005C3ADA /* UserLandingView.swift in Sources */,
 				910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */,
-				91DB46D12539424F00987893 /* CallBacksModel.swift in Sources */,
 				91557F422523E77300427422 /* ForgotPasswordView.swift in Sources */,
-				91DB46FA2539593700987893 /* LoginViewModel.swift in Sources */,
-				91557F4A2523E7BF00427422 /* CreateVendorAccountView.swift in Sources */,
+				91DB46FA2539593700987893 /* SignInViewModel.swift in Sources */,
+				91CBC063253F6A1400C4F96B /* General.swift in Sources */,
+				91CBC051253F3EDE00C4F96B /* RadioButtonGroup.swift in Sources */,
+				5B089B742554CA4700ADAAC6 /* VendorMenuView.swift in Sources */,
+				9153D0C5254BA9E100750530 /* MainView.swift in Sources */,
+				9153D0C0254B917300750530 /* AuthenticationState.swift in Sources */,
+				91E78E302553CF57004BB965 /* CustomerVendorView.swift in Sources */,
+				91EE9920255135AE00BFCCAB /* FavoriteVendorsModel.swift in Sources */,
+				91E78E262553BD8A004BB965 /* Unwrap.swift in Sources */,
+				91EE990D25512E2A00BFCCAB /* FavoriteRow.swift in Sources */,
+				91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */,
 				91557F552523E99A00427422 /* FormUtilities.swift in Sources */,
 				91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */,
-				91DB46CC2539099A00987893 /* VendorsModel.swift in Sources */,
+				9153D0CA254BB9F000750530 /* UserModel.swift in Sources */,
+				9152A7712555E1AA0059BFC0 /* VendorSignUpView.swift in Sources */,
+				91CBC049253F38F900C4F96B /* HorizontalLineView.swift in Sources */,
+				91CBC059253F5ABC00C4F96B /* SignUpViewModel.swift in Sources */,
+				91CBC06E253F6BE700C4F96B /* ForgotPasswordViewModel.swift in Sources */,
+				5B089B29254F82DB00ADAAC6 /* VendorLandingView.swift in Sources */,
+				91E78E1E255315CF004BB965 /* SignInView.swift in Sources */,
+				91DB46CC2539099A00987893 /* VendorModel.swift in Sources */,
+				91EE99082551282F00BFCCAB /* FavoriteListView.swift in Sources */,
 				33D5147B253F403300D0442E /* MapView.swift in Sources */,
 				91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */,
 				91B77A4825219D2800713501 /* Food_Truck_Hunter.xcdatamodeld in Sources */,

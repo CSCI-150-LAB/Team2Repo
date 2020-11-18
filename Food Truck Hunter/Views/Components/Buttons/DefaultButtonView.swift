@@ -6,6 +6,8 @@ struct DefaultButton: View {
     let label : String
     let function : () -> Void
     var buttonColor : Color = Color.red
+    var bcolor : Color = Color.clear
+    var lwidth : Int = 1
 
     // Used for animating loading circle
 //    @State private var isCompleted : Bool = false
@@ -13,12 +15,12 @@ struct DefaultButton: View {
 //    @State private var isRotating : Bool = false
 //    @State private var animateStrokeStart : Bool = false
 //    @State private var animateStrokeEnd : Bool = true
-    
   //  @State private var buttonColor : Color = Color.blue
 //    @State private var isButtonDisabled : Bool = false
     
     var body: some View {
         Button(action: {
+            self.hideKeyboard()
             self.function()
         }) {
             HStack() {
@@ -50,15 +52,18 @@ struct DefaultButton: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .foregroundColor(buttonColor)
                         .padding()
+                        .cornerRadius(10.0)
+                        .background(bcolor)
                         .overlay(
                             RoundedRectangle(cornerRadius: 6.0)
-                                .stroke(buttonColor, lineWidth: 1)
+                                .stroke(buttonColor, lineWidth: CGFloat(lwidth))
+                                
                         )
                 }
                 Spacer()
             }
         }
-        .padding(.bottom, 8)
+        .padding(.bottom, 20)
         .padding(.horizontal, 44)
         .accessibility(label: Text("\(label) button"))
 //        .disabled(isButtonDisabled)
@@ -75,10 +80,5 @@ struct DefaultButton: View {
 //    public func makeBody(configuration: Self.Configuration) -> some View {
 //        return configuration.label
 //
-//    }
-//}
-//struct DefaultButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DefaultButton(lable: <#T##String#>, function: <#T##() -> Void#>, returnValue: <#T##Bool#>)
 //    }
 //}

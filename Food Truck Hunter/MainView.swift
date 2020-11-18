@@ -10,13 +10,19 @@ struct MainView: View {
     var body: some View {
       Group {
         if (authState.session != nil) {
-            AnyView(VendorLandingView())
+            switch authState.session?.type {
+            case "vendor":
+                AnyView(VendorLandingView()) // used to see/modify vendor view
+            case "customer":
+                AnyView(LandingView())
+            default:
+                SignInView()
+            }
         } else {
-          // AnyView(VendorLandingView()) // used to see/modify vendor view
            AnyView(SignInView()) // use this for normal functionality
-          //  AnyView(CustomerVendorView()) // use to test truck page
         }
-      }.onAppear(perform: getUser)  }
+      }.onAppear(perform: getUser)
+    }
 }
 
 struct MainView_Previews: PreviewProvider {

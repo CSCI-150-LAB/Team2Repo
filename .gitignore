@@ -1,3 +1,5 @@
-
+ 
 .DS_Store
-Food Truck Hunter.xcworkspace/xcuserdata/martin.xcuserdatad/UserInterfaceState.xcuserstate
+UserInterfaceState.xcuserstate
+*.xcuserdatad/UserInterfaceState.xcuserstate
+*.log

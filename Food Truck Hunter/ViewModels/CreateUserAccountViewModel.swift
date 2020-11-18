@@ -4,7 +4,7 @@ import FirebaseFirestore
 import GoogleSignIn
 import NanoID
 
-class CreateUserAccountViewModel : ObservableObject {
+class CreateAccountViewModel : ObservableObject {
     static let uID = ID()
     static func generateID() -> String {
         return uID.generate(alphabet: .numeric, size: 8)
@@ -12,17 +12,20 @@ class CreateUserAccountViewModel : ObservableObject {
     
     @Published private var createUserAccountModel : FormModel
     @Published private var isCompleted : Bool = false
+    private let db = Firestore.firestore()
+    private let dispatch = DispatchGroup()
+    
     private let userID : String
     public var firstName : String = ""
     public var lastName : String = ""
     public var email : String = ""
     public var password : String = ""
     public var retypedPassword : String = ""
-    public var type : String = "user"
+    public var type : String = "User"
     
-    init(createUserAccountModel : FormModel, firstName : String = "", lastName : String = "", email : String = "", password : String = "", retypedPassword : String = "", type : String = "user") {
+    init(createUserAccountModel : FormModel, firstName : String = "", lastName : String = "", email : String = "", password : String = "", retypedPassword : String = "", type : String = "User") {
         self.createUserAccountModel = createUserAccountModel
-        self.userID = CreateUserAccountViewModel.generateID()
+        self.userID = CreateAccountViewModel.generateID()
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -53,6 +56,10 @@ class CreateUserAccountViewModel : ObservableObject {
     
     func getRetypedPassword() -> String {
         return self.retypedPassword
+    }
+    
+    func getType() -> String {
+        return self.type
     }
     
     func getEmailHintLabel() -> String {
@@ -92,6 +99,11 @@ class CreateUserAccountViewModel : ObservableObject {
         self.createUserAccountModel.retypedPassword = retypedPassword
     }
     
+    func setType(_ accountType : String) {
+        self.type = accountType
+        self.createUserAccountModel.type = accountType
+    }
+    
     func setEmailHintLabel(_ message : String) {
         self.createUserAccountModel.emailHintLabel = message
     }
@@ -104,14 +116,7 @@ class CreateUserAccountViewModel : ObservableObject {
         self.createUserAccountModel.passwordRetypedHintLabel = message
     }
     
-    func buttonPressed() {
-        
-    }
-    
-    func createAccount() {
-        let db = Firestore.firestore()
-        let dispatch = DispatchGroup()
-        
+    func createVendorAccount() {
         if (self.validateInputFields()) {
 
             Auth.auth().createUser(withEmail: self.getEmail(), password: self.getPassword()) { authResult, error in
@@ -123,9 +128,9 @@ class CreateUserAccountViewModel : ObservableObject {
                 }
 
                 // Successfully created account
-                dispatch.enter()
+                self.dispatch.enter()
                 var ref: DocumentReference? = nil
-                ref = db.collection("Users").addDocument(data: [
+                ref = self.db.collection("Trucks").addDocument(data: [
                     "id" : Int(self.getID())!,
                     "email" : self.getEmail().lowercased(),
                     "favorites": [],
@@ -147,7 +152,53 @@ class CreateUserAccountViewModel : ObservableObject {
                     }
                 }
                 self.resetForm()
-                dispatch.leave()
+                self.dispatch.leave()
+                self.isCompleted.toggle()
+            }
+//            successfulAccountCreate
+        }
+    }
+    
+    func createUserAccount() {
+//        let db = Firestore.firestore()
+//        let dispatch = DispatchGroup()
+        
+        if (self.validateInputFields()) {
+
+            Auth.auth().createUser(withEmail: self.getEmail(), password: self.getPassword()) { authResult, error in
+                // An error occurred
+                guard error == nil else {
+                    self.setEmailHintLabel(String(describing: error!.localizedDescription))
+                    print("Unsuccessfully created an account:\n\(String(describing: error?.localizedDescription))")
+                    return
+                }
+
+                // Successfully created account
+                self.dispatch.enter()
+                var ref: DocumentReference? = nil
+                ref = self.db.collection("Users").addDocument(data: [
+                    "id" : Int(self.getID())!,
+                    "email" : self.getEmail().lowercased(),
+                    "favorites": [],
+                    "first_name" : self.getFirstName().lowercased(),
+                    "last_name" : self.getLastName().lowercased(),
+                    "phone": "",
+                    "profile_img": "",
+                    "review_count": 0,
+                    "status": "basic",
+                    "type" : self.type
+                ]) {
+                    error in
+                    if let error = error {
+                        print("Something happened: \(error)")
+                    }
+                    else {
+                        self.isCompleted = true
+                        print("Added document \(ref!.documentID)")
+                    }
+                }
+                self.resetForm()
+                self.dispatch.leave()
                 self.isCompleted.toggle()
             }
 //            successfulAccountCreate
