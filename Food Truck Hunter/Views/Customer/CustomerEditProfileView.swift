@@ -1,31 +1,40 @@
 import SwiftUI
+import FirebaseFirestore
 
 struct CustomerEditProfileView: View {
     @State private var fName: String = ""
     @State private var lName: String = ""
     @State private var Phonenum: String = ""
+    @EnvironmentObject var authState : AuthenticationState
+    
+    let db = Firestore.firestore()
     
     func updateLastName()
     {
-        if(lName != ""){
-        print("u l n")
+        if(lName != ""){ // if textfield isn't empty
+            if let uid = authState.session?.uid{
+                db.collection("Users").document(uid).setData(["last_name": lName],merge:true)
+            }
         }
     }
     
     func updateFirstName()
     {
-        if(fName != ""){
-        print("u f n")
+        if(fName != ""){// if textfield isn't empty
+            if let uid = authState.session?.uid{
+                db.collection("Users").document(uid).setData(["first_name": fName],merge:true)
+                    // _ = navigationController?.popViewController(animated: true)
+            }
         }
-
     }
     
     func updatePhone()
     {
-        if(Phonenum != ""){
-        print("u num")
+        if(Phonenum != ""){ // if textfield isn't empty
+            if let uid = authState.session?.uid{
+                db.collection("Users").document(uid).setData(["phone_number": Phonenum],merge:true)
+            }
         }
-
     }
     
     func updatePic()
