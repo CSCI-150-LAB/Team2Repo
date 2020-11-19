@@ -1,14 +1,7 @@
 import SwiftUI
 
 struct VendorMenuView: View {
-<<<<<<< Updated upstream
-    var body: some View {
-        ScrollView
-        {
-            VStack(alignment: .center){
-            Text("menu goes here")
-                .padding(.top,35)
-=======
+
     var foodM = testData
     
     @ObservedObject private var viewModel = MenuViewModel()
@@ -43,15 +36,13 @@ struct VendorMenuView: View {
             .background(Color(UIColor(red: 0.80, green: 0.87, blue: 0.89, alpha: 1.00)))
             .onAppear() {
                 self.viewModel.fetchData()
->>>>>>> Stashed changes
             }
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(Color(UIColor(red: 0.80, green: 0.87, blue: 0.89, alpha: 1.00)))
-        .navigationBarHidden(true)
+        
+            .navigationBarHidden(true)
+    
+
     }
 }
-
 struct VendorMenuView_Previews: PreviewProvider {
     static var previews: some View {
         VendorMenuView()
