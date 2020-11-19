@@ -8,6 +8,7 @@ struct DefaultButton: View {
     var buttonColor : Color = Color.red
     var bcolor : Color = Color.clear
     var lwidth : Int = 1
+    var pvalue: CGFloat = 20
 
     // Used for animating loading circle
 //    @State private var isCompleted : Bool = false
@@ -51,7 +52,7 @@ struct DefaultButton: View {
                         .font(.headline)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .foregroundColor(buttonColor)
-                        .padding()
+                        .padding(.all,pvalue)
                         .cornerRadius(10.0)
                         .background(bcolor)
                         .overlay(

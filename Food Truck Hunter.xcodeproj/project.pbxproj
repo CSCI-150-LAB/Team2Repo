@@ -15,6 +15,7 @@
 		5B089B29254F82DB00ADAAC6 /* VendorLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */; };
 		5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */; };
 		5B089B742554CA4700ADAAC6 /* VendorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */; };
+		5B089B8F2560DEF100ADAAC6 /* CustomerEditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B8E2560DEF000ADAAC6 /* CustomerEditProfileView.swift */; };
 		79FF44BFF41139BE939D46C6 /* Pods_Food_Truck_HunterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */; };
 		910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910667132534CE9700F1BF62 /* AccountSettingView.swift */; };
 		912314FA2561DEFF001D2EB8 /* TruckPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912314F92561DEFF001D2EB8 /* TruckPhoneNumberView.swift */; };
@@ -93,6 +94,7 @@
 		5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLandingView.swift; sourceTree = "<group>"; };
 		5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSettingsView.swift; sourceTree = "<group>"; };
 		5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorMenuView.swift; sourceTree = "<group>"; };
+		5B089B8E2560DEF000ADAAC6 /* CustomerEditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditProfileView.swift; sourceTree = "<group>"; };
 		7745A67C172EECC6623853F1 /* Pods-Food Truck Hunter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter/Pods-Food Truck Hunter.release.xcconfig"; sourceTree = "<group>"; };
 		910667132534CE9700F1BF62 /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		912314F92561DEFF001D2EB8 /* TruckPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckPhoneNumberView.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
+				5B089B8E2560DEF000ADAAC6 /* CustomerEditProfileView.swift */,
 				91E78E2F2553CF57004BB965 /* CustomerVendorView.swift */,
 				91EE99072551282F00BFCCAB /* FavoriteListView.swift */,
 				91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */,
@@ -709,6 +712,7 @@
 				91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */,
 				33F4E9F82562EE6500FF271F /* AnnotationMenuView.swift in Sources */,
 				91B77A4825219D2800713501 /* Food_Truck_Hunter.xcdatamodeld in Sources */,
+				5B089B8F2560DEF100ADAAC6 /* CustomerEditProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
