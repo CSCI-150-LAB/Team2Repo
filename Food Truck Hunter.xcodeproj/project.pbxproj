@@ -52,6 +52,13 @@
 		91EE990D25512E2A00BFCCAB /* FavoriteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */; };
 		91EE9920255135AE00BFCCAB /* FavoriteVendorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EE991F255135AE00BFCCAB /* FavoriteVendorsModel.swift */; };
 		C33886F26E356D41DFC334F5 /* Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC30453FF150886F10BEEC93 /* Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework */; };
+<<<<<<< Updated upstream
+=======
+		D9C88A33255FA50A00BE0A68 /* FoodMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C88A32255FA50A00BE0A68 /* FoodMenu.swift */; };
+		D9C88A38255FAEDC00BE0A68 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C88A37255FAEDC00BE0A68 /* MenuViewModel.swift */; };
+		D9E425F225663BEA00EB0797 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E425F125663BEA00EB0797 /* ItemViewModel.swift */; };
+		D9E425FF25663DA000EB0797 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E425FE25663DA000EB0797 /* ItemEditView.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +136,13 @@
 		91EE990C25512E2A00BFCCAB /* FavoriteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRow.swift; sourceTree = "<group>"; };
 		91EE991F255135AE00BFCCAB /* FavoriteVendorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVendorsModel.swift; sourceTree = "<group>"; };
 		AC30453FF150886F10BEEC93 /* Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_Hunter_Food_Truck_HunterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< Updated upstream
+=======
+		D9C88A32255FA50A00BE0A68 /* FoodMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenu.swift; sourceTree = "<group>"; };
+		D9C88A37255FAEDC00BE0A68 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		D9E425F125663BEA00EB0797 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		D9E425FE25663DA000EB0797 /* ItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		E15E1A7F57BAE73A3F13656A /* Pods_Food_Truck_Hunter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_Hunter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACF0D5299F0EEFBACD3253E /* Pods-Food Truck Hunter-Food Truck HunterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter-Food Truck HunterTests.release.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter-Food Truck HunterTests/Pods-Food Truck Hunter-Food Truck HunterTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +235,11 @@
 			isa = PBXGroup;
 			children = (
 				91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */,
+<<<<<<< Updated upstream
+=======
+				D9C88A37255FAEDC00BE0A68 /* MenuViewModel.swift */,
+				D9E425F125663BEA00EB0797 /* ItemViewModel.swift */,
+>>>>>>> Stashed changes
 				91DB46F92539593700987893 /* SignInViewModel.swift */,
 				91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */,
 				91557F5C2523E9EB00427422 /* UsersViewModel.swift */,
@@ -358,6 +377,7 @@
 				5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */,
 				5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */,
 				5B089B732554CA4700ADAAC6 /* VendorMenuView.swift */,
+				D9E425FE25663DA000EB0797 /* ItemEditView.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -669,6 +689,7 @@
 				91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */,
 				91557F552523E99A00427422 /* FormUtilities.swift in Sources */,
 				91557F5D2523E9EB00427422 /* UsersViewModel.swift in Sources */,
+				D9E425F225663BEA00EB0797 /* ItemViewModel.swift in Sources */,
 				9153D0CA254BB9F000750530 /* UserModel.swift in Sources */,
 				9152A7712555E1AA0059BFC0 /* VendorSignUpView.swift in Sources */,
 				91CBC049253F38F900C4F96B /* HorizontalLineView.swift in Sources */,
@@ -679,6 +700,7 @@
 				91DB46CC2539099A00987893 /* VendorModel.swift in Sources */,
 				91EE99082551282F00BFCCAB /* FavoriteListView.swift in Sources */,
 				33D5147B253F403300D0442E /* MapView.swift in Sources */,
+				D9E425FF25663DA000EB0797 /* ItemEditView.swift in Sources */,
 				91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */,
 				91B77A4825219D2800713501 /* Food_Truck_Hunter.xcdatamodeld in Sources */,
 			);
