@@ -10,6 +10,7 @@ import MapKit
 import FirebaseFirestore
 
 struct Map: UIViewRepresentable {
+    @Binding var centerCoordinate: CLLocationCoordinate2D
     var annotations: [TruckPin]
     @Binding var annotationTapAction: Bool
     @Binding var selectedPin: TruckPin?
@@ -22,14 +23,16 @@ struct Map: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
-//        mapView.showsUserLocation = true
-//        mapView.userTrackingMode = .follow
+        setupManager()
+        let mapView = MKMapView(frame: UIScreen.main.bounds) // 
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
         mapView.delegate = context.coordinator
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
+        
         if annotations.count != view.annotations.count {
                 view.removeAnnotations(view.annotations)
                 view.addAnnotations(annotations)
@@ -49,16 +52,20 @@ struct Map: UIViewRepresentable {
         }
         
         
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            var view = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
-            
-            if view == nil {
-                view = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: "reuseIdentifier")
-            }
-
-            view?.annotation = annotation
-            view?.displayPriority = .required
-            return view
+//        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//            var view = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
+//
+//            if view == nil {
+//                view = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: "reuseIdentifier")
+//            }
+//
+//            view?.annotation = annotation
+//            view?.displayPriority = .required
+//            return view
+//        }
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+            parent.centerCoordinate = mapView.centerCoordinate
+            print("Parent changed")
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -66,6 +73,8 @@ struct Map: UIViewRepresentable {
                 return
             }
             
+            mapView.showsUserLocation = false
+            mapView.centerCoordinate = pin.coordinate
             print("User selected annotation with title: \(pin.title ?? "unknown")")
             parent.annotationTapAction.toggle()
             parent.selectedPin = pin
@@ -78,6 +87,7 @@ struct Map: UIViewRepresentable {
             print("User deselected annotation with title: \(pin.title ?? "unknown")")
             parent.annotationTapAction.toggle()
             parent.selectedPin = nil
+            mapView.showsUserLocation = true
         }
         
         
@@ -87,7 +97,7 @@ struct Map: UIViewRepresentable {
 
 
 class TruckPin: NSObject, MKAnnotation {
-
+    
     let coordinate: CLLocationCoordinate2D
     let title: String?
     let subtitle: String?
