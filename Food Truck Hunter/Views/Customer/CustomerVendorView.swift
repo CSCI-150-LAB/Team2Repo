@@ -27,6 +27,7 @@ struct CustomerVendorView: View {
         ScrollView() {
             if (self.viewModel.isDoneLoading) {
 //                VStack(alignment:.center){
+//    
 //                    Text(self.viewModel.truck.truck_name.capitalized)
 //                        .fontWeight(.bold)
 //                        .font(.system(size: 25))

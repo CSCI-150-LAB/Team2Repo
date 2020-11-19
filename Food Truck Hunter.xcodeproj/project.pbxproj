@@ -10,7 +10,8 @@
 		0314C793EF6D62C35ACAF794 /* Pods_Food_Truck_Hunter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15E1A7F57BAE73A3F13656A /* Pods_Food_Truck_Hunter.framework */; };
 		33911DBE255CB514000F0E00 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33911DBD255CB513000F0E00 /* DrawerView.swift */; };
 		33B750AB252843FB005C3ADA /* UserLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B750AA252843FB005C3ADA /* UserLandingView.swift */; };
-		33D5147B253F403300D0442E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D5147A253F403300D0442E /* MapView.swift */; };
+		33D5147B253F403300D0442E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D5147A253F403300D0442E /* Map.swift */; };
+		33E5EF922565CC4800BEFD00 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5EF912565CC4800BEFD00 /* MapView.swift */; };
 		33F4E9F82562EE6500FF271F /* AnnotationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F4E9F72562EE6500FF271F /* AnnotationMenuView.swift */; };
 		5B089B29254F82DB00ADAAC6 /* VendorLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B28254F82DB00ADAAC6 /* VendorLandingView.swift */; };
 		5B089B6F2554C9F900ADAAC6 /* VendorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B089B6E2554C9F900ADAAC6 /* VendorSettingsView.swift */; };
@@ -87,7 +88,8 @@
 		20ACA374320BA51F4EF8E331 /* Pods-Food Truck HunterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck HunterTests.release.xcconfig"; path = "Target Support Files/Pods-Food Truck HunterTests/Pods-Food Truck HunterTests.release.xcconfig"; sourceTree = "<group>"; };
 		33911DBD255CB513000F0E00 /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		33B750AA252843FB005C3ADA /* UserLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLandingView.swift; sourceTree = "<group>"; };
-		33D5147A253F403300D0442E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		33D5147A253F403300D0442E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		33E5EF912565CC4800BEFD00 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		33F4E9F72562EE6500FF271F /* AnnotationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationMenuView.swift; sourceTree = "<group>"; };
 		45C406DC703EFEF75F101CF9 /* Pods_Food_Truck_HunterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Truck_HunterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAA6BF36C79D47506E00ABC /* Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig"; path = "Target Support Files/Pods-Food Truck Hunter-Food Truck HunterTests/Pods-Food Truck Hunter-Food Truck HunterTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33E5EF8D2565CB9A00BEFD00 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				33D5147A253F403300D0442E /* Map.swift */,
+				33F4E9F72562EE6500FF271F /* AnnotationMenuView.swift */,
+				33E5EF912565CC4800BEFD00 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		73E56241096DA50180F47E21 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,9 +233,6 @@
 				9152A7852555ECA30059BFC0 /* CustomerSignUpView.swift */,
 				9152A7702555E1AA0059BFC0 /* VendorSignUpView.swift */,
 				91557F412523E77300427422 /* ForgotPasswordView.swift */,
-				33D5147A253F403300D0442E /* MapView.swift */,
-				33911DBD255CB513000F0E00 /* DrawerView.swift */,
-				33F4E9F72562EE6500FF271F /* AnnotationMenuView.swift */,
 				91E78E1D255315CF004BB965 /* SignInView.swift */,
 				91557F4E2523E7E000427422 /* SignUpView.swift */,
 				9159705B252FF77700DF1EB2 /* Components */,
@@ -365,6 +374,8 @@
 		91E78E2A2553CE62004BB965 /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				33E5EF8D2565CB9A00BEFD00 /* Map */,
+				33911DBD255CB513000F0E00 /* DrawerView.swift */,
 				910667132534CE9700F1BF62 /* AccountSettingView.swift */,
 				5B089B8E2560DEF000ADAAC6 /* CustomerEditProfileView.swift */,
 				91E78E2F2553CF57004BB965 /* CustomerVendorView.swift */,
@@ -694,6 +705,7 @@
 				91EE9920255135AE00BFCCAB /* FavoriteVendorsModel.swift in Sources */,
 				91E78E262553BD8A004BB965 /* Unwrap.swift in Sources */,
 				91EE990D25512E2A00BFCCAB /* FavoriteRow.swift in Sources */,
+				33E5EF922565CC4800BEFD00 /* MapView.swift in Sources */,
 				91CBC043253F2E1E00C4F96B /* RadioButtonView.swift in Sources */,
 				9133E0D0255F00C400B721FF /* TruckHourStatusView.swift in Sources */,
 				91558065255E3B4B0056156F /* FavoriteListViewModel.swift in Sources */,
@@ -708,7 +720,7 @@
 				91E78E1E255315CF004BB965 /* SignInView.swift in Sources */,
 				91DB46CC2539099A00987893 /* VendorModel.swift in Sources */,
 				91EE99082551282F00BFCCAB /* FavoriteListView.swift in Sources */,
-				33D5147B253F403300D0442E /* MapView.swift in Sources */,
+				33D5147B253F403300D0442E /* Map.swift in Sources */,
 				91597075253017B600DF1EB2 /* DefaultButtonView.swift in Sources */,
 				33F4E9F82562EE6500FF271F /* AnnotationMenuView.swift in Sources */,
 				91B77A4825219D2800713501 /* Food_Truck_Hunter.xcdatamodeld in Sources */,
