@@ -1,10 +1,3 @@
-//
-//  CustomerVendorMenuView.swift
-//  Food Truck Hunter
-//
-//  Created by Sue Vang on 11/15/20.
-//
-
 import SwiftUI
 
 struct CustomerVendorMenu: View {

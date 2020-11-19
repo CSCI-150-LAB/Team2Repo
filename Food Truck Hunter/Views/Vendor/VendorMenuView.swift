@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct VendorMenuView: View {
+    @EnvironmentObject var authState : AuthenticationState
+    
     var body: some View {
         ScrollView
         {

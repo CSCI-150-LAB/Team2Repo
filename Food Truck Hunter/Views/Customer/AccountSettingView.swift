@@ -2,9 +2,9 @@ import SwiftUI
 
 struct AccountSettingView: View {
     @EnvironmentObject var authState : AuthenticationState
-    @State var successfullySignOut : Bool = false;
+    @State var successfullySignOut : Bool = false
     
-    func signOut() {
+    func signOut() -> () {
         self.successfullySignOut = authState.signOut()
     }
 
@@ -75,8 +75,8 @@ struct AccountSettingView: View {
             Spacer()
                 .frame(height:20)
             DefaultButton(label: "Logout", function: signOut, lwidth: 2)
-            
-            if successfullySignOut{
+                
+            if successfullySignOut {
                 SignInView()
             }
         
