@@ -115,12 +115,12 @@ struct VendorSettingsView: View {
                 .padding(.top,-20)
                 .padding(.bottom,0)
                 .padding(.leading,15)
-                
-                
+
+
                 if successfullySignOut {
                     SignInView()
                 }
-                    
+
             }
             Spacer()
         }

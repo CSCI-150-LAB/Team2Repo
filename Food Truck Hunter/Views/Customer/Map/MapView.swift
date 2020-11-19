@@ -17,7 +17,8 @@ struct MapView: View {
     
     
     func getLocations() {
-        Firestore.firestore().collection("Trucks").getDocuments { (snapshot, error) in
+        let db = Firestore.firestore()
+        db.collection("Trucks").getDocuments { (snapshot, error) in
             if let snapshot = snapshot {
                 for document in snapshot.documents {
                     if let geopoints = document.get("location") {
@@ -43,11 +44,12 @@ struct MapView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Map(centerCoordinate: $centerCoordinate, annotations: locations, annotationTapAction: $mapMenu_shown, selectedPin: $selectedPin)
+                let mapView =  Map(centerCoordinate: $centerCoordinate, annotations: locations, annotationTapAction: $mapMenu_shown, selectedPin: $selectedPin)
+                mapView
                         .ignoresSafeArea()
                         .onAppear(perform: getLocations)
                     DrawerView(isShown: $mapMenu_shown){
-                        AnnotationMenuView(pin: $selectedPin)
+                        AnnotationMenuView(pin: $selectedPin,mapMenu_shown: $mapMenu_shown)
                     }
             }
         }

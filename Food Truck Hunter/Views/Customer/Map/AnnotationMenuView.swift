@@ -11,6 +11,7 @@ import MapKit
 func doNothing() {}
 struct AnnotationMenuView: View {
     @Binding var pin: TruckPin?
+    @Binding var mapMenu_shown: Bool
     var body: some View {
         if let unwrapped = pin{
             if let truckName = unwrapped.title {
@@ -22,11 +23,13 @@ struct AnnotationMenuView: View {
                             .padding(.leading)
                         Spacer()
                         Button(action: {
-                            doNothing()
-                                }){
+                            mapMenu_shown = false
+                        }){
                             Text("exit")
                         }.padding(.trailing)
                     }.padding(.top)
+                    Spacer()
+                    Text("Distance")
                     Spacer()
                     DefaultButton(label: "Call",function: doNothing)
                     Spacer()

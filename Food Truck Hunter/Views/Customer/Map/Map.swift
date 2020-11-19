@@ -24,7 +24,7 @@ struct Map: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         setupManager()
-        let mapView = MKMapView(frame: UIScreen.main.bounds) // 
+        let mapView = MKMapView() // frame: UIScreen.main.bounds
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.delegate = context.coordinator
@@ -38,7 +38,7 @@ struct Map: UIViewRepresentable {
                 view.addAnnotations(annotations)
             }
     }
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -52,20 +52,23 @@ struct Map: UIViewRepresentable {
         }
         
         
-//        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//            var view = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
-//
-//            if view == nil {
-//                view = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: "reuseIdentifier")
-//            }
-//
-//            view?.annotation = annotation
-//            view?.displayPriority = .required
-//            return view
-//        }
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            if !(annotation is TruckPin){
+                return nil
+            }
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
+
+            if view == nil {
+                view = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: "reuseIdentifier")
+            }
+            //let pinImage = UIImage("map-icon").resizable().frame(width: 32.0, height: 32.0)
+            //view!.image = pinImage
+            view?.annotation = annotation
+            view?.displayPriority = .required
+            return view
+        }
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.centerCoordinate = mapView.centerCoordinate
-            print("Parent changed")
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -76,7 +79,8 @@ struct Map: UIViewRepresentable {
             mapView.showsUserLocation = false
             mapView.centerCoordinate = pin.coordinate
             print("User selected annotation with title: \(pin.title ?? "unknown")")
-            parent.annotationTapAction.toggle()
+            print(pin.truckID)
+            parent.annotationTapAction = true
             parent.selectedPin = pin
             
         }
@@ -85,7 +89,7 @@ struct Map: UIViewRepresentable {
                 return
             }
             print("User deselected annotation with title: \(pin.title ?? "unknown")")
-            parent.annotationTapAction.toggle()
+            parent.annotationTapAction = false
             parent.selectedPin = nil
             mapView.showsUserLocation = true
         }
