@@ -27,8 +27,6 @@ struct VendorSettingsView: View {
     
     var body: some View {
         
-        
-        
         ScrollView{
             Spacer()
                 .frame(height: 35)

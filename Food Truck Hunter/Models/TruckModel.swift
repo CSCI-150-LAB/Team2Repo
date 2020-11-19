@@ -16,6 +16,7 @@ struct Truck: Decodable {
     var total_reviews: Int = 0
     var truck_id: Int = 0
     var truck_name: String = ""
+    var truck_ref: String = ""
     
 //    init(
 //        closing_hour: String? = "",
