@@ -29,6 +29,7 @@ class AuthenticationState: ObservableObject {
                                 profile_img: data["profile_img"] as? String,
                                 truck_id: data["truck_id"] as? Int,
                                 truck_name: data["truck_name"] as? String,
+                                truck_ref: data["truck_ref"] as? String,
                                 type: data["type"] as? String
                             )
                         case "customer":
@@ -52,6 +53,7 @@ class AuthenticationState: ObservableObject {
 
                     }
                     
+                    // When user signs up, add the corresponding documents to each collections Trucks, Users, Menus, Reviews
                     else {
                         if (AuthenticationState.userData != nil) {
                             let db = Firestore.firestore()
@@ -61,6 +63,7 @@ class AuthenticationState: ObservableObject {
                                 let userFireBaseUID = user.uid
                                 
                                 // Create vendor's menu in Menu collection
+                                // menuRef = db.collection().document().collection("items")
                                 menuRef = db.collection("Menus").addDocument(data: [
                                     "menu": [], // Array of array. Each food item will look like -> ["img", "name", "price"]
                                     "truck_id": AuthenticationState.userData?["truck_id"] as! Int,
@@ -80,7 +83,7 @@ class AuthenticationState: ObservableObject {
                                     "email": (AuthenticationState.userData?["email"] as! String).lowercased(),
                                     "truck_id": AuthenticationState.userData?["truck_id"] as! Int,
                                     "locations" : [],   // Insert and default GeoPoint (0,0)
-                                    "menu_ref": "Menus/\(menuRef!.documentID)",
+                                    "menu_ref": menuRef!.documentID,
                                     "truck_name" : (AuthenticationState.userData?["truck_name"] as! String).lowercased(),
                                     "owner_id" : AuthenticationState.userData?["id"] as! Int,
                                     "owner_name" : "\((AuthenticationState.userData?["first_name"] as! String).lowercased()) \((AuthenticationState.userData?["last_name"] as! String).lowercased())",
@@ -106,22 +109,23 @@ class AuthenticationState: ObservableObject {
                                     "phone_number": AuthenticationState.userData?["phone_number"] as! String,
                                     "truck_id": AuthenticationState.userData?["truck_id"] as! Int,
                                     "truck_name": (AuthenticationState.userData?["truck_name"] as! String).lowercased(),
+                                    "truck_ref": truckRef!.documentID,
                                     "profile_img": "",
                                     "type" : AuthenticationState.userData?["type"] as! String
                                 ])
                                 
+                                // Set vendor to session
                                 self.session = User(
                                     uid: user.uid,
                                     email: user.email,
                                     displayName: user.displayName,
-                                    favorites: [],
                                     first_name: (AuthenticationState.userData?["first_name"] as? String),
                                     id: (AuthenticationState.userData?["id"] as! Int),
                                     last_name: (AuthenticationState.userData?["last_name"] as! String),
                                     phone_number: (AuthenticationState.userData?["phone_number"] as! String),
-                                    profile_img: "",
-                                    total_review: 0,
-                                    status: "basic",
+                                    truck_id: (AuthenticationState.userData?["truck_id"] as! Int),
+                                    truck_name: (AuthenticationState.userData?["truck_name"] as! String),
+                                    truck_ref: truckRef!.documentID,
                                     type: (AuthenticationState.userData?["type"] as! String)
                                 )
                             }
@@ -143,6 +147,8 @@ class AuthenticationState: ObservableObject {
                                     "type" : AuthenticationState.userData?["type"] as! String
                                 ])
                                 
+                                
+                                // Set costumer to session
                                 self.session = User(
                                     uid: user.uid,
                                     email: user.email,

@@ -14,6 +14,7 @@ class User : ObservableObject {
     let profile_img: String?
     let truck_id: Int?
     var truck_name: String?
+    let truck_ref: String?
     let total_review: Int?
     let status: String?
     let type: String?
@@ -30,6 +31,7 @@ class User : ObservableObject {
         profile_img: String? = "",
         truck_id: Int? = 0,
         truck_name: String? = "",
+        truck_ref: String? = "",
         total_review: Int? = 0,
         status: String? = "basic",
         type: String?
@@ -46,6 +48,7 @@ class User : ObservableObject {
         self.profile_img = profile_img
         self.truck_id = truck_id
         self.truck_name = truck_name
+        self.truck_ref = truck_ref
         self.total_review = total_review
         self.status = status
         self.type = type
