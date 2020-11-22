@@ -2,18 +2,21 @@ import SwiftUI
 import FirebaseFirestore
 
 struct CustomerEditProfileView: View {
+    
     @State private var fName: String = ""
     @State private var lName: String = ""
     @State private var Phonenum: String = ""
+    
     @EnvironmentObject var authState : AuthenticationState
     
     let db = Firestore.firestore()
-    
+  
     func updateLastName()
     {
         if(lName != ""){ // if textfield isn't empty
             if let uid = authState.session?.uid{
                 db.collection("Users").document(uid).setData(["last_name": lName],merge:true)
+                authState.session?.last_name = lName
             }
         }
     }
@@ -23,7 +26,7 @@ struct CustomerEditProfileView: View {
         if(fName != ""){// if textfield isn't empty
             if let uid = authState.session?.uid{
                 db.collection("Users").document(uid).setData(["first_name": fName],merge:true)
-                    // _ = navigationController?.popViewController(animated: true)
+                authState.session?.first_name = fName
             }
         }
     }
@@ -33,6 +36,7 @@ struct CustomerEditProfileView: View {
         if(Phonenum != ""){ // if textfield isn't empty
             if let uid = authState.session?.uid{
                 db.collection("Users").document(uid).setData(["phone_number": Phonenum],merge:true)
+                authState.session?.phone_number = Phonenum
             }
         }
     }
@@ -44,7 +48,6 @@ struct CustomerEditProfileView: View {
     
     
     var body: some View {
-        
         
         ScrollView()
         {
@@ -91,6 +94,7 @@ struct CustomerEditProfileView: View {
                     .cornerRadius(15)
                     .padding(.trailing,15)
                     .padding(.leading, 15)
+                VStack{
                 DefaultButton(label: "Update Last Name", function: updateLastName)
                     .frame(width: 350, height: 100)
                     .padding(.top,-5)
@@ -101,7 +105,7 @@ struct CustomerEditProfileView: View {
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .padding(.leading,10)
-                VStack{
+        
                 TextField("  Phone Number", text: $Phonenum)
                     .autocapitalization(.none)
                     .padding(.top,  10)
@@ -125,6 +129,7 @@ struct CustomerEditProfileView: View {
         .accentColor(.red)
         .background(Color(UIColor(red: 0.80, green: 0.87, blue: 0.89, alpha: 1.00)))
         .ignoresSafeArea(edges: .top)
+        
     }
 }
 

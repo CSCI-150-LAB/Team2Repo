@@ -7,18 +7,18 @@ class User : ObservableObject {
     var email: String?
     var displayName: String?
     let favorites: [AnyObject]
-    let first_name: String?
+    var first_name: String?
     let id: Int?
-    let last_name: String?
-    let phone_number: String?
+   @Published var last_name: String?
+    var phone_number: String?
     let profile_img: String?
     let truck_id: Int?
-    let truck_name: String?
+    var truck_name: String?
     let truck_ref: String?
     let total_review: Int?
     let status: String?
     let type: String?
-
+    
     init(
         uid: String,
         email: String?,
