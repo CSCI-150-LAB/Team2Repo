@@ -12,12 +12,12 @@ struct TruckPhoneNumber: View {
     
     func formatPhoneNumber(_ phoneNumber: String) -> String {
         var formattedPhoneNumber: String = phoneNumber
-        let firstParenthesisIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 0)
-        formattedPhoneNumber.insert("(", at: firstParenthesisIndex)
-        let secondParenthesisIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 4)
-        formattedPhoneNumber.insert(")", at: secondParenthesisIndex)
-        let hypenIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 8)
-        formattedPhoneNumber.insert("-", at: hypenIndex)
+//        let firstParenthesisIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 0)
+//        formattedPhoneNumber.insert("(", at: firstParenthesisIndex)
+//        let secondParenthesisIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 4)
+//        formattedPhoneNumber.insert(")", at: secondParenthesisIndex)
+//        let hypenIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 8)
+//        formattedPhoneNumber.insert("-", at: hypenIndex)
         
         return formattedPhoneNumber
     }

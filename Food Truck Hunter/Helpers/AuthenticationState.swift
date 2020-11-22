@@ -8,7 +8,7 @@ class AuthenticationState: ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
     let dispatch = DispatchGroup()
     static var userData: [String: Any]?
-    
+
     func listen () {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
