@@ -6,17 +6,17 @@ class User : ObservableObject {
     var uid: String
     var email: String?
     var displayName: String?
-    let favorites: [AnyObject]
-    let first_name: String?
+    var favorites: [AnyObject]
+    var first_name: String?
     let id: Int?
-    let last_name: String?
-    let phone_number: String?
-    let profile_img: String?
+    var last_name: String?
+    var phone_number: String?
+    var profile_img: String?
     let truck_id: Int?
-    let truck_name: String?
-    let truck_ref: String?
-    let total_review: Int?
-    let status: String?
+    var truck_name: String?
+    var truck_ref: String?
+    var total_review: Int?
+    var status: String?
     let type: String?
 
     init(
@@ -52,5 +52,9 @@ class User : ObservableObject {
         self.total_review = total_review
         self.status = status
         self.type = type
+    }
+    
+    func userFullName() -> String {
+        return "\(first_name?.capitalized ?? "N") \(last_name?.capitalized ?? "A")"
     }
 }
