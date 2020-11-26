@@ -42,7 +42,7 @@ struct VendorSettingsView: View {
             HStack{
             Toggle(isOn: $openStatus){
                 Spacer()
-                Text("Open For Buisness : ")
+                Text("Open For Buisness: ")
                     .fontWeight(.bold)
                     .font(.system(size:20))
             }

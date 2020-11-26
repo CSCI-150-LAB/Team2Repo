@@ -25,8 +25,6 @@ struct AccountSettingView: View {
         NavigationView{
         VStack(alignment:.center) {
             if authState.session != nil {
-                             
-                
                 Button(action: refresh){
                     HStack(spacing:5){
                         Image(systemName: "arrow.clockwise")
@@ -42,6 +40,7 @@ struct AccountSettingView: View {
                 else{
                 Image(authState.session?.profile_img ?? "blank-profile-pic" )
                 }
+                
                 HStack{
                     Spacer()
                         .frame(width:5)
@@ -79,38 +78,35 @@ struct AccountSettingView: View {
                     
                     Spacer()
                 }
-            }
-            VStack{
-                HStack{
-                NavigationLink(destination: CustomerEditProfileView() )
-                {
-                                        
-                    Text("Edit Profile Info")
-                        .font(.headline)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .foregroundColor(Color.black)
-                        .padding(.all,20)
-                        .cornerRadius(10.0)
-                        .background(Color.clear)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6.0)
-                                .stroke(Color.black, lineWidth: CGFloat(2)))
-                        .padding(.leading,53)
-                        .padding(.trailing,53)
-                
-            }
-                }
+                VStack{
+                    HStack{
+                        NavigationLink(destination: CustomerEditProfileView()) {
+                            Text("Edit Profile Info")
+                                .font(.headline)
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .foregroundColor(Color.black)
+                                .padding(.all,20)
+                                .cornerRadius(10.0)
+                                .background(Color.clear)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6.0)
+                                        .stroke(Color.black, lineWidth: CGFloat(2)))
+                                .padding(.leading,53)
+                                .padding(.trailing,53)
+                        
+                        }
+                        Spacer()
+                    }.frame(height:20)
+                    
+                    DefaultButton(label: "Logout", function: signOut, lwidth: 2)
+                    
+                    if successfullySignOut {
+                        SignInView()
+                    }
             
-            Spacer()
-                .frame(height:20)
-            DefaultButton(label: "Logout", function: signOut, lwidth: 2)
-                
-            if successfullySignOut {
-                SignInView()
+                }
             }
-        
-      }
+        }
     }
-   }
 }
 }

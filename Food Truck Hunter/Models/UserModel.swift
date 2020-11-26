@@ -53,4 +53,8 @@ class User : ObservableObject {
         self.status = status
         self.type = type
     }
+    
+    func userFullName() -> String {
+        return "\(first_name?.capitalized ?? "N") \(last_name?.capitalized ?? "A")"
+    }
 }
