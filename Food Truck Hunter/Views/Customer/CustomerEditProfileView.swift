@@ -55,7 +55,7 @@ struct CustomerEditProfileView: View {
             {
                 Spacer()
                     .frame(height:90)
-                
+                                
                 DefaultButton(label: "Update Profile Pic", function: updatePic )
                     .frame(width: 350, height: 100)
                     .padding(.top,-5)
