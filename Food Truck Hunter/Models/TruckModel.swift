@@ -18,6 +18,7 @@ struct Truck: Decodable {
     var truck_name: String = ""
     var truck_ref: String = ""
     
+    
 //    init(
 //        closing_hour: String? = "",
 //        cuisine: [String]? = [],
