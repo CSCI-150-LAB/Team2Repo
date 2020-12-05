@@ -8,6 +8,23 @@ import Foundation
 import SwiftUI
 import MapKit
 
+func makecall(number: String) // pulls in string, keeps numbers only and makes call
+{
+    
+    var fixed : String = ""
+    
+    for letter in number
+    {
+        if (letter.isNumber)
+        {
+            fixed = fixed + String(letter)
+        }
+    }
+    
+   guard let number = URL(string: "tel://" + "\(fixed)") else { return }
+    UIApplication.shared.open(number)
+}
+
 struct CustomerVendorView: View {
 
     @ObservedObject var viewModel: FavoriteListViewModel = FavoriteListViewModel()
@@ -105,13 +122,16 @@ struct CustomerVendorView: View {
                             .padding(.leading,53)
                             .padding(.trailing,53)
                     }
+                    Spacer()
+                        .frame(height:20)
+                    
+                    DefaultButton(label: "Call",function: {makecall(number: self.viewModel.truck.phone_number )},lwidth: 2)
                     
                 }.padding(.horizontal)
                 Spacer()
             }
             
         }
-       // .navigationBarTitle(self.viewModel.isDoneLoading ? self.viewModel.truck.truck_name.capitalized : "Truck Name Here")
         .onAppear{
             self.fetchTruck()
         }

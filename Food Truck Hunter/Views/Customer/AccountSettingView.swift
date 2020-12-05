@@ -78,6 +78,8 @@ struct AccountSettingView: View {
                     
                     Spacer()
                 }
+                Spacer()
+                    .frame(height:30)
                 VStack{
                     HStack{
                         NavigationLink(destination: CustomerEditProfileView()) {
@@ -97,7 +99,8 @@ struct AccountSettingView: View {
                         }
                         Spacer()
                     }.frame(height:20)
-                    
+                    Spacer()
+                        .frame(height:35)
                     DefaultButton(label: "Logout", function: signOut, lwidth: 2)
                     
                     if successfullySignOut {
