@@ -4,6 +4,7 @@
 // this is the view that vendors will see to change their truck properties
 
 import SwiftUI
+import FirebaseFirestore
 
 func dummy() {
     // do something here
@@ -19,12 +20,40 @@ struct VendorSettingsView: View {
     
     @State var successfullySignOut : Bool = false;
     
+    @State private var currentTruckName = ""
+    
+    let db = Firestore.firestore()
+    
     func signOut() {
         self.successfullySignOut = authState.signOut()
     }
 
     @State private var  openStatus = false
     
+    
+    func initTitle()
+    {
+        if let temp = authState.session?.truck_name
+        {
+            currentTruckName = temp
+        }
+    }
+    func updateTruckName()
+    {
+        if(truckName != ""){ // if textfield isn't empty
+            if let uid = authState.session?.uid {
+                if let truck_ref = authState.session?.truck_ref {
+                db.collection("Trucks").document(uid).setData(["truck_name": truckName],merge:true)
+                db.collection("Trucks").document(truck_ref).setData(["truck_name": truckName],merge:true)
+                authState.session?.truck_name = truckName
+                currentTruckName = truckName
+                truckName = ""
+                }
+            }
+        }
+    }
+    
+
     var body: some View {
         
         ScrollView{
@@ -33,9 +62,11 @@ struct VendorSettingsView: View {
         VStack(alignment: .leading){
             HStack(){
                 Spacer()
-                Text("'TRUCK NAME' Settings") // pull truck name here
+                
+                Text("\(currentTruckName) Settings") // pull truck name here
                     .fontWeight(.bold)
                     .font(.system(size: 25))
+                    .onAppear(perform: initTitle)
                 Spacer()
             }
          //   vendorSwitch()
@@ -71,7 +102,7 @@ struct VendorSettingsView: View {
                 .cornerRadius(15)
                 .padding(.trailing,15)
                 .padding(.leading, 15)
-            DefaultButton(label: "Update Name", function: dummy)
+            DefaultButton(label: "Update Name", function: updateTruckName)
                 .frame(width: 350, height: 100)
                 .padding(.top,-20)
                 .padding(.bottom,0)
