@@ -9,12 +9,14 @@ import Foundation
 import SwiftUI
 import Combine
 import FirebaseFirestore
+import CoreLocation
+
 
 class VendorSettingsViewModel: ObservableObject
 {
     var truckRef = ""
     @Published var truckName = "My Truck"
-    
+    var locationManager = LocationManager()
     var openState: Bool = false
     @Published var toggleValue: Bool = false {
         didSet {
@@ -51,12 +53,24 @@ class VendorSettingsViewModel: ObservableObject
         db.collection("Trucks").document(self.truckRef).setData(["truck_name": truckName],merge:true)
                
         }
-        
+    
     func updateState(){
         let db = Firestore.firestore()
         self.openState = self.toggleValue
         db.collection("Trucks").document(self.truckRef).setData(["open_status": self.openState],merge:true)
     }
     
+   
+    func updateLocation() {
+        let db = Firestore.firestore()
+        if let location = locationManager.lastLocation {
+            let lat = location.coordinate.latitude
+            let long = location.coordinate.longitude
+            let point = GeoPoint(latitude: lat, longitude: long)
+            db.collection("Trucks").document(self.truckRef).setData(["location": point],merge:true)
+            print("Location Updated")
+        }
+       
+    }
    
 }

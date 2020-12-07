@@ -57,7 +57,7 @@ struct VendorSettingsView: View {
     }
     
     func updateLocation(){
-        
+        self.viewModel.updateLocation()
     }
     
     var body: some View {
@@ -129,7 +129,7 @@ struct VendorSettingsView: View {
                     Spacer()
                 }
         
-                DefaultButton(label: "Update Location", function: dummy)
+                DefaultButton(label: "Update Location", function: updateLocation)
                     .frame(width: 350, height: 100)
                     .padding(.top,-20)
                     .padding(.bottom,0)
