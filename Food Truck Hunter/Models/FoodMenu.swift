@@ -12,6 +12,7 @@ struct FoodMenu: Identifiable, Codable {
     @DocumentID var id: String? = UUID().uuidString
     var title: String
     var price: Float
+    var truck_id: Int = -99
     
     enum CodingKeys: String, CodingKey {
         case title

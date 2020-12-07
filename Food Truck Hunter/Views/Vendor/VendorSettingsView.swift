@@ -9,7 +9,6 @@ func dummy() {
     // do something here
     print("inhere")
     // .frame(width: 100, height: 100)
-
 }
 
 struct VendorSettingsView: View {

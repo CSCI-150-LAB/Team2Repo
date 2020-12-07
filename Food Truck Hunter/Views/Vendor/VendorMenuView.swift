@@ -5,7 +5,7 @@ struct VendorMenuView: View {
     //var foodM = testData
     
     @ObservedObject private var viewModel = MenuViewModel()
-    
+    @EnvironmentObject var authState : AuthenticationState
     @State private var presentAddNewItemScreen = false
     
     var body: some View {
@@ -35,7 +35,7 @@ struct VendorMenuView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color(UIColor(red: 0.80, green: 0.87, blue: 0.89, alpha: 1.00)))
             .onAppear() {
-                self.viewModel.fetchData()
+                self.viewModel.fetchData(truckref: authState.session?.truck_id ?? 0)
             }
         
             //.navigationBarHidden(true)

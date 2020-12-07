@@ -9,22 +9,21 @@ import Foundation
 import Firebase
 
 class ItemViewModel: ObservableObject {
-    
-    @Published var item: FoodMenu = FoodMenu(title: "", price: 0)
+    @Published var item: FoodMenu = FoodMenu(title: "", price: 0,truck_id:-2)
     
     private var db = Firestore.firestore()
     
-    func addItem(item: FoodMenu) {
-            do {
-                let _ = try db.collection("foodM").addDocument(from: item)
-            }
-            catch {
-                print(error)
-            }
-        }
-    
-    func save() {
-        addItem(item: item)
+    func save(fname: String, Fprice:Float,id: Int ) {
+        item.price = Fprice
+        item.title = fname
+        item.truck_id = id
+        
+        db.collection("foodM").addDocument(data: [
+                "title": fname,
+                "price": Fprice,
+            "truck_id" : id
+            ])
+        
     }
     
 }

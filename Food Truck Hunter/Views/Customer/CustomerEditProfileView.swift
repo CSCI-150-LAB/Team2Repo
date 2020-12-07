@@ -56,11 +56,11 @@ struct CustomerEditProfileView: View {
                 Spacer()
                     .frame(height:90)
                                 
-                DefaultButton(label: "Update Profile Pic", function: updatePic )
-                    .frame(width: 350, height: 100)
-                    .padding(.top,-5)
-                    .padding(.bottom,0)
-                    .padding(.leading,15)
+//                DefaultButton(label: "Update Profile Pic", function: updatePic )
+//                    .frame(width: 350, height: 100)
+//                    .padding(.top,-5)
+//                    .padding(.bottom,0)
+//                    .padding(.leading,15)
 
                 Text("Edit Your First Name:")
                     .font(.system(size: 20))

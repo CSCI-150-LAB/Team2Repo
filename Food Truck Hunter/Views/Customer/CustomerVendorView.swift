@@ -108,7 +108,7 @@ struct CustomerVendorView: View {
                         Spacer()
                             .frame(height:25)
                     }
-                    NavigationLink(destination: CustomerVendormenuView()) {
+                    NavigationLink(destination: CustomerVendormenuView(truckkID: self.viewModel.truck.truck_id)) {
                         Text("View Menu")
                             .font(.headline)
                             .frame(minWidth: 0, maxWidth: .infinity)
