@@ -82,7 +82,8 @@ class AuthenticationState: ObservableObject {
                                     "cuisine": [],
                                     "email": (AuthenticationState.userData?["email"] as! String).lowercased(),
                                     "truck_id": AuthenticationState.userData?["truck_id"] as! Int,
-                                    "locations" : [],   // Insert and default GeoPoint (0,0)
+                                    "location" : GeoPoint(latitude: 0,longitude: 0),  // Insert and default GeoPoint (0,0)
+                                    "open_status" : false,
                                     "menu_ref": menuRef!.documentID,
                                     "truck_name" : (AuthenticationState.userData?["truck_name"] as! String).lowercased(),
                                     "owner_id" : AuthenticationState.userData?["id"] as! Int,
