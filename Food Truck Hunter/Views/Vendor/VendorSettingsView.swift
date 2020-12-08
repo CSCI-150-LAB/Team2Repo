@@ -19,8 +19,7 @@ struct VendorSettingsView: View {
     @State private var edit: String = "edit"
     
     @State var successfullySignOut : Bool = false;
-    
-    @State var closingTime = Date()
+ 
     
     func signOut() {
         self.successfullySignOut = authState.signOut()
@@ -32,9 +31,7 @@ struct VendorSettingsView: View {
         if let ref = authState.session?.truck_ref
         {
             self.viewModel.getTruck(truckDocID: ref)
-            //self.closingTime = self.viewModel.closingTime
         }
-       
     }
    
     
@@ -49,9 +46,6 @@ struct VendorSettingsView: View {
         }
     
     
-    func updateTime(){
-        
-    }
     
     func updateLocation(){
         self.viewModel.updateLocation()
@@ -65,7 +59,7 @@ struct VendorSettingsView: View {
             VStack(alignment: .leading){
                 HStack(){
                     Spacer()
-                    Text("\(self.viewModel.truckName) Settings") // pull truck name here
+                    Text("\(self.viewModel.truck.truck_name) Settings") // pull truck name here
                         .fontWeight(.bold)
                         .font(.system(size: 25))
                     Spacer()
@@ -95,8 +89,9 @@ struct VendorSettingsView: View {
                         .padding(.top,0)
                         .padding(.trailing,15)
                         
-                    DatePicker("", selection: $closingTime, displayedComponents: .hourAndMinute)
+                    DatePicker("", selection: $viewModel.closingTime, displayedComponents: .hourAndMinute)
                     .labelsHidden()
+                    
                     
                 }
                 
