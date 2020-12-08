@@ -78,7 +78,7 @@ class AuthenticationState: ObservableObject {
                                 
                                 // Create truck document in Trucks collection
                                 truckRef = db.collection("Trucks").addDocument(data: [
-                                    "closing_hour": Timestamp(),
+                                    "closing_hour": "",
                                     "cuisine": [],
                                     "email": (AuthenticationState.userData?["email"] as! String).lowercased(),
                                     "truck_id": AuthenticationState.userData?["truck_id"] as! Int,

@@ -18,6 +18,7 @@ class FavoriteListViewModel: ObservableObject {
                     email: data["email"] as? String ?? "",
                     location: ["":0.0],
                     menu_ref: data["menu_ref"] as? String ?? "",
+                    open_status: data["open_status"] as? Bool ?? false,
                     owner_name: data["owner_name"] as? String ?? "",
                     owner_id: data["owner_id"] as? Int ?? 0,
                     phone_number: data["phone_number"] as? String ?? "",
@@ -25,6 +26,7 @@ class FavoriteListViewModel: ObservableObject {
                     total_reviews: data["total_reviews"] as? Int ?? 0,
                     truck_id: data["truck_id"] as? Int ?? 0,
                     truck_name: data["truck_name"] as? String ?? ""
+                    
                 )
                 self.isDoneLoading.toggle()
             }

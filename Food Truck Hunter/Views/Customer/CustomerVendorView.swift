@@ -92,7 +92,7 @@ struct CustomerVendorView: View {
                             .frame(height:20)
                         
                         HStack{
-                            TruckClosingHourView(truckClosingHour: self.viewModel.truck.closing_hour)
+                            TruckClosingHourView(truckClosingHour: self.viewModel.truck.closing_hour, openStatus: self.viewModel.truck.open_status)
                                 .font(.system(size:25))
                         }
                         

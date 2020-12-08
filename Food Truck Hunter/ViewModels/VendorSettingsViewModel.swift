@@ -14,6 +14,7 @@ import CoreLocation
 
 class VendorSettingsViewModel: ObservableObject
 {
+    @Published var truck = Truck()
     var truckRef = ""
     @Published var truckName = "My Truck"
     var locationManager = LocationManager()
@@ -27,15 +28,58 @@ class VendorSettingsViewModel: ObservableObject
         }
     }
 
+    let dispatchGroup = DispatchGroup()
     
+//    func getTruck(truckDocID: String) {
+//        self.fetchTruckData(truckDocID) { (data) in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                self.truck = Truck(
+//                    closing_hour: data["closing_hour"] as? String ?? "",
+//                    cuisine: data["cuisine"] as? [String] ?? [""],
+//                    email: data["email"] as? String ?? "",
+//                    location: ["":0.0],
+//                    menu_ref: data["menu_ref"] as? String ?? "",
+//                    owner_name: data["owner_name"] as? String ?? "",
+//                    owner_id: data["owner_id"] as? Int ?? 0,
+//                    phone_number: data["phone_number"] as? String ?? "",
+//                    rating: data["rating"] as? Float ?? 0.0,
+//                    total_reviews: data["total_reviews"] as? Int ?? 0,
+//                    truck_id: data["truck_id"] as? Int ?? 0,
+//                    truck_name: data["truck_name"] as? String ?? ""
+//                )
+//                //self.isDoneLoading.toggle()
+//            }
+//        }
+//    }
+//    
+//    func fetchTruckData(_ truckDocID: String, completion: @escaping ([String: Any]) -> Void) {
+//        self.dispatchGroup.enter()
+//        let db = Firestore.firestore()
+//        let docRef = db.collection("Trucks").document(truckDocID)
+//        
+//        docRef.getDocument() { (document, error) in
+//            if let document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                print("Document data: \(dataDescription)")
+////                let data: [String: Any] = document.data() ?? ["":""]
+////                print("self.truck = \(self.truck)")
+//                self.dispatchGroup.leave()
+//                completion(document.data() ?? ["":""])
+//                
+//            } else {
+//                print("Document does not exist.")
+//                self.dispatchGroup.leave()
+//                completion(document?.data() ?? ["":""])
+//            }
+//        }
+//    }
     
-   
-    
-    func fetchTruck(truckDocID:String){
+    func fetchTruck(truckDocID:String) {
+        
         let db = Firestore.firestore()
         self.truckRef = truckDocID
+   
         let docRef = db.collection("Trucks").document(truckDocID)
-        
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 if let name = document.get("truck_name"){
@@ -49,16 +93,19 @@ class VendorSettingsViewModel: ObservableObject
                 
                 if let closing = document.get("closing_hour"){
                     let ct = closing as! Timestamp
-                    self.closingTime = Date(timeIntervalSince1970: TimeInterval(ct.seconds))
+                    //self.closingTime = Date(timeIntervalSince1970: TimeInterval(ct.seconds))
                     print("fetch")
-                    print(self.closingTime)
+                    print(ct)
                 }
+                
+               
             }
         }
         
         
         
     }
+    
     
     func updateTruckName(truckName: String, uid: String){
         let db = Firestore.firestore()

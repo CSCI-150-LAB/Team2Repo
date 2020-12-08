@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TruckClosingHourView: View {
     var truckClosingHour: String = ""
-    
+    var openStatus: Bool = false
     func truckHourTimeFormat(_ closingHour: String) -> String {
         var truckClosingHour = closingHour
 //        print("Closing hour is \(truckClosingHour)")
@@ -25,10 +25,17 @@ struct TruckClosingHourView: View {
     }
     
     var body: some View {
+        if openStatus
+        {
         Text("Closes at \(truckHourTimeFormat(truckClosingHour))")
         Text("-")
         TruckHourStatusView(truckHourFromDatabase: truckClosingHour)
         Spacer()
+        }
+        else
+        {
+            Text("Closed")
+        }
     }
 }
 

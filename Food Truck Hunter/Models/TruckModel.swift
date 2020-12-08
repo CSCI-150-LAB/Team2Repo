@@ -9,6 +9,7 @@ struct Truck: Decodable {
     var email: String = ""
     var location: [String: Double] = ["":0.0]
     var menu_ref: String = ""
+    var open_status: Bool = false
     var owner_name: String = ""
     var owner_id: Int = 0
     var phone_number: String = ""
