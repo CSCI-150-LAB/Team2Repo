@@ -18,8 +18,13 @@ class VendorSettingsViewModel: ObservableObject
     var truckRef = ""
     @Published var truckName = "My Truck"
     var locationManager = LocationManager()
-    var openState: Bool = false
-    @Published var closingTime = Date()
+    
+    
+    @Published var closingTime = Date() {
+        didSet{
+            updateClosingTime()
+        }
+    }
     @Published var toggleValue: Bool = false {
         didSet {
             if truck.open_status != toggleValue {
@@ -27,13 +32,15 @@ class VendorSettingsViewModel: ObservableObject
             }
         }
     }
-
+    
+   
+    
     let dispatchGroup = DispatchGroup()
     var isDoneLoading: Bool = false
     
     func getTruck(truckDocID: String) {
         self.fetchTruckData(truckDocID) { (data) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.truck = Truck(
                     closing_hour: data["closing_hour"] as? String ?? "",
                     cuisine: data["cuisine"] as? [String] ?? [""],
@@ -49,13 +56,15 @@ class VendorSettingsViewModel: ObservableObject
                     truck_id: data["truck_id"] as? Int ?? 0,
                     truck_name: data["truck_name"] as? String ?? ""
                 )
-                print(self.truck.location)
+                self.setTime()
+                print(self.closingTime)
                 self.toggleValue = self.truck.open_status
                 self.isDoneLoading.toggle()
             }
         }
     }
-
+    
+    
     func fetchTruckData(_ truckDocID: String, completion: @escaping ([String: Any]) -> Void) {
         self.dispatchGroup.enter()
         self.truckRef = truckDocID
@@ -79,7 +88,20 @@ class VendorSettingsViewModel: ObservableObject
         }
     }
 
-    
+    func setTime() {
+        
+        var truckClosingHour = self.truck.closing_hour
+        
+        
+        let indexItem = truckClosingHour.index(truckClosingHour.startIndex, offsetBy: 2)
+        truckClosingHour.insert(":", at: indexItem)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        
+        self.closingTime = dateFormatter.date(from: truckClosingHour) ?? Date()
+    }
     func updateTruckName(truckName: String, uid: String){
         let db = Firestore.firestore()
         self.truck.truck_name = truckName
@@ -91,7 +113,7 @@ class VendorSettingsViewModel: ObservableObject
     func updateState(){
         let db = Firestore.firestore()
         self.truck.open_status = self.toggleValue
-        db.collection("Trucks").document(self.truckRef).setData(["open_status": self.openState],merge:true)
+        db.collection("Trucks").document(self.truckRef).setData(["open_status": self.truck.open_status],merge:true)
     }
     
    
@@ -108,7 +130,30 @@ class VendorSettingsViewModel: ObservableObject
        
     }
     
-  
+    func updateClosingTime(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        var truckClosingHour = self.truck.closing_hour
+        
+        let indexItem = truckClosingHour.index(truckClosingHour.startIndex, offsetBy: 2)
+        truckClosingHour.insert(":", at: indexItem)
+        
+        var newTime = dateFormatter.string(from: self.closingTime)
+        
+        if newTime != truckClosingHour{
+            let db = Firestore.firestore()
+            let nindexItem = newTime.index(newTime.startIndex, offsetBy: 2)
+            newTime.remove(at: nindexItem)
+            self.truck.closing_hour = newTime
+            db.collection("Trucks").document(self.truckRef).setData(["closing_hour": newTime],merge:true)
+            
+        }
+        
+        else{
+            print("time same")
+        }
+    }
     
    
 }
