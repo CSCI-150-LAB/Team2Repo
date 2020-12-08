@@ -17,17 +17,19 @@ class VendorSettingsViewModel: ObservableObject
     var truckRef = ""
     @Published var truckName = "My Truck"
     var locationManager = LocationManager()
-    @Published var closingTime = Date()
     var openState: Bool = false
+    @Published var closingTime = Date()
     @Published var toggleValue: Bool = false {
         didSet {
-            print(openState)
             if openState != toggleValue {
                 updateState()
             }
         }
     }
+
     
+    
+   
     
     func fetchTruck(truckDocID:String){
         let db = Firestore.firestore()
@@ -43,6 +45,13 @@ class VendorSettingsViewModel: ObservableObject
                 if let open = document.get("open_status"){
                     self.openState = open as! Bool
                     self.toggleValue = self.openState
+                }
+                
+                if let closing = document.get("closing_hour"){
+                    let ct = closing as! Timestamp
+                    self.closingTime = Date(timeIntervalSince1970: TimeInterval(ct.seconds))
+                    print("fetch")
+                    print(self.closingTime)
                 }
             }
         }
@@ -77,5 +86,8 @@ class VendorSettingsViewModel: ObservableObject
         }
        
     }
+    
+  
+    
    
 }

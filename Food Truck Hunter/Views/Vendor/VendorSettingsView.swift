@@ -24,7 +24,7 @@ struct VendorSettingsView: View {
     
     @State var truckRef = ""
     
-    @State private var currentDate = Date()
+    @State var closingTime = Date()
     
     func signOut() {
         self.successfullySignOut = authState.signOut()
@@ -37,7 +37,11 @@ struct VendorSettingsView: View {
         {
             self.truckRef =  ref
             self.viewModel.fetchTruck(truckDocID: ref)
+            self.closingTime = self.viewModel.closingTime
+            print(self.viewModel.closingTime)
+            print(self.closingTime)
         }
+       
     }
    
     
@@ -98,8 +102,9 @@ struct VendorSettingsView: View {
                         .padding(.top,0)
                         .padding(.trailing,15)
                         
-                    DatePicker("", selection: $currentDate, displayedComponents: .hourAndMinute)
+                    DatePicker("", selection: $closingTime, displayedComponents: .hourAndMinute)
                     .labelsHidden()
+                    
                 }
                 
                 Text("Edit Your Truck name:")
