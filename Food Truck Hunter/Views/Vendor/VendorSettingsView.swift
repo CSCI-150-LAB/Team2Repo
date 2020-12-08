@@ -24,7 +24,7 @@ struct VendorSettingsView: View {
     
     @State var truckRef = ""
     
-    
+    @State private var currentDate = Date()
     
     func signOut() {
         self.successfullySignOut = authState.signOut()
@@ -74,21 +74,34 @@ struct VendorSettingsView: View {
                     Spacer()
                 }
 
-                HStack{
-                    Toggle(isOn: $viewModel.toggleValue){
-                        Spacer()
-                        Text("Open For Buisness: ")
-                            .fontWeight(.bold)
-                            .font(.system(size:20))
-                    }
-                    .padding(.trailing,120)
+               
+                Toggle(isOn: $viewModel.toggleValue){
+                    Spacer()
+                    Text("Open For Buisness: ")
+                        .fontWeight(.bold)
+                        .font(.system(size:20))
+                        
                 }
+                    
+                
         
-     
+                
         
                 Spacer()
                     .frame(height: 20)
-        
+                
+                HStack{
+                    Text("Closing Time Today:")
+                        .fontWeight(.bold)
+                        .font(.system(size:20))
+                        .padding(.leading,15)
+                        .padding(.top,0)
+                        .padding(.trailing,15)
+                        
+                    DatePicker("", selection: $currentDate, displayedComponents: .hourAndMinute)
+                    .labelsHidden()
+                }
+                
                 Text("Edit Your Truck name:")
                     .fontWeight(.bold)
                     .padding(.leading,10)
@@ -107,19 +120,10 @@ struct VendorSettingsView: View {
                     .padding(.bottom,0)
                     .padding(.leading,15)
                     //.ignoresSafeArea(.container)
-        
-                Text("Closing Time Today:")
-                    .fontWeight(.bold)
-                    .padding(.leading,15)
-                    .padding(.top,0)
-        
-                DefaultButton(label: "Update Time", function: dummy)
-                    .frame(width: 350, height: 100)
-                    .padding(.top,-20)
-                    .padding(.bottom,0)
-                    .padding(.leading,15)
+                
             
             }
+            Spacer()
             VStack(alignment: .leading){
                 HStack{
                     Text("Current Location:")
@@ -168,3 +172,4 @@ struct VendorSettingsPage_Previews: PreviewProvider {
         VendorSettingsView()
     }
 }
+
