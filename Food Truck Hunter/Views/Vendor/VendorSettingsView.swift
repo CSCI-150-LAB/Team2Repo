@@ -65,13 +65,15 @@ struct VendorSettingsView: View {
                     Spacer()
                 }
 
-               
+                HStack{
+                Spacer()
                 Toggle(isOn: $viewModel.toggleValue){
-                    Spacer()
+                   // Spacer()
                     Text("Open For Buisness: ")
                         .fontWeight(.bold)
                         .font(.system(size:20))
-                        
+                }
+                Spacer()
                 }
                     
                 
@@ -109,11 +111,10 @@ struct VendorSettingsView: View {
                     .padding(.leading, 15)
                 DefaultButton(label: "Update Name", function: updateTruckName)
                     .frame(width: 350, height: 100)
-                    .padding(.top,-20)
+                    .padding(.top,10)
                     .padding(.bottom,0)
-                    .padding(.leading,15)
+                    .padding(.leading,33)
                     //.ignoresSafeArea(.container)
-                
             
             }
             Spacer()
@@ -128,18 +129,18 @@ struct VendorSettingsView: View {
         
                 DefaultButton(label: "Update Location", function: updateLocation)
                     .frame(width: 350, height: 100)
-                    .padding(.top,-20)
+                    .padding(.top,10)
                     .padding(.bottom,0)
-                    .padding(.leading,15)
+                    .padding(.leading,33)
         
         
                 //LOGOUT
                 VStack{
                     DefaultButton(label: "Logout", function: signOut, buttonColor: Color.white, bcolor: Color.red, lwidth: 5)
                         .frame(width: 350, height: 100)
-                        .padding(.top,-20)
+                        .padding(.top,0)
                         .padding(.bottom,0)
-                        .padding(.leading,15)
+                        .padding(.leading,33)
 
 
                     if successfullySignOut {

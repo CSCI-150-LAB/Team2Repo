@@ -1,4 +1,5 @@
 import SwiftUI
+//import FirebaseFirestore
 
 class profileInfo{
     var first = "nothing"
@@ -11,8 +12,8 @@ struct AccountSettingView: View {
     @State var last = "initial"
     @State var num = "initial"
     
-    func signOut() -> () {
-        self.successfullySignOut = authState.signOut()
+    func signOut(){
+        successfullySignOut = authState.signOut()
     }
     
     func refresh(){
@@ -103,7 +104,9 @@ struct AccountSettingView: View {
                         .frame(height:35)
                     DefaultButton(label: "Logout", function: signOut, lwidth: 2)
                     
+                    
                     if successfullySignOut {
+                        
                         SignInView()
                     }
             
