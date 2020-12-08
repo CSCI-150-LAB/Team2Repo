@@ -20,9 +20,6 @@ struct VendorSettingsView: View {
     
     @State var successfullySignOut : Bool = false;
     
-    
-    @State var truckRef = ""
-    
     @State var closingTime = Date()
     
     func signOut() {
@@ -34,10 +31,8 @@ struct VendorSettingsView: View {
     func fetchTruck(){
         if let ref = authState.session?.truck_ref
         {
-            self.truckRef =  ref
-            self.viewModel.fetchTruck(truckDocID: ref)
+            self.viewModel.getTruck(truckDocID: ref)
             //self.closingTime = self.viewModel.closingTime
-            
         }
        
     }

@@ -7,7 +7,7 @@ struct Truck: Decodable {
     var closing_hour: String = ""
     var cuisine: [String] = [""]
     var email: String = ""
-    var location: [String: Double] = ["":0.0]
+    var location: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
     var menu_ref: String = ""
     var open_status: Bool = false
     var owner_name: String = ""

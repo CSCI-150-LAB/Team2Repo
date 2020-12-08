@@ -16,7 +16,7 @@ class FavoriteListViewModel: ObservableObject {
                     closing_hour: data["closing_hour"] as? String ?? "",
                     cuisine: data["cuisine"] as? [String] ?? [""],
                     email: data["email"] as? String ?? "",
-                    location: ["":0.0],
+                    location: data["location"] as? GeoPoint ?? GeoPoint(latitude: 0, longitude: 0),
                     menu_ref: data["menu_ref"] as? String ?? "",
                     open_status: data["open_status"] as? Bool ?? false,
                     owner_name: data["owner_name"] as? String ?? "",
