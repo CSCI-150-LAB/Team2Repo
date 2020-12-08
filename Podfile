@@ -22,6 +22,7 @@ target 'Food Truck Hunter' do
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'GoogleSignIn'
   pod 'NanoID', '~> 1.0'
 

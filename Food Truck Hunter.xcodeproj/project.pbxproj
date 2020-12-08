@@ -52,6 +52,8 @@
 		91CBC059253F5ABC00C4F96B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */; };
 		91CBC063253F6A1400C4F96B /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC062253F6A1400C4F96B /* General.swift */; };
 		91CBC06E253F6BE700C4F96B /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */; };
+		91D8DAB9257011710057E521 /* CustomerEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8DAB8257011710057E521 /* CustomerEditProfileViewModel.swift */; };
+		91D8DADE25701D910057E521 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8DADD25701D910057E521 /* ImagePicker.swift */; };
 		91DB46CC2539099A00987893 /* VendorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46CB2539099A00987893 /* VendorModel.swift */; };
 		91DB46F5253956FD00987893 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46F4253956FD00987893 /* LogInModel.swift */; };
 		91DB46FA2539593700987893 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB46F92539593700987893 /* SignInViewModel.swift */; };
@@ -143,6 +145,8 @@
 		91CBC058253F5ABC00C4F96B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		91CBC062253F6A1400C4F96B /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		91CBC06D253F6BE700C4F96B /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		91D8DAB8257011710057E521 /* CustomerEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditProfileViewModel.swift; sourceTree = "<group>"; };
+		91D8DADD25701D910057E521 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		91DB46CB2539099A00987893 /* VendorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorModel.swift; sourceTree = "<group>"; };
 		91DB46F4253956FD00987893 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
 		91DB46F92539593700987893 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				91A2F7812568B67A0025EF18 /* AccountSettingViewModel.swift */,
 				D9C1C5CC25666C1E004606B8 /* MenuViewModel.swift */,
 				D9C1C5D125666C33004606B8 /* ItemViewModel.swift */,
+				91D8DAB8257011710057E521 /* CustomerEditProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				9133E0CF255F00C400B721FF /* TruckHourStatusView.swift */,
 				9133E0D4255F07BD00B721FF /* TruckClosingHourView.swift */,
 				912314F92561DEFF001D2EB8 /* TruckPhoneNumberView.swift */,
+				91D8DADD25701D910057E521 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -702,11 +708,13 @@
 				912314FA2561DEFF001D2EB8 /* TruckPhoneNumberView.swift in Sources */,
 				91B77A4125219D2800713501 /* AppDelegate.swift in Sources */,
 				915633EF253A008A00F6ED01 /* FormModel.swift in Sources */,
+				91D8DAB9257011710057E521 /* CustomerEditProfileViewModel.swift in Sources */,
 				91B77A4325219D2800713501 /* SceneDelegate.swift in Sources */,
 				912314FF2561E21F001D2EB8 /* CustomerVendorMenuView.swift in Sources */,
 				9152A7862555ECA30059BFC0 /* CustomerSignUpView.swift in Sources */,
 				91DB46F5253956FD00987893 /* LogInModel.swift in Sources */,
 				33911DBE255CB514000F0E00 /* DrawerView.swift in Sources */,
+				91D8DADE25701D910057E521 /* ImagePicker.swift in Sources */,
 				33B750AB252843FB005C3ADA /* UserLandingView.swift in Sources */,
 				D9C1C5C825666BE0004606B8 /* ItemEditView.swift in Sources */,
 				910667142534CE9700F1BF62 /* AccountSettingView.swift in Sources */,

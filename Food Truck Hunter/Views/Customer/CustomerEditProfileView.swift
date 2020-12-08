@@ -61,6 +61,7 @@ struct CustomerEditProfileView: View {
                     .padding(.top,-5)
                     .padding(.bottom,0)
                     .padding(.leading,15)
+                
 
                 Text("Edit Your First Name:")
                     .font(.system(size: 20))
