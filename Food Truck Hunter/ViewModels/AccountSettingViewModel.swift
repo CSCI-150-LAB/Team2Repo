@@ -41,7 +41,7 @@ class CustomerAccount: ObservableObject {
                         uid: self.userUID,
                         email: self.email,
                         displayName: self.displayName,
-                        favorites: data["favorites"] as? [AnyObject],
+                        favorites: data["favorites"] as? [[String:Any]],
                         first_name: data["first_name"] as? String,
                         id: data["id"] as? Int,
                         last_name: data["last_name"] as? String,

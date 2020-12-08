@@ -105,7 +105,7 @@ class VendorSettingsViewModel: ObservableObject
     func updateTruckName(truckName: String, uid: String){
         let db = Firestore.firestore()
         self.truck.truck_name = truckName
-        db.collection("Trucks").document(uid).setData(["truck_name": truckName],merge:true)
+        db.collection("Users").document(uid).setData(["truck_name": truckName],merge:true)
         db.collection("Trucks").document(self.truckRef).setData(["truck_name": truckName],merge:true)
                
         }

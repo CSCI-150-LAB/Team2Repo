@@ -37,7 +37,7 @@ class AuthenticationState: ObservableObject {
                                 uid: user.uid,
                                 email: user.email,
                                 displayName: user.displayName,
-                                favorites: data["favorites"] as? [AnyObject],
+                                favorites: data["favorites"] as? [[String: Any]],
                                 first_name: data["first_name"] as? String,
                                 id: data["id"] as? Int,
                                 last_name: data["last_name"] as? String,
@@ -78,7 +78,7 @@ class AuthenticationState: ObservableObject {
                                 
                                 // Create truck document in Trucks collection
                                 truckRef = db.collection("Trucks").addDocument(data: [
-                                    "closing_hour": "",
+                                    "closing_hour": "2100",
                                     "cuisine": [],
                                     "email": (AuthenticationState.userData?["email"] as! String).lowercased(),
                                     "truck_id": AuthenticationState.userData?["truck_id"] as! Int,
