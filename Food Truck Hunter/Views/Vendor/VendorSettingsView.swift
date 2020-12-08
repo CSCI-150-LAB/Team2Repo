@@ -37,8 +37,7 @@ struct VendorSettingsView: View {
             self.truckRef =  ref
             self.viewModel.fetchTruck(truckDocID: ref)
             self.closingTime = self.viewModel.closingTime
-            print(self.viewModel.closingTime)
-            print(self.closingTime)
+            
         }
        
     }
