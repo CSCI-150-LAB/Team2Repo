@@ -28,9 +28,11 @@ struct VendorSettingsView: View {
     @ObservedObject var viewModel = VendorSettingsViewModel()
     
     func fetchTruck(){
-        if let ref = authState.session?.truck_ref
-        {
-            self.viewModel.getTruck(truckDocID: ref)
+        DispatchQueue.main.async {
+            if let ref = authState.session?.truck_ref
+            {
+                self.viewModel.getTruck(truckDocID: ref)
+            }
         }
     }
    

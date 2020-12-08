@@ -24,7 +24,7 @@ struct Map: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         setupManager()
-        let mapView = MKMapView() // frame: UIScreen.main.bounds
+        let mapView = MKMapView(frame: UIScreen.main.bounds) // frame: UIScreen.main.bounds
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.delegate = context.coordinator
@@ -42,7 +42,7 @@ struct Map: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, MKMapViewDelegate {
         
         var parent: Map
@@ -50,6 +50,7 @@ struct Map: UIViewRepresentable {
         init(_ parent: Map) {
             self.parent = parent
         }
+        
         
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -65,6 +66,7 @@ struct Map: UIViewRepresentable {
             //view!.image = pinImage
             view?.annotation = annotation
             view?.displayPriority = .required
+            
             return view
         }
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
@@ -119,4 +121,5 @@ class TruckPin: NSObject, MKAnnotation {
     }
 
 }
+
 

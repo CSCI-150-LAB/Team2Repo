@@ -28,18 +28,27 @@ func makecall(number: String) // pulls in string, keeps numbers only and makes c
 struct CustomerVendorView: View {
 
     @ObservedObject var viewModel: FavoriteListViewModel = FavoriteListViewModel()
-    @State var isUsersFavorite = false
+    @EnvironmentObject var authState : AuthenticationState
+
     var truckDocID: String
     
     func fetchTruck() {
 //        self.viewModel.dispatchGroup.notify(queue: .main) {
         DispatchQueue.main.async {
-            self.viewModel.getTruck(truckDocID: self.truckDocID)
-            print("Data loaded!") 
+                self.viewModel.getTruck(truckDocID: self.truckDocID)
+                if let uid = authState.session?.uid{
+                    self.viewModel.fetchFav(uid: uid, truckDocID: self.truckDocID)
+                }
+                print("Data loaded!")
+            }
+            
 
-        }
     }
     
+    func updateAuth()-> String{
+        authState.session?.favorites = self.viewModel.favorites
+        return ""
+    }
     var body: some View {
         ScrollView() {
             if (self.viewModel.isDoneLoading) {
@@ -62,9 +71,9 @@ struct CustomerVendorView: View {
                     .frame(height:15)
                     
                 // CHECK HERE TO SEE IF USER HAS THIS TRUCK FAVORITED?
-                Toggle(isOn: $isUsersFavorite){
+                    Toggle(isOn: $viewModel.toggleValue){
                     Spacer()
-                    Text("Add to favorites: ")
+                    Text("Add to favorites: \(updateAuth())")
                         .font(.system(size:25))
                 }
                 .padding(.trailing,120)
@@ -135,5 +144,6 @@ struct CustomerVendorView: View {
         .onAppear{
             self.fetchTruck()
         }
+        
     }
 }

@@ -6,7 +6,7 @@ class User : ObservableObject {
     var uid: String
     var email: String?
     var displayName: String?
-    let favorites: [AnyObject]
+    var favorites: [[String: Any]]
     var first_name: String?
     let id: Int?
    @Published var last_name: String?
@@ -23,7 +23,7 @@ class User : ObservableObject {
         uid: String,
         email: String?,
         displayName: String?,
-        favorites: [AnyObject]? = [],
+        favorites: [[String: Any]]? = [],
         first_name: String?,
         id: Int?,
         last_name: String?,

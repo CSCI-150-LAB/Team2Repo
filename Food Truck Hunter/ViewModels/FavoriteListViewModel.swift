@@ -8,8 +8,21 @@ class FavoriteListViewModel: ObservableObject {
     let dispatchGroup = DispatchGroup()
     var cancallable: Cancellable?   // To be remove
     var isDoneLoading: Bool = false
+    var  isUsersFavorite = false
+    var uid = ""
+    var truckRef = ""
+    var favorites:[[String: Any]] = []
+    @Published var toggleValue: Bool = false {
+        didSet {
+            if toggleValue != isUsersFavorite{
+                updateFav()
+            }
+        }
+    }
+    
     
     func getTruck(truckDocID: String) {
+        self.truckRef = truckDocID
         self.fetchTruckData(truckDocID) { (data) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.truck = Truck(
@@ -28,16 +41,18 @@ class FavoriteListViewModel: ObservableObject {
                     truck_name: data["truck_name"] as? String ?? ""
                     
                 )
+                print(self.truck.truck_name)
                 self.isDoneLoading.toggle()
             }
         }
     }
     
+    
     func fetchTruckData(_ truckDocID: String, completion: @escaping ([String: Any]) -> Void) {
         self.dispatchGroup.enter()
         let db = Firestore.firestore()
         let docRef = db.collection("Trucks").document(truckDocID)
-        
+        print(truckDocID)
         docRef.getDocument() { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
@@ -55,6 +70,59 @@ class FavoriteListViewModel: ObservableObject {
         }
     }
     
+    func fetchFav(uid: String, truckDocID: String) {
+        
+        let db = Firestore.firestore()
+        let docRef = db.collection("Users").document(uid)
+        self.uid = uid
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let favorites = document.get("favorites"){
+                    let favs = favorites as! [[String:Any]]
+                    self.favorites = favs
+                    for fav in favs{
+                        
+                        if let truckRef = fav["truck_ref"]{
+                            if truckRef as! String == truckDocID {
+                                self.isUsersFavorite = true
+                                self.toggleValue = self.isUsersFavorite
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            else {
+                print("Document does not exist")
+            }
+        }
+        
+    }
+    
+    func updateFav(){
+        let db = Firestore.firestore()
+        if !self.toggleValue {
+            
+            for i in 0...(self.favorites.count-1){
+              
+                
+                if self.favorites[i]["truck_ref"] as! String == self.truckRef{
+                  
+                   let indexItem = self.favorites.index(self.favorites.startIndex, offsetBy: i)
+                    self.favorites.remove(at: indexItem)
+                    print(self.favorites)
+                    break
+                }
+            }
+        }
+        else {
+            let newVal: [String:Any] = ["truck_id": self.truck.truck_id, "truck_name" : self.truck.truck_name, "truck_ref" : self.truckRef]
+            self.favorites.append(newVal)
+        }
+        
+        db.collection("Users").document(self.uid).setData(["favorites": self.favorites],merge:true)
+        self.isUsersFavorite = self.toggleValue
+    }
     // Remove function below
     func doNotLoad() {
         if self.cancallable != nil  {
