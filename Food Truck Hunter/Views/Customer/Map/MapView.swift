@@ -28,7 +28,7 @@ struct MapView: View {
                         let lon = point.longitude
                         let cllPoint = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                         var name = "Truck"
-                        if let truckName = document.get("name"){
+                        if let truckName = document.get("truck_name"){
                             name = truckName as! String
                             
                         }
